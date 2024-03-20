@@ -17,6 +17,7 @@ vim.opt.expandtab = true
 vim.g.have_nerd_font = true
 
 vim.g.vim_markdown_folding_disabled = 1
+
 vim.g.vim_markdown_auto_insert_bullets = 0
 
 -- Make line numbers default
@@ -76,7 +77,7 @@ vim.opt.scrolloff = 19
 
 vim.opt.hlsearch = true
 
-vim.opt.colorcolumn = "88"
+vim.opt.colorcolumn = '88'
 
 vim.opt.linebreak = true
 
