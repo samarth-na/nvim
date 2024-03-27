@@ -27,7 +27,7 @@ Clone kickstart.nvim:
 
 - on Linux and Mac
 ```sh
-git clonehttps://github.com/samarth-nagar/modular-nvim "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clonehttps://github.com/samarth-nagar/nvim "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 

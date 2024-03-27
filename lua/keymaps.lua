@@ -1,6 +1,8 @@
 -- NOTE: diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', 'gx', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', 'gx', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
 -- NOTE: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -41,6 +43,8 @@ vim.api.nvim_set_keymap('n', '=q', ':TroubleToggle<CR>',
   { noremap = true, silent = true })
 -- for nvim-tree
 vim.api.nvim_set_keymap('n', '=e', ':NvimTreeToggle<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 
 

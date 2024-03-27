@@ -221,7 +221,6 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = ' find files' })
             vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = ' find existing buffers' })
             vim.keymap.set('n', '==', builtin.buffers, { desc = ' find existing buffers' })
-            vim.keymap.set('n', 'gg', builtin.buffers, { desc = '[ ] find existing buffers' })
 
 
             vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = ' find in jumplist' })
@@ -564,6 +563,8 @@ require('lazy').setup({
                     --  This will auto-import if your LSP supports it.
                     --  This will expand snippets if the LSP sent a snippet.
                     ['<CR>'] = cmp.mapping.confirm { select = true },
+                    ['<tab>'] = cmp.mapping.confirm { select = true },
+
                     ['<C-i>'] = cmp.mapping.confirm { select = true },
                     -- Manually trigger a completion from nvim-cmp.
                     --  Generally you don't need this, because nvim-cmp will display
@@ -593,7 +594,7 @@ require('lazy').setup({
                     --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
                 },
                 sources = {
-                    -- { name = 'codeium' },
+                    { name = 'codeium' },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "buffer" },
