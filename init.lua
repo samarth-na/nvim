@@ -30,8 +30,7 @@ vim.g.maplocalleader = ' '
 require 'opts'
 require 'keymaps'
 require 'keybinds'
--- require 'kickstart.plugins.autoformat'
-
+require 'kickstart.format'
 
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -197,11 +196,12 @@ require('lazy').setup({
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
-                -- defaults = {
-                --   mappings = {
-                --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                --   },
-                -- },
+                defaults = {
+                    mappings = {
+                        i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+
+                    },
+                },
                 pickers = {},
                 extensions = {
                     ['ui-select'] = {
@@ -220,6 +220,7 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>fo', require('telescope.builtin').oldfiles, { desc = 'recently opened files' })
             vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = ' find files' })
             vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = ' find existing buffers' })
+            vim.keymap.set('n', '==', builtin.buffers, { desc = ' find existing buffers' })
             vim.keymap.set('n', 'gg', builtin.buffers, { desc = '[ ] find existing buffers' })
 
 
@@ -465,19 +466,19 @@ require('lazy').setup({
     { -- Autoformat
         'stevearc/conform.nvim',
         opts = {
-            notify_on_error = false,
+            notify_on_error = true,
             format_on_save = function(bufnr)
                 -- Disable "format_on_save lsp_fallback" for languages that don't
                 -- have a well standardized coding style. You can add additional
                 -- languages here or re-enable it for the disabled ones.
-                local disable_filetypes = { c = true, cpp = true }
+                local disable_filetypes = { c = false, cpp = false }
                 return {
                     timeout_ms = 500,
                     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
                 }
             end,
             formatters_by_ft = {
-                lua = { 'stylua' },
+                -- lua = { 'stylua' },
                 go = { 'goimports', 'gofumpt', 'gopls' },
                 java = { 'jdtls' },
                 -- Conform can also run multiple formatters sequentially
@@ -485,7 +486,8 @@ require('lazy').setup({
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
-                -- javascript = { { "prettierd", "prettier" } },
+                javascript = { { "prettierd" } },
+                c = { "clang-format" }
             },
         },
     },
@@ -591,7 +593,7 @@ require('lazy').setup({
                     --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
                 },
                 sources = {
-                    { name = 'codeium' },
+                    -- { name = 'codeium' },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "buffer" },
@@ -663,6 +665,9 @@ require('lazy').setup({
 
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
         build = ':TSUpdate',
         opts = {
 
@@ -756,6 +761,19 @@ require('lazy').setup({
     { import = 'custom.plugins' },
 }
 )
+require('telescope').setup({
+    defaults = {
+        mappings = {
+            n = {
+                ["<bs>"] = require('telescope.actions').close, -- Bind backspace to close Telescope
+            },
+            i = {
+                ["<Esc>"] = require('telescope.actions').close, -- Bind backspace to close Telescope
+            },
+
+        },
+    },
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

@@ -34,15 +34,14 @@ vim.api.nvim_set_keymap('n', '<leader>ts', ':new <CR>',
 -- NOTE: plugin keymaps
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "=z", ":ZenMode<cr>",
+  { noremap = true, silent = true })
 -- for trouble
-vim.api.nvim_set_keymap('n', '!', ':TroubleToggle<CR>',
+vim.api.nvim_set_keymap('n', '=q', ':TroubleToggle<CR>',
   { noremap = true, silent = true })
 -- for nvim-tree
-vim.api.nvim_set_keymap('n', '=', ':NvimTreeToggle<CR>',
+vim.api.nvim_set_keymap('n', '=e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
-
-
-
 
 
 --
