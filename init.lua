@@ -51,70 +51,19 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins, you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
+
 require('lazy').setup({
-    -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
-    -- NOTE: Plugins can also be added by using a table,
-    -- with the first argument being the link and the following
-    -- keys can be used to configure plugin behavior/loading/etc.
-    --
-    -- Use `opts = {}` to force a plugin to be loaded.
-    --
-    --  This is equivalent to:
-    --    require('Comment').setup({})
-
-    -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim',    opts = {} },
-
-    -- Here is a more advanced example where we pass configuration
-    -- options to `gitsigns.nvim`. This is equivalent to the following lua:
-    --    require('gitsigns').setup({ ... })
-    --
-    -- See `:help gitsigns` to understand what the configuration keys do
-    { -- Adds git related signs to the gutter, as well as utilities for managing changes
-        'lewis6991/gitsigns.nvim',
-        opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
-        },
+    {
+        'numToStr/Comment.nvim',
+        opts = {},
+        event = 'VimEnter',
     },
-
-    -- NOTE: Plugins can also be configured to run lua code when they are loaded.
-    --
-    -- This is often very useful to both group configuration, as well as handle
-    -- lazy loading plugins that don't need to be loaded immediately at startup.
-    --
-    -- For example, in the following configuration, we use:
-    --  event = 'VimEnter'
-    --
-    -- which loads which-key before all the UI elements are loaded. Events can be
-    -- normal autocommands events (`:help autocmd-events`).
-    --
-    -- Then, because we use the `config` key, the configuration only runs
-    -- after the plugin has been loaded:
-    --  config = function() ... end
-
-    {                       -- Useful plugin to show you pending keybinds.
+    {
         'folke/which-key.nvim',
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-        config = function() -- This is the function that runs, AFTER loading
+        config = function()
             require('which-key').setup()
 
             -- Document existing key chains
@@ -128,24 +77,15 @@ require('lazy').setup({
         end,
     },
 
-    -- NOTE: Plugins can specify dependencies.
-    --
-    -- The dependencies are proper plugin specifications as well - anything
-    -- you do for a plugin at the top level, you can do for a dependency.
-    --
-    -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
     { -- Fuzzy Finder (files, lsp, etc)
         'nvim-telescope/telescope.nvim',
         event = 'VimEnter',
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            { -- If encountering errors, see telescope-fzf-native README for install instructions
+            {
                 'nvim-telescope/telescope-fzf-native.nvim',
 
-                -- `build` is used to run some command when the plugin is installed/updated.
-                -- This is only run then, not every time Neovim starts up.
                 build = 'make',
 
                 -- `cond` is a condition used to determine whether this plugin should be
@@ -156,7 +96,6 @@ require('lazy').setup({
             },
             { 'nvim-telescope/telescope-ui-select.nvim' },
 
-            -- Useful for getting pretty icons, but requires a Nerd Font.
             { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
         },
         config = function()
@@ -245,13 +184,21 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 
             -- Slightly advanced example of overriding default behavior and theme
-            vim.keymap.set('n', '<leader>sd', function()
+            vim.keymap.set('n', '<leader>gg', function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-                    winblend = 10,
+                    winblend = 1,
                     previewer = false,
                 })
-            end, { desc = '[/] Fuzzily search in current buffer' })
+            end, { desc = ' Fuzzily search in current buffer' })
+
+            vim.keymap.set('n', '<leader>/', function()
+                -- You can pass additional configuration to telescope to change theme, layout, etc.
+                builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                    winblend = 1,
+                    previewer = false,
+                })
+            end, { desc = ' Fuzzily search in current buffer' })
 
             -- Also possible to pass additional configuration options.
             --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -260,7 +207,7 @@ require('lazy').setup({
                     grep_open_files = true,
                     prompt_title = 'Live Grep in Open Files',
                 }
-            end, { desc = '[S]earch [/] in Open Files' })
+            end, { desc = 'Search in Open Files' })
 
             -- Shortcut for searching your neovim configuration files
             vim.keymap.set('n', '<leader>sn', function()
@@ -796,10 +743,7 @@ require('telescope').setup({
     },
 })
 local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set(
-    "n",
-    "<leader>a",
-    function()
+vim.keymap.set("n", "<leader>a", function()
         vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
         -- or vim.lsp.buf.codeAction() if you don't want grouping.
     end,
