@@ -7,13 +7,12 @@ vim.keymap.set('n', 'gx', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 -- NOTE: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- NOTE: terminal
-vim.api.nvim_set_keymap('n', '<leader>tt', ':term <CR>',
-  { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>tt', ':term <CR>', { noremap = true, silent = true })
 -- NOTE: word keymaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
+-- vim.keymap.set({ 'i' }, 'r', 'r', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
@@ -25,7 +24,16 @@ vim.api.nvim_set_keymap('n', 'B', '0', { noremap = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Switch to next buffer
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent = true })
 
+
+-- Switch to next tab
+vim.api.nvim_set_keymap('n', '=<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+
+-- Switch to previous tab
+vim.api.nvim_set_keymap('n', '<C-S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
 --NOTE: window keymaps
 vim.api.nvim_set_keymap('n', '<leader>tv', ':vnew <CR>',
   { noremap = true, silent = true })

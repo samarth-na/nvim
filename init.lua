@@ -218,9 +218,15 @@ require('lazy').setup({
             local builtin = require 'telescope.builtin'
 
             vim.keymap.set('n', '<leader>fo', require('telescope.builtin').oldfiles, { desc = 'recently opened files' })
-            vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = ' find files' })
-            vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = ' find existing buffers' })
-            vim.keymap.set('n', '==', builtin.buffers, { desc = ' find existing buffers' })
+            vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'recently opened files' })
+
+
+            vim.api.nvim_set_keymap('n', '<leader>fa',
+                [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
+                { noremap = true, silent = true, desc = '   all files ' })
+            vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = '' })
+
+            vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = '' })
 
 
             vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = ' find in jumplist' })
@@ -279,6 +285,7 @@ require('lazy').setup({
             -- used for completion, annotations and signatures of Neovim apis
             { 'folke/neodev.nvim', opts = {} },
         },
+
         config = function()
             -- Brief Aside: **What is LSP?**
             --
@@ -411,9 +418,17 @@ require('lazy').setup({
                 --    https://github.com/pmizio/typescript-tools.nvim
                 --
                 -- But for many setups, the LSP (`tsserver`) will work just fine
-                -- tsserver = {},
-                --
-
+                tailwindcss = {
+                    cmd = { 'tailwindcss-language-server', '--stdio' },
+                    filetypes = { 'html' },
+                },
+                tsserver = {
+                    filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+                    cmd = { 'typescript-language-server', '--stdio' },
+                },
+                deno = {
+                    cmd = { 'deno', 'lsp', '--stdio' },
+                },
                 lua_ls = {
                     -- cmd = {...},
                     -- filetypes = { ...},
@@ -424,7 +439,7 @@ require('lazy').setup({
                                 callSnippet = 'Replace',
                             },
                             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-                            -- diagnostics = { disable = { 'missing-fields' } },
+                            diagnostics = { disable = { 'missing-fields', 'missing-parameter', 'missing-symbol' } },
                         },
                     },
                 },
@@ -443,10 +458,14 @@ require('lazy').setup({
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format lua code
+                -- 'rust-analyzer',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
             require('mason-lspconfig').setup {
+                ensure_installed = {
+
+                },
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}
@@ -480,6 +499,7 @@ require('lazy').setup({
                 -- lua = { 'stylua' },
                 go = { 'goimports', 'gofumpt', 'gopls' },
                 java = { 'jdtls' },
+                -- rust = { 'rust-analyzer' },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
@@ -557,7 +577,7 @@ require('lazy').setup({
 
                     -- scroll the documentation window [b]ack / [f]orward
                     -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    -- ['<C-g>'] = cmp.mapping.scroll_docs(4),
 
                     -- Accept ([y]es) the completion.
                     --  This will auto-import if your LSP supports it.
@@ -775,6 +795,22 @@ require('telescope').setup({
         },
     },
 })
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set(
+    "n",
+    "<leader>a",
+    function()
+        vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+        -- or vim.lsp.buf.codeAction() if you don't want grouping.
+    end,
+    { silent = true, buffer = bufnr }
+)
+
+
+
+
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
