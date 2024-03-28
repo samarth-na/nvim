@@ -56,6 +56,8 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':TroubleToggle<CR>',
 -- for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '==', ':NvimTreeToggle<CR>',
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 
