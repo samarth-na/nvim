@@ -171,7 +171,7 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>sj', builtin.jumplist, { desc = ' find in jumplist' })
             vim.keymap.set('n', '<leader>sq', builtin.quickfix, { desc = ' find in quickfix' })
             vim.keymap.set('n', '<leader>ss', builtin.treesitter, { desc = ' search symbol in the buffer' })
-            vim.keymap.set('n', '<leader>fc', builtin.colorscheme, { desc = ' search symbol in the buffer' })
+            vim.keymap.set('n', '<leader>fc', builtin.colorscheme, { desc = 'colorscheme' })
 
             vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = 'search marks ' })
             vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'search by grep' })
