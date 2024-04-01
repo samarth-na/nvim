@@ -175,6 +175,7 @@ require('lazy').setup({
 
             vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = 'search marks ' })
             vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'search by grep' })
+
             vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = 'search commands' })
             vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
             vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
