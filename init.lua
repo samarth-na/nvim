@@ -68,11 +68,17 @@ require('lazy').setup({
 
             -- Document existing key chains
             require('which-key').register {
-                ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-                ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-                ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-                ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-                ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+                ['<leader>c'] = { name = 'Code actions', _ = 'which_key_ignore' },
+                ['<leader>d'] = { name = 'Document actions', _ = 'which_key_ignore' },
+                ['<leader>r'] = { name = 'Rename ', _ = 'which_key_ignore' },
+                ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
+                ['<leader>f'] = { name = 'find', _ = 'which_key_ignore' },
+                ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
+                ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
+                ['<leader>]'] = { name = 'next', _ = 'which_key_ignore' },
+                ['<leader>['] = { name = 'previous', _ = 'which_key_ignore' },
+                ['<leader>t'] = { name = 'toggle', _ = 'which_key_ignore' },
+
             }
         end,
     },
@@ -738,10 +744,10 @@ require('telescope').setup({
     defaults = {
         mappings = {
             n = {
-                ["<bs>"] = require('telescope.actions').close, -- Bind backspace to close Telescope
+                ["<Esc><Esc>"] = require('telescope.actions').close,
             },
             i = {
-                ["<Esc>"] = require('telescope.actions').close, -- Bind backspace to close Telescope
+                ["<Esc><Esc>"] = require('telescope.actions').close,
             },
 
         },
