@@ -184,6 +184,9 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>sx', builtin.diagnostics, { desc = 'Search Diagnostics' })
 
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
+            vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search git files' })
+            vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Search git commits' })
+
 
             -- Slightly advanced example of overriding default behavior and theme
             vim.keymap.set('n', '<leader>gg', function()

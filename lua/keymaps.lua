@@ -61,5 +61,13 @@ vim.api.nvim_set_keymap('n', '==', ':NvimTreeToggle<CR>',
 vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 
-
+-- Git keymaps
+vim.api.nvim_set_keymap('n', '<leader>gl', ':LazyGit<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gtl', ':Gitsigns toggle_current_line_blame<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Gitsigns <CR>',
+  { noremap = true, silent = true })
 --
