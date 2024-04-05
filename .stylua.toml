@@ -1,6 +1,6 @@
-column_width = 160
+column_width = 88
 line_endings = "Unix"
-indent_type = "tabs"
+indent_type = "spaces"
 indent_width = 4
 quote_style = "AutoPreferSingle"
 call_parentheses = "None"

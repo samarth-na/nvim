@@ -383,6 +383,8 @@ require('lazy').setup({
                 tsserver = {
                     -- filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
                     cmd = { 'typescript-language-server', '--stdio' },
+                    separate_diagnostic_server = true,
+                    publish_diagnostic_on = "insert_leave",
                 },
                 deno = {
                     cmd = { --[[ 'deno', 'lsp', ]] '--stdio' },
