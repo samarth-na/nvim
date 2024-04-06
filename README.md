@@ -30,6 +30,14 @@ Clone kickstart.nvim:
 git clonehttps://github.com/samarth-nagar/nvim "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
+If you're using cmd.exe:
+```sh
+git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\
+```
+If you're using powershell.exe
+```sh
+git clone https://github.com/nvim-lua/kickstart.nvim.git $env:USERPROFILE\AppData\Local\nvim\
+```
 
 
 ### Post Installation
