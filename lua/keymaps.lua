@@ -35,11 +35,6 @@ vim.api.nvim_set_keymap('n', '=<Tab>', ':tabnext<CR>', { noremap = true, silent 
 -- Switch to previous tab
 vim.api.nvim_set_keymap('n', '<C-S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
 --NOTE window keymaps
-vim.api.nvim_set_keymap('n', '<leader>tv', ':vnew <CR>',
-  { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<leader>ts', ':new <CR>',
-  { noremap = true, silent = true })
 
 -- NOTE plugin keymaps
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
@@ -68,6 +63,12 @@ vim.api.nvim_set_keymap('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gtl', ':Gitsigns toggle_current_line_blame<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Gitsigns <CR>',
+vim.api.nvim_set_keymap('n', '<leader>gS', ':Gitsigns <CR>',
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
+  { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>gin', ':Gitsigns <CR>',
+-- { noremap = true, silent = true })
 --

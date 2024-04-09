@@ -26,7 +26,7 @@
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+-- imports important files
 require 'opts'
 require 'keymaps'
 require 'keybinds'
@@ -51,12 +51,12 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-
+-- adding plugins
 require('lazy').setup({
 
-    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
     {
-        'numToStr/Comment.nvim',
+        'numToStr/Comment.nvim', -- Commenting plugin
         opts = {},
         event = 'VimEnter',
     },
@@ -75,15 +75,15 @@ require('lazy').setup({
                 ['<leader>f'] = { name = 'find', _ = 'which_key_ignore' },
                 ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
                 ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
-                ['<leader>]'] = { name = 'next', _ = 'which_key_ignore' },
-                ['<leader>['] = { name = 'previous', _ = 'which_key_ignore' },
+                ['<leader>]'] = { name = 'next _ in buffer', _ = 'which_key_ignore' },
+                ['<leader>['] = { name = 'previous _ in buffer', _ = 'which_key_ignore' },
                 ['<leader>t'] = { name = 'toggle', _ = 'which_key_ignore' },
 
             }
         end,
     },
 
-    { -- Fuzzy Finder (files, lsp, etc)
+    { -- Fuzzy Finder (files, lsp, etc, EVERYTHING!!!!!!)
         'nvim-telescope/telescope.nvim',
         event = 'VimEnter',
         branch = '0.1.x',
@@ -366,7 +366,7 @@ require('lazy').setup({
             --  - settings (table): Override the default settings passed when initializing the server.
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
-                -- clangd = {},
+                clangd = { inline = true },
                 -- gopls = {},
                 -- pyright = {},
                 -- rust_analyzer = {},
@@ -731,7 +731,6 @@ require('lazy').setup({
     --  Uncomment any of the lines below to enable them (you will need to restart nvim).
     --
     -- require 'kickstart.plugins.debug',
-    require 'kickstart.plugins.indent_line',
     require 'kickstart.plugins.lint',
 
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

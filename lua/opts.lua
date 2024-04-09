@@ -1,7 +1,9 @@
 -- set leader key to space
 vim.g.mapleader = ' '
+
 vim.g.maplocalleader = ' '
 
+-- set number line
 vim.wo.number = true
 
 vim.wo.relativenumber = true
