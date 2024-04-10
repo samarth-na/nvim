@@ -3,7 +3,7 @@
 
 ### Introduction
 
-this is an custom confiration of neovim based on [kickstarter](https://github.com/nvim-lua/kickstart.nvim) in which i have 
+this is an custom confirmation of neovim based on [kickstarter](https://github.com/nvim-lua/kickstart.nvim) in which i have 
 - added some plugins   
 - changed many keybinds and added new ones
 - added better ui elements 

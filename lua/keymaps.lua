@@ -30,10 +30,10 @@ vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent =
 
 
 -- Switch to next tab
-vim.api.nvim_set_keymap('n', '=<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
 -- Switch to previous tab
-vim.api.nvim_set_keymap('n', '<C-S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
 --NOTE window keymaps
 
 -- NOTE plugin keymaps
