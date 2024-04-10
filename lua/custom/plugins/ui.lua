@@ -137,12 +137,10 @@ return {
                 },
             },
             plugins = {
-                -- disable some global vim options (vim.o...)
-                -- comment the lines to not apply the options
                 options = {
                     enabled = true,
                     ruler = true,   -- disables the ruler text in the cmd line area
-                    showcmd = true, -- disables the command in the last line of the screen
+                    showcmd = false, -- disables the command in the last line of the screen
                     -- you may turn on/off statusline in zen mode by setting 'laststatus'
                     -- statusline will be shown only if 'laststatus' == 3
                     laststatus = 0,             -- turn off the statusline in zen mode
@@ -161,48 +159,48 @@ return {
                 },
             },
             -- callback where you can add custom code when the Zen window opens
-            on_open = function(win) end,
+            -- on_open = function(win) end,
             -- callback where you can add custom code when the Zen window closes
-            on_close = function() end,
+            -- on_close = function() end,
         },
     },
-    {
-        'dgagn/diagflow.nvim',
-        event = 'LspAttach',
-        opts = {
-            enable = true,
-            max_width = 40,     -- The maximum width of the diagnostic messages
-            max_height = 10,    -- the maximum height per diagnostics
-            severity_colors = { -- The highlight groups to use for each diagnostic severity level
-                error = "DiagnosticFloatingError",
-                warning = "DiagnosticFloatingWarn",
-                info = "DiagnosticFloatingInfo",
-                hint = "DiagnosticFloatingHint",
-            },
-            format = function(diagnostic)
-                return diagnostic.message
-            end,
-            gap_size = 0,
-            scope = 'cursor', -- 'cursor', 'line' this changes the scope, so instead of showing errors under the cursor, it shows errors on the entire line.
-            padding_top = 1,
-            padding_right = 1,
-            text_align = 'right',                                  -- 'left', 'right'
-            placement = 'top',                                     -- 'top', 'inline'
-            inline_padding_left = 0,                               -- the padding left when the placement is inline
-            update_event = { 'DiagnosticChanged', 'BufReadPost' }, -- the event that updates the diagnostics cache
-            toggle_event = {},                                     -- if InsertEnter, can toggle the diagnostics on inserts
-            show_sign = true,                                      -- set to true if you want to render the diagnostic sign before the diagnostic message
-            render_event = { 'DiagnosticChanged', 'CursorMoved' },
-            border_chars = {
-                top_left = "┌",
-                top_right = "┐",
-                bottom_left = "└",
-                bottom_right = "┘",
-                horizontal = "─",
-                vertical = "│"
-            },
-            show_borders = false,
-        }
-    }
+    -- {
+    --     'dgagn/diagflow.nvim',
+    --     event = 'LspAttach',
+    --     opts = {
+    --         enable = false,
+    --         max_width = 40,     -- The maximum width of the diagnostic messages
+    --         max_height = 10,    -- the maximum height per diagnostics
+    --         severity_colors = { -- The highlight groups to use for each diagnostic severity level
+    --             error = "DiagnosticFloatingError",
+    --             warning = "DiagnosticFloatingWarn",
+    --             info = "DiagnosticFloatingInfo",
+    --             hint = "DiagnosticFloatingHint",
+    --         },
+    --         format = function(diagnostic)
+    --             return diagnostic.message
+    --         end,
+    --         gap_size = 0,
+    --         scope = 'cursor', -- 'cursor', 'line' this changes the scope, so instead of showing errors under the cursor, it shows errors on the entire line.
+    --         padding_top = 1,
+    --         padding_right = 1,
+    --         text_align = 'right',                                  -- 'left', 'right'
+    --         placement = 'inline',                                     -- 'top', 'inline'
+    --         inline_padding_left = 0,                               -- the padding left when the placement is inline
+    --         update_event = { 'DiagnosticChanged', 'BufReadPost' }, -- the event that updates the diagnostics cache
+    --         toggle_event = {},                                     -- if InsertEnter, can toggle the diagnostics on inserts
+    --         show_sign = true,                                      -- set to true if you want to render the diagnostic sign before the diagnostic message
+    --         render_event = { 'DiagnosticChanged', 'CursorMoved' },
+    --         border_chars = {
+    --             top_left = "┌",
+    --             top_right = "┐",
+    --             bottom_left = "└",
+    --             bottom_right = "┘",
+    --             horizontal = "─",
+    --             vertical = "│"
+    --         },
+    --         show_borders = false,
+    --     }
+    -- }
 }
 -- vim: ts=4 sts=4 sw=4 et
