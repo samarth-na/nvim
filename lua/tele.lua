@@ -1,11 +1,37 @@
-Builtin = require 'telescope.builtin'
+require('telescope').setup({
+    defaults = {
+        mappings = {
+            n = {
+                ["<Esc><Esc>"] = require('telescope.actions').close,
+            },
+            i = {
+                ["<Esc><Esc>"] = require('telescope.actions').close,
+            },
 
+        },
+    },
+})
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
+local telescope = require("telescope")
+
+telescope.setup {
+    defaults = {
+        mappings = {
+            i = { ["<c-t>"] = trouble.open_with_trouble },
+            n = { ["<c-t>"] = trouble.open_with_trouble },
+        },
+    },
+}
+Builtin = require 'telescope.builtin'
 
 vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'old  opened files' })
 vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
 vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
 vim.keymap.set('n', '<leader>o', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
 
+----------------------------------------------------------------------------------------
 
 -- move in out of your code base and shit
 vim.keymap.set('n', '<leader>sj', Builtin.jumplist, { desc = ' find in jumplist' })
@@ -17,6 +43,8 @@ vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks ' })
 vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
 vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'Search current Word' })
 
+----------------------------------------------------------------------------------------
+
 -- extra telescope
 vim.keymap.set('n', '<leader>sc', Builtin.commands, { desc = 'search commands' })
 vim.keymap.set('n', '<leader>sh', Builtin.help_tags, { desc = 'Search Help' })
@@ -24,6 +52,8 @@ vim.keymap.set('n', '<leader>sk', Builtin.keymaps, { desc = 'Search Keymaps' })
 vim.keymap.set('n', '<leader>st', Builtin.builtin, { desc = 'Search Telescope builtin' })
 --resume last search
 vim.keymap.set('n', '<leader>sr', Builtin.resume, { desc = 'Search Resume' })
+
+----------------------------------------------------------------------------------------
 
 -- git
 vim.keymap.set('n', '<leader>gf', Builtin.git_files, { desc = 'Search git files' })
@@ -75,7 +105,8 @@ vim.keymap.set('n', 'gw', function()
         winblend = 1,
         previewer = true,
         layout_config = {
-            height = 20,
+            height = 30,
+            width = 100,
         }
     })
 end, { desc = ' Fuzzily search in current buffer' })
@@ -92,12 +123,18 @@ end, { desc = 'find in files ' })
 ----------------------------------------------------------------------------------------
 
 vim.keymap.set('n', '<leader>sg', function()
-    Builtin.live_grep(require('telescope.themes').get_ivy {
+    Builtin.live_grep(require('telescope.themes').get_dropdown {
         winblend = 0,
         previewer = true,
-
+        layout_config = {
+            width = 110,
+            height = 15,
+            prompt_position = 'top',
+            mirror = true,
+            anchor = 'N',
+        },
     })
-end, { desc = 'find in files ' })
+end, { desc = ' Fuzzily search in current buffer' })
 
 ----------------------------------------------------------------------------------------
 
@@ -107,7 +144,7 @@ vim.keymap.set('n', 'zs', function()
         previewer = true,
         layout_config = {
             width = 30,
-            height = 20,
+            height = 15,
         }
     })
 end, { desc = 'find in files ' })
