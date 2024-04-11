@@ -160,7 +160,7 @@ require('lazy').setup({
             -- See `:help telescope.builtin`
 
             require 'tele'
-            builtin = require 'telescope.builtin'
+            Builtin = require 'telescope.builtin'
 
 
 
@@ -309,7 +309,14 @@ require('lazy').setup({
             --  - settings (table): Override the default settings passed when initializing the server.
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
-                clangd = { inline = true },
+                clangd = {
+                    -- Enable inline diagnostics
+                    inline_diagnostics = true,
+                    -- Enable inlay hints
+                    inlay_hints = {
+                        enabled = true,
+                    },
+                },
                 -- gopls = {},
                 -- pyright = {},
                 -- rust_analyzer = {},
@@ -360,7 +367,7 @@ require('lazy').setup({
             -- for you, so that they are available from within Neovim.
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
-                'stylua',   -- Used to format lua code
+                -- 'stylua',   -- Used to format lua code
                 'prettier', -- Used to format code
                 -- 'rust-analyzer',
             })
@@ -400,7 +407,7 @@ require('lazy').setup({
                 }
             end,
             formatters_by_ft = {
-                lua = { 'stylua' },
+                -- lua = { 'stylua' },
                 go = { 'goimports', 'gofumpt', 'gopls' },
 
                 java = { 'jdtls' },
@@ -505,6 +512,7 @@ require('lazy').setup({
                     --  This will auto-import if your LSP supports it.
                     --  This will expand snippets if the LSP sent a snippet.
                     ['<tab>'] = cmp.mapping.confirm { select = true },
+                    ['<enter>'] = cmp.mapping.confirm { select = true },
 
                     ['<C-i>'] = cmp.mapping.confirm { select = true },
                     -- Manually trigger a completion from nvim-cmp.
@@ -697,9 +705,6 @@ vim.keymap.set("n", "<leader>a", function()
     end,
     { silent = true, buffer = bufnr }
 )
-
-
-
 
 
 
