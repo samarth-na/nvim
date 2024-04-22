@@ -1,5 +1,6 @@
 return {
 
+    { "/tpope/vim-dadbod" },
     {
         "debugloop/telescope-undo.nvim",
         dependencies = { -- note how they're inverted to above example

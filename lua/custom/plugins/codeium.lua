@@ -1,11 +1,11 @@
 return {
-    {
-        "Exafunction/codeium.nvim",
-        config = function()
-            require("codeium").setup({
-            })
-        end
-    },
+    -- {
+    --     "Exafunction/codeium.nvim",
+    --     config = function()
+    --         require("codeium").setup({
+    --         })
+    --     end
+    -- },
     {
 
         'exafunction/codeium.vim',

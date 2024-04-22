@@ -38,7 +38,6 @@ vim.keymap.set('n', '<leader>sj', Builtin.jumplist, { desc = ' find in jumplist'
 vim.keymap.set('n', '<leader>sq', Builtin.quickfix, { desc = ' find in quickfix' })
 vim.keymap.set('n', '<leader>ss', Builtin.treesitter, { desc = ' search symbol in the buffer' })
 vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks ' })
-vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
 vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks ' })
 vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
 vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'Search current Word' })
@@ -127,7 +126,7 @@ vim.keymap.set('n', '<leader>sg', function()
         winblend = 0,
         previewer = true,
         layout_config = {
-            width = 110,
+            width = 120,
             height = 15,
             prompt_position = 'top',
             mirror = true,
