@@ -14,6 +14,7 @@ vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
+vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 -- NOT: cursor
 vim.api.nvim_set_keymap('n', 'E', '$', { noremap = true })
