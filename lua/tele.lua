@@ -2,6 +2,7 @@ require('telescope').setup({
     defaults = {
         mappings = {
             n = {
+                ["<C-c>"] = require('telescope.actions').close,
                 ["<Esc><Esc>"] = require('telescope.actions').close,
             },
             i = {
@@ -11,6 +12,7 @@ require('telescope').setup({
         },
     },
 })
+
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 

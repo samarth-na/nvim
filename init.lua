@@ -310,6 +310,24 @@ require('lazy').setup({
             --  - settings (table): Override the default settings passed when initializing the server.
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
+                pylyzer = {
+                    diagnostics = {
+                        enable = false
+                    },
+                    diagnosticSeverity = {
+                        error = "none",
+                    },
+                    typeCheckingMode = "off",
+                    settings = {
+
+                        python = {
+                            analysis = {
+                                diagnosticSeverity = "none",
+                                typeCheckingMode = "off"
+                            }
+                        }
+                    }
+                },
                 clangd = {
                     -- Enable inline diagnostics
                     inline_diagnostics = true,
