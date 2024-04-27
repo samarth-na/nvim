@@ -118,6 +118,9 @@ vim.keymap.set('n', '<leader><space>', function()
     Builtin.find_files(require('telescope.themes').get_ivy {
         winblend = 0,
         previewer = true,
+        layout_config = {
+            height = 35,
+        }
     })
 end, { desc = 'find in files ' })
 
