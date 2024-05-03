@@ -119,7 +119,6 @@ vim.keymap.set('n', '<leader><space>', function()
         winblend = 0,
         previewer = true,
         layout_config = {
-            height = 35,
         }
     })
 end, { desc = 'find in files ' })
