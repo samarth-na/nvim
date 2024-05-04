@@ -74,17 +74,7 @@ vim.keymap.set('n', '<leader>sd', function()
             anchor = 'N',
         },
     })
-end, { desc = ' Fuzzily search in current buffer' })
-
-----------------------------------------------------------------------------------------
-
-vim.keymap.set('n', '<leader>gg', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    Builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 1,
-        previewer = false,
-    })
-end, { desc = ' Fuzzily search in current buffer' })
+end, { desc = 'diagnostics' })
 
 ----------------------------------------------------------------------------------------
 
@@ -99,6 +89,18 @@ vim.keymap.set('n', '<leader>/', function()
     })
 end, { desc = ' Fuzzily search in current buffer' })
 
+vim.keymap.set('n', '<leader>s/', function()
+    Builtin.live_grep(require('telescope.themes').get_dropdown {
+        grep_open_files = true,
+        prompt_title = 'Live Grep in Open Files',
+        winblend = 1,
+        previewer = false,
+        layout_config = {
+            height = 20,
+        }
+    })
+end, { desc = 'grep in file' })
+
 ----------------------------------------------------------------------------------------
 
 vim.keymap.set('n', 'gw', function()
@@ -106,11 +108,11 @@ vim.keymap.set('n', 'gw', function()
         winblend = 1,
         previewer = true,
         layout_config = {
-            height = 30,
+            height = 16,
             width = 100,
         }
     })
-end, { desc = ' Fuzzily search in current buffer' })
+end, { desc = 'current word' })
 
 ----------------------------------------------------------------------------------------
 
@@ -137,7 +139,7 @@ vim.keymap.set('n', '<leader>sg', function()
             anchor = 'N',
         },
     })
-end, { desc = ' Fuzzily search in current buffer' })
+end, { desc = 'grep in directory' })
 
 ----------------------------------------------------------------------------------------
 
@@ -150,21 +152,16 @@ vim.keymap.set('n', 'zs', function()
             height = 15,
         }
     })
-end, { desc = 'find in files ' })
+end, { desc = 'spell suggest' })
 
 ----------------------------------------------------------------------------------------
 
-vim.keymap.set('n', '<leader>s/', function()
-    Builtin.live_grep {
-        grep_open_files = true,
-        prompt_title = 'Live Grep in Open Files',
-    }
-end, { desc = 'Search in Open Files' })
+
 
 ----------------------------------------------------------------------------------------
 
 vim.keymap.set('n', '<leader>sn', function()
     Builtin.find_files { cwd = vim.fn.stdpath 'config' }
-end, { desc = 'Search Neovim files' })
+end, { desc = ' Neovim files' })
 
 -- vim: ts=4 sts=4 sw=4 et
