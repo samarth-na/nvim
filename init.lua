@@ -598,7 +598,7 @@ require('lazy').setup({
             -- Add languages to be installed here that you want installed for treesitter
             -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
             ensure_installed = {
-                'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'go', 'javascript', 'python', 'java'
+                'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'go', 'javascript', 'python', 'java'
             },
             -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
             auto_install = false,

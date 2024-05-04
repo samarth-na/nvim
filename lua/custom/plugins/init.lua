@@ -45,15 +45,7 @@ return {
         version = '^4', -- Recommended
         ft = { 'rust' },
     },
-    {
-        "roobert/tailwindcss-colorizer-cmp.nvim",
-        -- optionally, override the default options:
-        config = function()
-            require("tailwindcss-colorizer-cmp").setup({
-                color_square_width = 2,
-            })
-        end
-    },
+
     { -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
         -- Enable `lukas-reineke/indent-blankline.nvim`
