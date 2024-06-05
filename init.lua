@@ -53,7 +53,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- adding plugins
 require('lazy').setup({
-
     'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
     {
         'numToStr/Comment.nvim', -- Commenting plugin
