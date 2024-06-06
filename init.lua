@@ -512,7 +512,6 @@ require('lazy').setup({
                     --  This will auto-import if your LSP supports it.
                     --  This will expand snippets if the LSP sent a snippet.
                     ['<tab>'] = cmp.mapping.confirm { select = true },
-                    ['<enter>'] = cmp.mapping.confirm { select = true },
 
                     ['<C-i>'] = cmp.mapping.confirm { select = true },
                     -- Manually trigger a completion from nvim-cmp.
