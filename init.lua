@@ -1,5 +1,7 @@
 --[[
 
+
+
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -27,6 +29,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- imports important files
+
 require 'opts'
 require 'keymaps'
 require 'keybinds'
@@ -541,7 +544,8 @@ require('lazy').setup({
                     --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
                 },
                 sources = {
-                    -- { name = 'codeium' },
+                    { name = 'codeium' },
+                    { name = "supermaven" },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "buffer" },

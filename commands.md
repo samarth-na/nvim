@@ -1,8 +1,8 @@
 ### Normal Mode
 
 1. `0`- to get to beginning of line, `$` - to get to end of line
-2. 
-    1. `e`- to get to right word by word(fast forward), 
+
+2.  1. `e`- to get to right word by word(fast forward),
     2. `b`- to get to left word by word(go back)
 3. `gg`- top of file, `shift+G`- bottom of file
 4. `p` ⇒ paste
@@ -25,8 +25,10 @@
 16. `leader+cr`: remove unused import
 17. `leader+co`: organise imports
 18. `18j` - take 18 lines down relative to cursor
-- `nk` - up a bit by n lines
-- `nj` - down a bit
+
+-   `nk` - up a bit by n lines
+-   `nj` - down a bit
+
 1. `space+ft` : open terminal ; exit: to exit
 2. add a file/folder: go to explore mode
 
@@ -40,15 +42,15 @@ buffers(code tabs):
 
 ### Visual Mode
 
-- Press  `v` to enter visual mode,
-- `h` → left, `l` → right , `j` → down, `k` → up,
-- `y` to copy the line , `p` to paste
-- `d`  to delete or cut
-- `di "` to delete everything inside “ “
-- `di (` to delete everything inside ()
-- `u` - undo
-- `ctrl + r` - redo
-- `esc` - escape
+-   Press  `v` to enter visual mode,
+-   `h` → left, `l` → right , `j` → down, `k` → up,
+-   `y` to copy the line , `p` to paste
+-   `d` to delete or cut
+-   `di "` to delete everything inside “ “
+-   `di (` to delete everything inside ()
+-   `u` - undo
+-   `ctrl + r` - redo
+-   `esc` - escape
 
 1. Search
     1. `/ + what_to_search`, next arrow to get to next
@@ -56,44 +58,40 @@ buffers(code tabs):
 
 ### Insert Mode
 
-- Press `i` to enter insert mode, make changes, then press `Esc` and `:wq` to save and exit.
-- press `ctrl+c` :to exit edit mode, enter normal mode
-- `space + ff` - to open file finder(tree structure)
-- `esc+esc` - to close
-- `space+ f`- to find files in folder only
-- `space + e`- to open file manager
-- `space + sg`- live grep, **searches for text and strings defined by users in a given file, search across codebase**
-- `space + fc`- color schemes
-    
-    
+-   Press `i` to enter insert mode, make changes, then press `Esc` and `:wq` to save and exit.
+-   press `ctrl+c` :to exit edit mode, enter normal mode
+-   `space + ff` - to open file finder(tree structure)
+-   `esc+esc` - to close
+-   `space+ f`- to find files in folder only
+-   `space + e`- to open file manager
+-   `space + sg`- live grep, **searches for text and strings defined by users in a given file, search across codebase**
+-   `space + fc`- color schemes
     `space + key`
-    
     | b → Buffers | F → Find Files (cwd) | r + Recent |
-    | --- | --- | --- |
+    | ------------------------------- | ------------------------- | ---------------------- |
     | c → Find Config File | f + Find Files (root dir) | t→Terminal Croot dir） |
     | e → Explorer NeoTree (root dir) | n → New File | T → Terminal (cwd) |
-    | E → Explorer NeoTree (cwd) | R → Recent (cwd) |  |
-    
+    | E → Explorer NeoTree (cwd) | R → Recent (cwd) | |
 
 1. **Using built-in commands:**
+
     - To create a new file, you can use the `:edit` command followed by the file name. For example:
-        
+
         ```
         :edit newfile.txt
-        
+
         ```
-        
+
         This will open a new buffer with the specified file name. If the file doesn't exist, it will be created when you save it.
-        
+
     - Alternatively, you can use the `:new` command to open a new buffer without specifying a file name. For example:
-        
+
         ```
         :new
-        
+
         ```
-        
+
         This will open a new buffer without a file name. You can then save it with `:w <filename>`.
-        
 
 Compile a file within NeoVim, do using the built-in terminal emulator. Here's a step-by-step guide on how to compile a file from within NeoVim:
 
@@ -111,7 +109,8 @@ By following these steps, you can compile and execute files directly from within
 
 1. **Using terminal emulator:**
     - You can also create files using the terminal emulator within NeoVim. Press `:` to enter command mode, then type `terminal` to open the terminal emulator. From there, you can use standard shell commands to create files, such as `touch newfile.txt`.
-- `option+shift+arrow :` shift cursor word by word
+
+-   `option+shift+arrow :` shift cursor word by word
 
 ### Navigate browser using NVim
 
@@ -129,26 +128,26 @@ By following these steps, you can compile and execute files directly from within
 
 `J`- previous tab
 
-- `J, gT`: Go one tab left
-- `K, gt`: Go one tab right
-- `g0`: Go to the first tab
-- `ng0`: Go to the n-th tab
-- `g$`: Go to the last tab
-- `^`: Visit the previously-visited tab
-- `t`: Create new tab
-- `x`: Close current tab
-- `H`: Go back in history
-- `L`: Go forward in history
-- `?`: Show the help dialog
-- `j`: Scroll
+-   `J, gT`: Go one tab left
+-   `K, gt`: Go one tab right
+-   `g0`: Go to the first tab
+-   `ng0`: Go to the n-th tab
+-   `g$`: Go to the last tab
+-   `^`: Visit the previously-visited tab
+-   `t`: Create new tab
+-   `x`: Close current tab
+-   `H`: Go back in history
+-   `L`: Go forward in history
+-   `?`: Show the help dialog
+-   `j`: Scroll
 
 ### NVim Tree
 
-| /→Fuzzily search in current buffer | q→ TroubleToggle | c → +[C]ode | r→ +[R]ename (to rename) |
-| --- | --- | --- | --- |
-| <space> | z → ZenMode | d→ +[D]ocument | s→ +[S]earch |
-| e → nvim tree toggle | [ → +prefix | f → +prefix | t→ +prefix |
-| D → LSP: Type [D]efinition | ] → +prefix | g → +prefix | w →workspace |
+| /→Fuzzily search in current buffer | q→ TroubleToggle | c → +[C]ode    | r→ +[R]ename (to rename) |
+| ---------------------------------- | ---------------- | -------------- | ------------------------ |
+| <space>                            | z → ZenMode      | d→ +[D]ocument | s→ +[S]earch             |
+| e → nvim tree toggle               | [ → +prefix      | f → +prefix    | t→ +prefix               |
+| D → LSP: Type [D]efinition         | ] → +prefix      | g → +prefix    | w →workspace             |
 
 **Rename**
 

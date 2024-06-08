@@ -13,6 +13,7 @@ require('telescope').setup({
     },
 })
 
+
 Builtin = require 'telescope.builtin'
 
 vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'old  opened files' })
