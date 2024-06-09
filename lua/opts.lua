@@ -86,13 +86,3 @@ vim.opt.linebreak = true
 vim.opt.conceallevel = 1
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
--- Function to load Codeium plugins
--- local function load_codeium()
---   local status_ok, lazy = pcall(require, "lazy")
---   if not status_ok then
---     print("Failed to load lazy.nvim")
---     return
---   end
---
---   lazy.load({ "Exafunction/codeium.nvim", "exafunction/codeium.vim" })
--- end

@@ -490,6 +490,7 @@ require('lazy').setup({
             luasnip.config.setup {}
 
             cmp.setup {
+
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)

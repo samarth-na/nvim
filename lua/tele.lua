@@ -66,6 +66,16 @@ end, { desc = 'diagnostics' })
 
 ----------------------------------------------------------------------------------------
 
+vim.keymap.set('n', '<c-/>', function()
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    Builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 1,
+        previewer = false,
+        layout_config = {
+            height = 20,
+        }
+    })
+end, { desc = ' Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
     Builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

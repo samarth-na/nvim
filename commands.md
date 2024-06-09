@@ -1,7 +1,6 @@
 ### Normal Mode
 
 1. `0`- to get to beginning of line, `$` - to get to end of line
-
 2.  1. `e`- to get to right word by word(fast forward),
     2. `b`- to get to left word by word(go back)
 3. `gg`- top of file, `shift+G`- bottom of file
@@ -67,30 +66,24 @@ buffers(code tabs):
 -   `space + sg`- live grep, **searches for text and strings defined by users in a given file, search across codebase**
 -   `space + fc`- color schemes
     `space + key`
-    | b → Buffers | F → Find Files (cwd) | r + Recent |
+    | b → Buffers                     | F → Find Files (cwd)      | r + Recent             |
     | ------------------------------- | ------------------------- | ---------------------- |
-    | c → Find Config File | f + Find Files (root dir) | t→Terminal Croot dir） |
-    | e → Explorer NeoTree (root dir) | n → New File | T → Terminal (cwd) |
-    | E → Explorer NeoTree (cwd) | R → Recent (cwd) | |
+    | c → Find Config File            | f + Find Files (root dir) | t→Terminal Croot dir） |
+    | e → Explorer NeoTree (root dir) | n → New File              | T → Terminal (cwd)     |
+    | E → Explorer NeoTree (cwd)      | R → Recent (cwd)          |                        |
 
 1. **Using built-in commands:**
-
     - To create a new file, you can use the `:edit` command followed by the file name. For example:
-
         ```
         :edit newfile.txt
 
         ```
-
         This will open a new buffer with the specified file name. If the file doesn't exist, it will be created when you save it.
-
     - Alternatively, you can use the `:new` command to open a new buffer without specifying a file name. For example:
-
         ```
         :new
 
         ```
-
         This will open a new buffer without a file name. You can then save it with `:w <filename>`.
 
 Compile a file within NeoVim, do using the built-in terminal emulator. Here's a step-by-step guide on how to compile a file from within NeoVim:
