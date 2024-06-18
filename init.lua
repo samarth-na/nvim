@@ -371,7 +371,8 @@ require('lazy').setup({
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 -- 'stylua',   -- Used to format lua code
-                'prettier', -- Used to format code
+                -- 'prettier', -- Used to format code
+                -- 'shellcheck', -- Used to lint shell scripts
                 -- 'rust-analyzer',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -419,22 +420,21 @@ require('lazy').setup({
 
                 python = { --[[ "isort", ]] "black" },
 
-                ["javascript"] = { "prettier" },
-                ["javascriptreact"] = { "prettier" },
-                ["typescript"] = { "prettier" },
-                ["typescriptreact"] = { "prettier" },
-                ["vue"] = { "prettier" },
-                ["css"] = { "prettier" },
-                ["scss"] = { "prettier" },
-                ["less"] = { "prettier" },
-                ["html"] = { "prettier" },
-                ["json"] = { "prettier" },
-                ["jsonc"] = { "prettier" },
-                ["yaml"] = { "prettier" },
-                ["markdown"] = { "prettier" },
-                ["markdown.mdx"] = { "prettier" },
-                ["graphql"] = { "prettier" },
-                ["handlebars"] = { "prettier" },
+                -- javascript = { "prettier" },
+                -- javascriptreact = { "prettier" },
+                -- typescript = { "prettier" },
+                -- typescriptreact = { "prettier" },
+                -- vue = { "prettier" },
+                -- css = { "prettier" },
+                -- scss = { "prettier" },
+                -- less = { "prettier" },
+                -- html = { "prettier" },
+                -- json = { "prettier" },
+                -- jsonc = { "prettier" },
+                -- yaml = { "prettier" },
+                -- markdown = { "prettier" },
+                -- graphql = { "prettier" },
+                -- handlebars = { "prettier" },
 
                 c = { "clang-format" },
                 cpp = { "clang-format" }
