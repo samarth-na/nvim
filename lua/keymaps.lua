@@ -4,13 +4,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 
 -- NOTE terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
--- NOTE terminal
-vim.api.nvim_set_keymap('n', '<leader>tt', ':term <CR>', { noremap = true, silent = true })
+
 -- NOTE word keymaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
--- vim.keymap.set({ 'i' }, 'r', 'r', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
@@ -33,7 +31,6 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 
 -- Switch to previous tab
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
---NOTE window keymaps
 
 -- NOTE plugin keymaps
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
@@ -41,9 +38,11 @@ vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
 vim.api.nvim_set_keymap("n", "=z", ":ZenMode<cr>",
   { noremap = true, silent = true })
 -- for trouble
-vim.api.nvim_set_keymap('n', '!', ':Trouble<CR>',
-  { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>tt', ':Trouble<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>!', ':Trouble diagnostics<CR>',
+  { noremap = true, silent = true })
 
 -- for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',

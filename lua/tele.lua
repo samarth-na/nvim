@@ -55,7 +55,7 @@ vim.keymap.set('n', '<leader>sd', function()
         winblend = 0,
         previewer = true,
         layout_config = {
-            width = 80,
+            width = 200,
             height = 15,
             prompt_position = 'top',
             mirror = true,

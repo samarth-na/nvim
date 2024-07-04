@@ -1,5 +1,11 @@
 return {
     {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    {
         "vhyrro/luarocks.nvim",
         priority = 1000,
         config = true,
@@ -7,15 +13,8 @@ return {
             rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
         }
     },
-    {
-        "rest-nvim/rest.nvim",
-        ft = "http",
-        dependencies = { "luarocks.nvim" },
-        config = function()
-            require("rest-nvim").setup()
-        end,
-    },
-    { "/tpope/vim-dadbod" },
+
+    -- { "/tpope/vim-dadbod" },
     {
         "debugloop/telescope-undo.nvim",
         dependencies = { -- note how they're inverted to above example

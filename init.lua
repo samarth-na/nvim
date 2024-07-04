@@ -30,6 +30,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- imports important files
 
+
 require 'opts'
 require 'keymaps'
 require 'keybinds'
@@ -50,7 +51,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-    vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+    vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable'
+    , lazyrepo, lazypath }
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
@@ -78,7 +80,8 @@ require('lazy').setup({
                 ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
                 ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
                 ['<leader>]'] = { name = 'next _ in buffer', _ = 'which_key_ignore' },
-                ['<leader>['] = { name = 'previous _ in buffer', _ = 'which_key_ignore' },
+                ['<leader>['] = { name = 'previous _ in buffer', _ = 'which_key_ignore'
+                },
                 ['<leader>t'] = { name = 'toggle', _ = 'which_key_ignore' },
 
             }

@@ -41,8 +41,8 @@ return {
             cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
             -- toggle theme style ---
-            toggle_style_key = '<leader>to',                          -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-            toggle_style_list = { 'dark', 'darker', 'cool', 'deep' }, -- List of styles to toggle between
+            toggle_style_key = '<leader>to',                                   -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+            toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'light' }, -- List of styles to toggle between
             -- Change code style ---
             -- Options are italic, bold, underline, none
             -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
