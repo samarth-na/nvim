@@ -71,21 +71,36 @@ require('lazy').setup({
         config = function()
             require('which-key').setup()
 
-            -- Document existing key chains
-            require('which-key').register {
-                ['<leader>c'] = { name = 'Code actions', _ = 'which_key_ignore' },
-                ['<leader>d'] = { name = 'Document actions', _ = 'which_key_ignore' },
-                ['<leader>r'] = { name = 'Rename ', _ = 'which_key_ignore' },
-                ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
-                ['<leader>f'] = { name = 'find', _ = 'which_key_ignore' },
-                ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-                ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
-                ['<leader>]'] = { name = 'next _ in buffer', _ = 'which_key_ignore' },
-                ['<leader>['] = { name = 'previous _ in buffer', _ = 'which_key_ignore'
-                },
-                ['<leader>t'] = { name = 'toggle', _ = 'which_key_ignore' },
 
-            }
+
+            -- Document existing key chains
+            -- require('which-key').show {
+            --
+            --     loop = false,
+            --     {
+            --         { "", desc = "<leader>w_",           hidden = true },
+            --         { "", group = "Rename " },
+            --         { "", desc = "<leader>g_",           hidden = true },
+            --         { "", group = "Git" },
+            --         { "", desc = "<leader>f_",           hidden = false },
+            --         { "", desc = "<leader>r_",           hidden = true },
+            --         { "", desc = "<leader>s_",           hidden = true },
+            --         { "", group = "Search" },
+            --         { "", group = "toggle" },
+            --         { "", desc = "<leader>t_",           hidden = true },
+            --         { "", group = "find" },
+            --         { "", group = "Document actions" },
+            --         { "", desc = "<leader>[_",           hidden = true },
+            --         { "", group = "previous _ in buffer" },
+            --         { "", desc = "<leader>d_",           hidden = true },
+            --         { "", group = "next _ in buffer" },
+            --         { "", group = "Code actions" },
+            --         { "", desc = "<leader>]_",           hidden = true },
+            --         { "", desc = "<leader>c_",           hidden = true },
+            --         { "", group = "Workspace" },
+            --     }
+            --
+            -- }
         end,
     },
 

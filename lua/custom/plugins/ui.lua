@@ -89,6 +89,7 @@ return {
             opts = {
                 options = {
                     icons_enabled = true,
+                    globalstatus = true,
                     -- theme = 'onedark',
                     -- theme = 'tokyonight',
                     component_separators = { left = '|', right = '|' },
@@ -97,7 +98,7 @@ return {
                 sections = {
                     lualine_a = { '' },
                     lualine_b = { 'branch', 'diff', 'diagnostics' },
-                    lualine_c = { 'encoding', 'filename' },
+                    lualine_c = { 'filename', 'encoding', 'filesize' },
                     lualine_x = { 'fileformat' },
                     lualine_y = { 'progress', 'location' },
                     lualine_z = {},
@@ -113,8 +114,8 @@ return {
                 tabline = {
                     lualine_a = {},
                     lualine_b = { 'buffers' },
-                    lualine_c = { '' },
-                    lualine_x = { 'tabs' },
+                    lualine_c = {},
+                    lualine_x = { '', 'tabs' },
                     lualine_y = {},
                     lualine_z = { 'mode' },
                 },
