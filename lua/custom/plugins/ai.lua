@@ -1,4 +1,14 @@
 return {
+    -- { "github/copilot.vim" },
+    -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = { enabled = true },
+    --             panel = { enabled = false },
+    --         })
+    --     end
+    -- },
     {
         "supermaven-inc/supermaven-nvim",
         config = function()

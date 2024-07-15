@@ -9,6 +9,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
+vim.keymap.set({ 'n' }, '<c-I>', '<c-a>', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
@@ -39,11 +40,30 @@ vim.api.nvim_set_keymap("n", "=z", ":ZenMode<cr>",
   { noremap = true, silent = true })
 -- for trouble
 
+-- diagnostics
+-- loclist
+-- lsp_command
+-- lsp_declarations
+-- lsp_definitions
+-- lsp_document_symbols
+-- lsp_implementations
+-- lsp_incoming_calls
+-- lsp_outgoing_calls
+-- lsp_references
+-- lsp_type_definitions
+-- qflist
+-- quickfix
+-- symbols
+-- telescope
+-- telescope_files
+-- todo
+-- diagnostics
 vim.api.nvim_set_keymap('n', '<leader>tt', ':Trouble<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>!', ':Trouble diagnostics<CR>',
+vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble diagnostics<CR>',
   { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
+  { noremap = true, silent = true })
 -- for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })

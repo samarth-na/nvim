@@ -1,4 +1,6 @@
 return {
+    -- { "chrisbra/csv.vim" },
+    -- { "/tpope/vim-dadbod" },
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -14,7 +16,6 @@ return {
         }
     },
 
-    -- { "/tpope/vim-dadbod" },
     {
         "debugloop/telescope-undo.nvim",
         dependencies = { -- note how they're inverted to above example

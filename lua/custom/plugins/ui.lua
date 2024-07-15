@@ -1,4 +1,5 @@
 return {
+
     {
         'NvChad/nvim-colorizer.lua',
         opts = {
@@ -20,7 +21,7 @@ return {
 
     {
         'folke/trouble.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {},
     },
     {
@@ -125,7 +126,7 @@ return {
         opts = {
 
             window = {
-                backdrop = 0.1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+                backdrop = 1.2, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
                 -- height and width can be:
                 -- * an absolute number of cells when > 1
                 -- * a percentage of the width / height of the editor when <= 1

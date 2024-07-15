@@ -58,6 +58,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- adding plugins
 require('lazy').setup({
+
     'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
     {
         'numToStr/Comment.nvim', -- Commenting plugin
@@ -150,6 +151,7 @@ require('lazy').setup({
                     mappings = {
                     },
                 },
+
                 pickers = {},
                 extensions = {
                     ['ui-select'] = {
@@ -324,7 +326,6 @@ require('lazy').setup({
                     },
                 },
                 -- gopls = {},
-                -- pyright = {},
                 -- rust_analyzer = {},
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
@@ -343,6 +344,16 @@ require('lazy').setup({
                     publish_diagnostic_on = "insert_leave",
                 },
                 deno = {
+                    diagnostics = 'disable',
+                    lint = {
+                        enable = false,
+                        globals = { 'console' },
+                        rules = {
+                            'no-explicit-any',
+                            'no-unused-vars',
+                            'ban-types',
+                        },
+                    },
                     cmd = { --[[ 'deno', 'lsp', ]] '--stdio' },
                 },
                 lua_ls = {
@@ -356,6 +367,33 @@ require('lazy').setup({
                             },
                             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             diagnostics = { disable = { 'missing-fields', 'missing-parameter', 'missing-symbol' } },
+                        },
+                    },
+                },
+                ruff = {
+                    -- cmd = { 'ruff', '--config=/path/to/pyproject.toml' },
+                    filetypes = { 'python' },
+                    settings = {
+                        python = {
+                            analysis = {
+                                diagnosticMode = 'workspace',
+                                useLibraryCodeForTypes = true,
+                            },
+                        },
+                    },
+                },
+                pyright = {
+                    inlay_hints = true,
+                    settings = {
+                        pyright = {
+                            -- Using Ruff's import organizer
+                            disableOrganizeImports = true,
+                        },
+                        python = {
+                            analysis = {
+                                -- Ignore all files for analysis to exclusively use Ruff for linting
+                                ignore = { '*' },
+                            },
                         },
                     },
                 },
@@ -417,7 +455,7 @@ require('lazy').setup({
                 -- lua = { 'stylua' },
                 go = { 'goimports', 'gofumpt', 'gopls' },
 
-                java = { 'jdtls' },
+                -- java = { 'jdtls' },
 
                 -- rust = { 'rust-analyzer' },
 
@@ -548,13 +586,14 @@ require('lazy').setup({
                     --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
                 },
                 sources = {
-                    { name = 'codeium' },
-                    { name = "supermaven" },
-                    { name = "nvim_lsp" },
-                    { name = "nvim_lua" },
-                    { name = "buffer" },
-                    { name = "path" },
-                    { name = "luasnip" },
+                    -- { name = "copilot",   group_index = 1 },
+                    { name = 'codeium', --[[ group_index = 1 ]] },
+                    { name = "supermaven", --[[ group_index = 1 ]] },
+                    { name = "nvim_lsp", --[[ group_index = 2 ]] },
+                    { name = "nvim_lua", --[[ group_index = 2 ]] },
+                    { name = "buffer", --[[ group_index = 2 ]] },
+                    { name = "path", --[[ group_index = 3 ]] },
+                    { name = "luasnip", --[[ group_index = 3 ]] },
                 },
             }
         end,
@@ -701,7 +740,16 @@ vim.keymap.set("n", "<leader>a", function()
     { silent = true, buffer = bufnr }
 )
 
+local on_attach = function(client, bufnr)
+    if client.name == 'ruff_lsp' then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end
+end
 
+require('lspconfig').ruff_lsp.setup {
+    on_attach = on_attach,
+}
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
