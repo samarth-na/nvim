@@ -724,6 +724,17 @@ require('lazy').setup({
             --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
             --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
         end,
+        vim.diagnostic.config({
+            virtual_text = lspDiagnosticsVisible,
+            underline = lspDiagnosticsVisible,
+        }),
+        vim.keymap.set("n", "<leader>lx", function()
+            lspDiagnosticsVisible = not lspDiagnosticsVisible
+            vim.diagnostic.config({
+                virtual_text = lspDiagnosticsVisible,
+                underline = lspDiagnosticsVisible,
+            })
+        end)
     },
 
     -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

@@ -27,7 +27,7 @@ vim.keymap.set({ 'n', 'v' }, '<C-s>', ':w<CR> ', { silent = true })
 vim.api.nvim_set_keymap('n', '<C-x>', ':bdelete<CR>', { noremap = true, silent = true })
 
 -- Execute 'ctp' command in the terminal
-vim.api.nvim_set_keymap('n', '<M-t>', ':! ctp <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<M-t>', ':!changeTmuxPane <CR>', { noremap = true })
 
 -- Execute 'run' command in the terminal
 vim.api.nvim_set_keymap('n', '<M-r>', ':! run <CR>', { noremap = true })

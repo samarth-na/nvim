@@ -1,5 +1,6 @@
 return {
 
+    { "sainnhe/gruvbox-material" },
     {
         'NvChad/nvim-colorizer.lua',
         opts = {
@@ -21,8 +22,11 @@ return {
 
     {
         'folke/trouble.nvim',
+        opts = {
+            focus = true,
+            transparent = true,
+        },
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        opts = {},
     },
     {
         'catppuccin/nvim',
@@ -32,12 +36,34 @@ return {
 
     -- Or with configuration
     {
+        "AlexvZyl/nordic.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            local palette = require("nordic.colors")
+
+            require("nordic").setup({
+                transparent_bg = true,
+                telescope = { style = "classic" },
+                override = {
+                    CursorLine = {
+                        bg = "#2e3440",
+                        bold = true,
+                    },
+                },
+            })
+
+            -- vim.cmd("colorscheme nordic")
+            -- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#1e2022" })
+        end,
+    },
+    {
         'navarasu/onedark.nvim',
         opts = {
             -- Main options --
             style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
             transparent = false,          -- Show/hide background
-            term_colors = true,           -- Change terminal color as per the selected theme style
+            term_colors = false,          -- Change terminal color as per the selected theme style
             ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
             cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
@@ -54,11 +80,20 @@ return {
                 strings = 'none',
                 variables = 'none',
             },
+            diagnostics = {
+                darker = true,      -- darker colors for diagnostic
+                undercurl = true,   -- use undercurl instead of underline for diagnostics
+                background = false, -- use background color for virtual text
+            },
+
 
             -- Lualine options --
             lualine = {
-                transparent = false, -- lualine center bar transparency
+                transparent = true, -- lualine center bar transparency
             },
+            trouble = {
+                transparent = true,
+            }
         },
     },
     {
@@ -88,8 +123,8 @@ return {
             event = 'InsertEnter',
             opts = {
                 options = {
-                    icons_enabled = true,
                     globalstatus = true,
+                    icons_enabled = true,
                     -- theme = 'onedark',
                     -- theme = 'tokyonight',
                     component_separators = { left = '|', right = '|' },
@@ -112,10 +147,10 @@ return {
                     lualine_z = {},
                 },
                 tabline = {
-                    lualine_a = {},
-                    lualine_b = { 'buffers' },
-                    lualine_c = {},
-                    lualine_x = { '', 'tabs' },
+                    lualine_a = { '' },
+                    lualine_b = { '', },
+                    lualine_c = { '', 'buffers' },
+                    lualine_x = { 'tabs' },
                     lualine_y = {},
                     lualine_z = { 'mode' },
                 },

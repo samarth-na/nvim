@@ -3,10 +3,8 @@ require('telescope').setup({
         mappings = {
             n = {
                 ["<C-c>"] = require('telescope.actions').close,
-                ["<Esc><Esc>"] = require('telescope.actions').close,
             },
             i = {
-                ["<Esc><Esc>"] = require('telescope.actions').close,
             },
 
         },
