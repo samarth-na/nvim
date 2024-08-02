@@ -358,19 +358,19 @@ require('lazy').setup({
                     separate_diagnostic_server = true,
                     publish_diagnostic_on = "insert_leave",
                 },
-                deno = {
-                    diagnostics = 'disable',
-                    lint = {
-                        enable = false,
-                        globals = { 'console' },
-                        rules = {
-                            'no-explicit-any',
-                            'no-unused-vars',
-                            'ban-types',
-                        },
-                    },
-                    cmd = { --[[ 'deno', 'lsp', ]] '--stdio' },
-                },
+                -- deno = {
+                --     diagnostics = 'disable',
+                --     lint = {
+                --         enable = false,
+                --         globals = { 'console' },
+                --         rules = {
+                --             'no-explicit-any',
+                --             'no-unused-vars',
+                --             'ban-types',
+                --         },
+                --     },
+                --     cmd = { --[[ 'deno', 'lsp', ]] '--stdio' },
+                -- },
                 lua_ls = {
                     -- cmd = {...},
                     -- filetypes = { ...},
