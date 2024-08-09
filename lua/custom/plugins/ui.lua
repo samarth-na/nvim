@@ -121,6 +121,12 @@ return {
             -- Set lualine as statusline
             'nvim-lualine/lualine.nvim',
             event = 'InsertEnter',
+
+            nvimlogo = {
+                function()
+                    return ''
+                end,
+            },
             opts = {
                 options = {
                     globalstatus = true,
@@ -148,7 +154,10 @@ return {
                 },
                 tabline = {
                     lualine_a = { '' },
-                    lualine_b = { '', },
+                    lualine_b = { { function()
+                        return ''
+                    end,
+                    }, },
                     lualine_c = { '', 'buffers' },
                     lualine_x = { 'tabs' },
                     lualine_y = {},
