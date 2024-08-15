@@ -1,5 +1,6 @@
 require('telescope').setup({
     defaults = {
+
         mappings = {
             n = {
                 ["<C-c>"] = require('telescope.actions').close,
@@ -14,11 +15,19 @@ require('telescope').setup({
 
 Builtin = require 'telescope.builtin'
 
-vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'old  opened files' })
+vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
+vim.keymap.set('n', '=o', Builtin.oldfiles, { desc = 'old  opened files' })
 vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
 vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
-vim.keymap.set('n', '<leader>o', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
+vim.keymap.set('n', '<leader>fo', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
 
+vim.api.nvim_set_keymap('n', '<leader>a',
+    [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
+    { noremap = true, silent = true, desc = '   all files ' })
+
+vim.api.nvim_set_keymap('n', '=a',
+    [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
+    { noremap = true, silent = true, desc = '   all files ' })
 ----------------------------------------------------------------------------------------
 
 -- move in out of your code base and shit

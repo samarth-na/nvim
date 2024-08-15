@@ -148,25 +148,20 @@ require('lazy').setup({
             -- [[ Configure Telescope ]]
             -- See `:help telescope` and `:help telescope.setup()`
             require('telescope').setup {
-                -- defaults = {
-                --     layout_strategy = "horizontal",
-                --     layout_config = {
-                --         height = 0.90,
-                --         width = 0.90,
-                --         preview_width = 0.5,
-                --         horizontal = {
-                --             preview_width = 0.5,
-                --         },
-                --     },
-                -- },
+                defaults = {
+                    layout_strategy = "horizontal",
+                    layout_config = {
+                        height = 0.90,
+                        width = 0.85,
+                        preview_width = 0.5,
+                        horizontal = {
+                            preview_width = 0.45,
+                        },
+                    },
+                },
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
-                defaults = {
-                    mappings = {
-                    },
-                },
-
                 pickers = {},
                 extensions = {
                     ['ui-select'] = {
@@ -759,11 +754,11 @@ require('lazy').setup({
 )
 
 local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>tr", function()
         vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
         -- or vim.lsp.buf.codeAction() if you don't want grouping.
     end,
-    { silent = true, buffer = bufnr }
+    { silent = true, buffer = bufnr, desc = 'ACTIVATE RUST-ANALYSER' }
 )
 
 local on_attach = function(client, bufnr)
