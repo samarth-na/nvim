@@ -6,6 +6,7 @@ require('telescope').setup({
                 ["<C-c>"] = require('telescope.actions').close,
             },
             i = {
+                ["<C-c>"] = require('telescope.actions').close,
             },
 
         },
@@ -72,6 +73,7 @@ vim.keymap.set('n', '<leader>sd', function()
 end, { desc = 'diagnostics' })
 
 ----------------------------------------------------------------------------------------
+
 
 vim.keymap.set('n', '<c-/>', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.

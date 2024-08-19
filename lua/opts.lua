@@ -3,11 +3,6 @@ vim.g.mapleader = ' '
 
 vim.g.maplocalleader = ' '
 
--- set number line
-vim.wo.number = true
-
-vim.wo.relativenumber = true
-
 vim.opt.tabstop = 4
 
 vim.opt.cursorline = true
@@ -22,11 +17,15 @@ vim.g.vim_markdown_folding_disabled = 1
 
 vim.g.vim_markdown_auto_insert_bullets = 0
 
+vim.opt.splitright = false
+
+vim.opt.splitbelow = false
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'

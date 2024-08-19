@@ -148,17 +148,17 @@ require('lazy').setup({
             -- [[ Configure Telescope ]]
             -- See `:help telescope` and `:help telescope.setup()`
             require('telescope').setup {
-                defaults = {
-                    layout_strategy = "horizontal",
-                    layout_config = {
-                        height = 0.90,
-                        width = 0.85,
-                        preview_width = 0.5,
-                        horizontal = {
-                            preview_width = 0.45,
-                        },
-                    },
-                },
+                -- defaults = {
+                --     layout_strategy = "horizontal",
+                --     layout_config = {
+                --         height = 0.90,
+                --         width = 0.85,
+                --         preview_width = 0.5,
+                --         horizontal = {
+                --             preview_width = 0.45,
+                --         },
+                --     },
+                -- },
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
