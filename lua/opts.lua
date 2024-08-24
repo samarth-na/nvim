@@ -3,6 +3,8 @@ vim.g.mapleader = ' '
 
 vim.g.maplocalleader = ' '
 
+vim.opt.shell = '/bin/zsh -i'
+
 vim.opt.tabstop = 4
 
 vim.opt.cursorline = true
@@ -74,7 +76,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 20
 
 vim.opt.hlsearch = true
 
