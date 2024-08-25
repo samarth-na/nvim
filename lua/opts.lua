@@ -19,10 +19,6 @@ vim.g.vim_markdown_folding_disabled = 1
 
 vim.g.vim_markdown_auto_insert_bullets = 0
 
-vim.opt.splitright = false
-
-vim.opt.splitbelow = false
-
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
@@ -58,7 +54,7 @@ vim.opt.updatetime = 150
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 250
+vim.opt.timeoutlen = 100
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
