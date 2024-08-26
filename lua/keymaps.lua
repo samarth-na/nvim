@@ -12,12 +12,11 @@ vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
 vim.keymap.set({ 'n' }, '<c-I>', '<c-a>', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
-vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
 vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 -- NOT: cursor
-vim.api.nvim_set_keymap('n', 'E', '$', { noremap = true })
-vim.api.nvim_set_keymap('n', 'B', '0', { noremap = true })
+vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
+vim.api.nvim_set_keymap('n', 'H', '0', { noremap = true })
 -- NOT: movement
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -38,7 +37,8 @@ vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "=z", ":ZenMode<cr>",
   { noremap = true, silent = true })
--- for trouble
+
+-------------------- NOTE: for trouble
 
 -- diagnostics
 -- loclist
@@ -64,17 +64,15 @@ vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble diagnostics<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
   { noremap = true, silent = true })
--- for nvim-tree
+
+-------------------- NOTE: for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '==', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
-
--- Git keymaps
-vim.api.nvim_set_keymap('n', '<leader>gl', ':LazyGit<CR>',
-  { noremap = true, silent = true })
+-------------------- NOTE: for git
 vim.api.nvim_set_keymap('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gtl', ':Gitsigns toggle_current_line_blame<CR>',
@@ -85,7 +83,7 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!tgit <CR>', { noremap = true })
 
--- vim.api.nvim_set_keymap('n', '<leader>gin', ':Gitsigns <CR>',
--- { noremap = true, silent = true })
---
+vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
+  { noremap = true, silent = true })

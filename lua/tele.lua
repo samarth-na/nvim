@@ -18,15 +18,19 @@ Builtin = require 'telescope.builtin'
 
 vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
 vim.keymap.set('n', '=o', Builtin.oldfiles, { desc = 'old  opened files' })
+-- vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'search in buffers(the opened files rn)' })
 vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
 vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
-vim.keymap.set('n', '<leader>fo', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
 
 vim.api.nvim_set_keymap('n', '<leader>a',
     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
     { noremap = true, silent = true, desc = '   all files ' })
 
 vim.api.nvim_set_keymap('n', '=a',
+    [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
+    { noremap = true, silent = true, desc = '   all files ' })
+
+vim.api.nvim_set_keymap('n', '<leader>fa',
     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
     { noremap = true, silent = true, desc = '   all files ' })
 ----------------------------------------------------------------------------------------
@@ -54,7 +58,6 @@ vim.keymap.set('n', '<leader>sr', Builtin.resume, { desc = 'Search Resume' })
 
 -- git
 vim.keymap.set('n', '<leader>gf', Builtin.git_files, { desc = 'Search git files' })
-vim.keymap.set('n', '<leader>gc', Builtin.git_commits, { desc = 'Search git commits' })
 
 ----------------------------------------------------------------------------------------
 
@@ -74,17 +77,6 @@ end, { desc = 'diagnostics' })
 
 ----------------------------------------------------------------------------------------
 
-
-vim.keymap.set('n', '<c-/>', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    Builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 1,
-        previewer = false,
-        layout_config = {
-            height = 20,
-        }
-    })
-end, { desc = ' Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
     Builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

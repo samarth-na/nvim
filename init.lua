@@ -178,12 +178,6 @@ require('lazy').setup({
 
             require 'tele'
             Builtin = require 'telescope.builtin'
-
-
-
-            vim.api.nvim_set_keymap('n', '<leader>fa',
-                [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
-                { noremap = true, silent = true, desc = '   all files ' })
         end,
     },
 
@@ -726,7 +720,7 @@ require('lazy').setup({
             virtual_text = lspDiagnosticsVisible,
             underline = lspDiagnosticsVisible,
         }),
-        vim.keymap.set("n", "<leader>lx", function()
+        vim.keymap.set("n", "<leader>td", function()
             lspDiagnosticsVisible = not lspDiagnosticsVisible
             vim.diagnostic.config({
                 virtual_text = lspDiagnosticsVisible,
