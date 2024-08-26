@@ -335,7 +335,6 @@ require('lazy').setup({
                         enabled = true,
                     },
                 },
-                -- gopls = {},
                 -- rust_analyzer = {},
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
@@ -343,10 +342,13 @@ require('lazy').setup({
                 --    https://github.com/pmizio/typescript-tools.nvim
                 --
                 -- But for many setups, the LSP (`tsserver`) will work just fine
-                tailwindcss = {
-                    cmd = { 'tailwindcss-language-server', '--stdio' },
-                    filetypes = { 'html' },
-                },
+
+                -- NOTE: JAVASCRIPT
+
+                -- tailwindcss = {
+                --     cmd = { 'tailwindcss-language-server', '--stdio' },
+                --     filetypes = { 'html' },
+                -- },
                 tsserver = {
                     -- filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
                     cmd = { 'typescript-language-server', '--stdio' },
@@ -380,6 +382,7 @@ require('lazy').setup({
                         },
                     },
                 },
+                -- NOTE: PYTHON
                 ruff = {
                     -- cmd = { 'ruff', '--config=/path/to/pyproject.toml' },
                     filetypes = { 'python' },
@@ -464,12 +467,14 @@ require('lazy').setup({
             formatters_by_ft = {
                 -- lua = { 'stylua' },
                 go = { 'goimports', 'gofumpt', 'gopls' },
+                c = { "clangd" },
+                cpp = { "clangd" },
+                python = { --[[ "isort", ]] "black" },
 
                 -- java = { 'jdtls' },
 
                 -- rust = { 'rust-analyzer' },
 
-                python = { --[[ "isort", ]] "black" },
 
                 -- javascript = { "prettier" },
                 -- javascriptreact = { "prettier" },
@@ -487,8 +492,6 @@ require('lazy').setup({
                 -- graphql = { "prettier" },
                 -- handlebars = { "prettier" },
 
-                c = { "clang-format" },
-                cpp = { "clang-format" }
             },
         },
     },
