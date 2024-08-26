@@ -1,23 +1,22 @@
+vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 -- NOTE diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
 -- NOTE terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
 -- NOTE word keymaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
-vim.keymap.set({ 'n' }, '<c-I>', '<c-a>', { silent = true })
 
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
-vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
-vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
--- NOT: cursor
+-- NOTE cursor
 vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
 vim.api.nvim_set_keymap('n', 'H', '0', { noremap = true })
--- NOT: movement
+-- NOTE movement
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
@@ -73,10 +72,10 @@ vim.api.nvim_set_keymap('n', '==', ':NvimTreeToggle<CR>',
 vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 -------------------- NOTE: for git
-vim.api.nvim_set_keymap('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gtl', ':Gitsigns toggle_current_line_blame<CR>',
-  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tgd', ':Gitsigns toggle_deleted<CR>',
+  { noremap = true, silent = true, desc = "togle git deleted" })
+vim.api.nvim_set_keymap('n', '<leader>tgl', ':Gitsigns toggle_current_line_blame<CR>',
+  { noremap = true, silent = true, desc = "Toggle current line blame" })
 vim.api.nvim_set_keymap('n', '<leader>gS', ':Gitsigns <CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',

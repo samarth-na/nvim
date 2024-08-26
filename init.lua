@@ -70,41 +70,21 @@ require('lazy').setup({
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
         config = function()
             require('which-key').setup()
-
-
-
-            -- Document existing key chains
-            -- require('which-key').show {
-            --
-            --     loop = false,
-            --     {
-            --         { "", desc = "<leader>w_",           hidden = true },
-            --         { "", group = "Rename " },
-            --         { "", desc = "<leader>g_",           hidden = true },
-            --         { "", group = "Git" },
-            --         { "", desc = "<leader>f_",           hidden = false },
-            --         { "", desc = "<leader>r_",           hidden = true },
-            --         { "", desc = "<leader>s_",           hidden = true },
-            --         { "", group = "Search" },
-            --         { "", group = "toggle" },
-            --         { "", desc = "<leader>t_",           hidden = true },
-            --         { "", group = "find" },
-            --         { "", group = "Document actions" },
-            --         { "", desc = "<leader>[_",           hidden = true },
-            --         { "", group = "previous _ in buffer" },
-            --         { "", desc = "<leader>d_",           hidden = true },
-            --         { "", group = "next _ in buffer" },
-            --         { "", group = "Code actions" },
-            --         { "", desc = "<leader>]_",           hidden = true },
-            --         { "", desc = "<leader>c_",           hidden = true },
-            --         { "", group = "Workspace" },
-            --     }
-            --
-            -- }
+            local wk = require("which-key")
+            wk.add({
+                { "<leader>f",  group = "Find" },
+                { "<leader>s",  group = "Search" },
+                { "<leader>g",  group = "Git" },
+                { "<leader>l",  group = "lazy" },
+                { "<leader>t",  group = "toggle" },
+                { "<leader>tg", group = "git" },
+                { "<leader>x",  group = "diagnostics" },
+                { "<leader>c",  group = "diagnostics" },
+            })
         end,
     },
 
-    { -- Fuzzy Finder (files, lsp, etc, EVERYTHING!!!!!!)
+    {
         'nvim-telescope/telescope.nvim',
         event = 'VimEnter',
         branch = '0.1.x',
@@ -617,27 +597,27 @@ require('lazy').setup({
 
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-    { -- Collection of various small independent plugins/modules
-        'echasnovski/mini.nvim',
-        config = function()
-            -- Better Around/Inside textobjects
-            --
-            -- Examples:
-            --  - va)  - [V]isually select [A]round [)]paren
-            --  - yinq - [Y]ank [I]nside [N]ext [']quote
-            --  - ci'  - [C]hange [I]nside [']quote
-            require('mini.ai').setup { n_lines = 500 }
-
-            -- Add/delete/replace surroundings (brackets, quotes, etc.)
-
-            -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-            -- - sd'   - [S]urround [D]elete [']quotes
-            -- - sr)'  - [S]urround [R]eplace [)] [']
-            -- require('mini.surround').setup()
-
-            --  Check out: https://github.com/echasnovski/mini.nvim
-        end,
-    },
+    -- { -- Collection of various small independent plugins/modules
+    --     'echasnovski/mini.nvim',
+    --     config = function()
+    --         -- Better Around/Inside textobjects
+    --         --
+    --         -- Examples:
+    --         --  - va)  - [V]isually select [A]round [)]paren
+    --         --  - yinq - [Y]ank [I]nside [N]ext [']quote
+    --         --  - ci'  - [C]hange [I]nside [']quote
+    --         require('mini.ai').setup { n_lines = 500 }
+    --
+    --         -- Add/delete/replace surroundings (brackets, quotes, etc.)
+    --
+    --         -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+    --         -- - sd'   - [S]urround [D]elete [']quotes
+    --         -- - sr)'  - [S]urround [R]eplace [)] [']
+    --         -- require('mini.surround').setup()
+    --
+    --         --  Check out: https://github.com/echasnovski/mini.nvim
+    --     end,
+    -- },
 
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
@@ -717,27 +697,18 @@ require('lazy').setup({
             --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
         end,
         vim.diagnostic.config({
-            virtual_text = lspDiagnosticsVisible,
-            underline = lspDiagnosticsVisible,
+            virtual_text = LspDiagnosticsVisible,
+            underline = LspDiagnosticsVisible,
         }),
         vim.keymap.set("n", "<leader>td", function()
-            lspDiagnosticsVisible = not lspDiagnosticsVisible
+            LspDiagnosticsVisible = not LspDiagnosticsVisible
             vim.diagnostic.config({
-                virtual_text = lspDiagnosticsVisible,
-                underline = lspDiagnosticsVisible,
+                virtual_text = LspDiagnosticsVisible,
+                underline = LspDiagnosticsVisible,
             })
-        end)
+        end, { desc = 'toggle diagnostics' })
     },
 
-    -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
-    -- init.lua. If you want these files, they are in the repository, so you can just download them and
-    -- put them in the right spots if you want.
-
-    -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for kickstart
-    --
-    --  Here are some example plugins that I've included in the kickstart repository.
-    --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-    --
     -- require 'kickstart.plugins.debug',
     require 'kickstart.plugins.lint',
 
@@ -758,7 +729,7 @@ vim.keymap.set("n", "<leader>tr", function()
     { silent = true, buffer = bufnr, desc = 'ACTIVATE RUST-ANALYSER' }
 )
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
     if client.name == 'ruff_lsp' then
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
