@@ -5,6 +5,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- WARN: Map Ctrl-\ to open a floating tmux window
+vim.keymap.set('n', '<C-\\>', ':!tmux popup <cr>', { desc = 'new floating tmux window' })
 
 -- WARN: Map alt-q/alt-Q to close current window
 vim.keymap.set({ 'n', 'v' }, '<M-q>', ':q<CR>', { silent = true })
@@ -13,7 +15,7 @@ vim.keymap.set({ 'n', 'v' }, '<M-Q>', ':qa!<CR>', { silent = true })
 -- WARN: shell commands
 vim.api.nvim_set_keymap('n', '<M-t>', ':!ChangeTmuxPane <CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-r>', ':! run <CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<M-g>', ':!tgit <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<M-g>', ':!gin && tg <CR>', { noremap = true })
 
 -- NOTE: Map Ctrl-s to save current buffer
 vim.keymap.set({ 'n', 'v' }, '<C-s>', ':w<CR> ', { silent = true })
