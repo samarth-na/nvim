@@ -3,6 +3,7 @@ vim.g.mapleader = ' '
 
 vim.g.maplocalleader = '='
 
+
 vim.opt.shell = '/bin/zsh -i'
 
 vim.opt.tabstop = 4

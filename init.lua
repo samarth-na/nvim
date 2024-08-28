@@ -59,7 +59,8 @@ vim.opt.rtp:prepend(lazypath)
 -- adding plugins
 require('lazy').setup({
 
-    'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    -- { "/tpope/vim-dadbod" },
     {
         'numToStr/Comment.nvim', -- Commenting plugin
         opts = {},
@@ -431,23 +432,22 @@ require('lazy').setup({
 
                 -- rust = { 'rust-analyzer' },
 
-
-                -- javascript = { "prettier" },
-                -- javascriptreact = { "prettier" },
-                -- typescript = { "prettier" },
-                -- typescriptreact = { "prettier" },
-                -- vue = { "prettier" },
-                -- css = { "prettier" },
-                -- scss = { "prettier" },
-                -- less = { "prettier" },
-                -- html = { "prettier" },
-                -- json = { "prettier" },
-                -- jsonc = { "prettier" },
-                -- yaml = { "prettier" },
-                -- markdown = { "prettier" },
-                -- graphql = { "prettier" },
-                -- handlebars = { "prettier" },
-
+                ["javascript"] = { "prettierd" },
+                ["javascriptreact"] = { "prettierd" },
+                ["typescript"] = { "prettierd" },
+                ["typescriptreact"] = { "prettierd" },
+                ["vue"] = { "prettierd" },
+                ["css"] = { "prettierd" },
+                ["scss"] = { "prettierd" },
+                ["less"] = { "prettierd" },
+                ["html"] = { "prettierd" },
+                ["json"] = { "prettierd" },
+                ["jsonc"] = { "prettierd" },
+                ["yaml"] = { "prettierd" },
+                ["markdown"] = { "prettierd" },
+                ["markdown.mdx"] = { "prettierd" },
+                ["graphql"] = { "prettierd" },
+                ["handlebars"] = { "prettierd" },
             },
         },
     },
@@ -568,14 +568,7 @@ require('lazy').setup({
         end,
     },
 
-    {
-        'folke/tokyonight.nvim',
-        init = function()
-            vim.cmd.colorscheme 'onedark'
 
-            vim.cmd.hi 'Comment gui=none'
-        end,
-    },
 
 
 
@@ -700,6 +693,7 @@ require('lazy').setup({
     --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
     --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
     { import = 'custom.plugins' },
+    { import = 'custom.plugins.languages' },
 }
 )
 

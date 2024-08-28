@@ -32,7 +32,6 @@ return {
             },
         },
     },
-    { "sainnhe/gruvbox-material" },
     {
         'NvChad/nvim-colorizer.lua',
         opts = {
@@ -50,8 +49,6 @@ return {
             })
         end
     },
-    { 'ray-x/go.nvim' },
-
     {
         'folke/trouble.nvim',
         opts = {
@@ -61,36 +58,12 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
     {
-        'catppuccin/nvim',
-        name = 'catppuccin',
-    },
-    { 'sainnhe/edge' },
-
-    -- Or with configuration
-    {
-        "AlexvZyl/nordic.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            local palette = require("nordic.colors")
-
-            require("nordic").setup({
-                transparent_bg = true,
-                telescope = { style = "classic" },
-                override = {
-                    CursorLine = {
-                        bg = "#2e3440",
-                        bold = true,
-                    },
-                },
-            })
-
-            -- vim.cmd("colorscheme nordic")
-            -- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#1e2022" })
-        end,
-    },
-    {
         'navarasu/onedark.nvim',
+        init = function()
+            vim.cmd.colorscheme 'onedark'
+
+            vim.cmd.hi 'Comment gui=none'
+        end,
         opts = {
             -- Main options --
             style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
@@ -100,8 +73,8 @@ return {
             cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
             -- toggle theme style ---
-            toggle_style_key = '<leader>to',                                   -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-            toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'light' }, -- List of styles to toggle between
+            toggle_style_key = '<leader>to',                           -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+            toggle_style_list = { 'dark', 'darker', 'cool', 'light' }, -- List of styles to toggle between
             -- Change code style ---
             -- Options are italic, bold, underline, none
             -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
@@ -159,7 +132,9 @@ return {
                     return ''
                 end,
             },
+
             opts = {
+
                 options = {
                     globalstatus = true,
                     icons_enabled = true,
@@ -200,6 +175,7 @@ return {
     },
     {
         'folke/zen-mode.nvim',
+        cmd = 'ZenMode',
         opts = {
 
             window = {
@@ -225,7 +201,7 @@ return {
             plugins = {
                 options = {
                     enabled = true,
-                    ruler = true,    -- disables the ruler text in the cmd line area
+                    ruler = false,   -- disables the ruler text in the cmd line area
                     showcmd = false, -- disables the command in the last line of the screen
                     -- you may turn on/off statusline in zen mode by setting 'laststatus'
                     -- statusline will be shown only if 'laststatus' == 3
@@ -238,11 +214,11 @@ return {
                 -- to make this work, you need to set the following kitty options:
                 -- - allow_remote_control socket-only
                 -- - listen_on unix:/tmp/kitty
-                wezterm = {
-                    enabled = false,
-                    -- can be either an absolute font size or the number of incremental steps
-                    font = '+4', -- (10% increase per step)
-                },
+                -- wezterm = {
+                --     enabled = false,
+                --     -- can be either an absolute font size or the number of incremental steps
+                --     font = '+4', -- (10% increase per step)
+                -- },
             },
             -- callback where you can add custom code when the Zen window opens
             -- on_open = function(win) end,
@@ -266,11 +242,11 @@ return {
                     alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "IMP" }, -- a set of other keywords that all map to this FIX keywords
                     -- signs = false, -- configure signs for some keywords individually
                 },
-                TODO = { icon = " ", color = "info", "IMPORTANT" },
+                TODO = { icon = " ", color = "info", alt = { "TODO", "INFO" } },
                 HACK = { icon = " ", color = "warning" },
                 WARN = { icon = " ", color = "warning", alt = { "WARNING", "X!", "NOTICE" } },
                 PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-                NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+                NOTE = { icon = " ", color = "hint", alt = { "NOTE" } },
                 TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
             },
             gui_style = {
