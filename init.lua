@@ -65,24 +65,6 @@ require('lazy').setup({
         opts = {},
         event = 'VimEnter',
     },
-    {
-        'folke/which-key.nvim',
-        event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-        config = function()
-            require('which-key').setup()
-            local wk = require("which-key")
-            wk.add({
-                { "<leader>f",  group = "Find" },
-                { "<leader>s",  group = "Search" },
-                { "<leader>g",  group = "Git" },
-                { "<leader>l",  group = "lazy" },
-                { "<leader>t",  group = "toggle" },
-                { "<leader>tg", group = "git" },
-                { "<leader>x",  group = "diagnostics" },
-                { "<leader>c",  group = "diagnostics" },
-            })
-        end,
-    },
 
     {
         'nvim-telescope/telescope.nvim',
@@ -440,7 +422,7 @@ require('lazy').setup({
             end,
             formatters_by_ft = {
                 -- lua = { 'stylua' },
-                go = { 'goimports', 'gofumpt', 'gopls' },
+                go = { 'gopls' },
                 c = { "clangd" },
                 cpp = { "clangd" },
                 python = { --[[ "isort", ]] "black" },

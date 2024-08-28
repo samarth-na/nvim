@@ -1,78 +1,63 @@
+-- X!: exit to normal mode
 vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
--- NOTE diagnostics
+
+--  X!: diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
--- NOTE terminal
+-- X!: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
--- NOTE word keymaps
+-- X!: word remaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
 
+-- X!: visual mode
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
--- NOTE cursor
+
+-- X!: end and start of line
 vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
 vim.api.nvim_set_keymap('n', 'H', '0', { noremap = true })
--- NOTE movement
+-- X!: NOTE j and k moment
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Switch to next buffer
+-- X!: Switch to next buffer
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent = true })
 
 
--- Switch to next tab
+-- X!: Switch to next tab
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
--- Switch to previous tab
-vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
+-- X!: NOTE plugin keymaps
 
--- NOTE plugin keymaps
+-- NOTE: zen mode
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "=z", ":ZenMode<cr>",
+vim.api.nvim_set_keymap("n", "<localleader>z", ":ZenMode<cr>",
   { noremap = true, silent = true })
 
--------------------- NOTE: for trouble
-
--- diagnostics
--- loclist
--- lsp_command
--- lsp_declarations
--- lsp_definitions
--- lsp_document_symbols
--- lsp_implementations
--- lsp_incoming_calls
--- lsp_outgoing_calls
--- lsp_references
--- lsp_type_definitions
--- qflist
--- quickfix
--- symbols
--- telescope
--- telescope_files
--- todo
--- diagnostics
-vim.api.nvim_set_keymap('n', '<leader>tt', ':Trouble<CR>',
+-- NOTE: for trouble
+vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble diagnostics<CR>',
+vim.api.nvim_set_keymap('n', '<leader>xq', ':Trouble diagnostics<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
   { noremap = true, silent = true })
 
--------------------- NOTE: for nvim-tree
+-- NOTE: for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '==', ':NvimTreeToggle<CR>',
+vim.api.nvim_set_keymap('n', '<localleader>=', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
--------------------- NOTE: for git
+
+-- NOTE: for git
 vim.api.nvim_set_keymap('n', '<leader>tgd', ':Gitsigns toggle_deleted<CR>',
   { noremap = true, silent = true, desc = "togle git deleted" })
 vim.api.nvim_set_keymap('n', '<leader>tgl', ':Gitsigns toggle_current_line_blame<CR>',

@@ -1,7 +1,7 @@
 -- set leader key to space
 vim.g.mapleader = ' '
 
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '='
 
 vim.opt.shell = '/bin/zsh -i'
 
@@ -50,11 +50,11 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 150
+vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 200
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true

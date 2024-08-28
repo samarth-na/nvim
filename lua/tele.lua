@@ -17,30 +17,31 @@ require('telescope').setup({
 Builtin = require 'telescope.builtin'
 
 vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
-vim.keymap.set('n', '=o', Builtin.oldfiles, { desc = 'old  opened files' })
+vim.keymap.set('n', '<localleader>o', Builtin.oldfiles, { desc = 'old  opened files' })
 -- vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'search in buffers(the opened files rn)' })
 vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
+vim.keymap.set('n', '<leader><space>', Builtin.find_files, { desc = 'find files' })
 vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
 
 vim.api.nvim_set_keymap('n', '<leader>a',
     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
-    { noremap = true, silent = true, desc = '   all files ' })
+    { noremap = true, silent = true, desc = 'find in all files' })
 
-vim.api.nvim_set_keymap('n', '=a',
+vim.api.nvim_set_keymap('n', '<localleader>a',
     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
-    { noremap = true, silent = true, desc = '   all files ' })
+    { noremap = true, silent = true, desc = 'find in all files' })
 
 vim.api.nvim_set_keymap('n', '<leader>fa',
     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
-    { noremap = true, silent = true, desc = '   all files ' })
+    { noremap = true, silent = true, desc = 'find in all files' })
 ----------------------------------------------------------------------------------------
 
 -- move in out of your code base and shit
-vim.keymap.set('n', '<leader>sj', Builtin.jumplist, { desc = ' find in jumplist' })
-vim.keymap.set('n', '<leader>sq', Builtin.quickfix, { desc = ' find in quickfix' })
-vim.keymap.set('n', '<leader>ss', Builtin.treesitter, { desc = ' search symbol in the buffer' })
-vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks ' })
-vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks ' })
+vim.keymap.set('n', '<leader>sj', Builtin.jumplist, { desc = 'find in jumplist' })
+vim.keymap.set('n', '<leader>sq', Builtin.quickfix, { desc = 'find in quickfix' })
+vim.keymap.set('n', '<leader>ss', Builtin.treesitter, { desc = 'search symbol in the buffer' })
+vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks' })
+vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks' })
 vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
 vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'Search current Word' })
 
@@ -86,9 +87,9 @@ vim.keymap.set('n', '<leader>/', function()
             height = 20,
         }
     })
-end, { desc = ' Fuzzily search in current buffer' })
+end, { desc = 'Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>s/', function()
+vim.keymap.set('n', '<localleader>g', function()
     Builtin.live_grep(require('telescope.themes').get_dropdown {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
@@ -115,14 +116,6 @@ end, { desc = 'current word' })
 
 ----------------------------------------------------------------------------------------
 
-vim.keymap.set('n', '<leader><space>', function()
-    Builtin.find_files(require('telescope.themes').get_ivy {
-        winblend = 0,
-        previewer = true,
-        layout_config = {
-        }
-    })
-end, { desc = 'find in files ' })
 
 ----------------------------------------------------------------------------------------
 
@@ -155,12 +148,8 @@ end, { desc = 'spell suggest' })
 
 ----------------------------------------------------------------------------------------
 
-
-
-----------------------------------------------------------------------------------------
-
 vim.keymap.set('n', '<leader>sn', function()
     Builtin.find_files { cwd = vim.fn.stdpath 'config' }
-end, { desc = ' Neovim files' })
+end, { desc = 'Neovim files' })
 
 -- vim: ts=4 sts=4 sw=4 et

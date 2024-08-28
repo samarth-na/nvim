@@ -320,5 +320,24 @@ return {
             },
         },
     },
+    {
+        'folke/which-key.nvim',
+        event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+        config = function()
+            require('which-key').setup()
+            local wk = require("which-key")
+            wk.add({
+                { "<leader>f",      group = "Find" },
+                { "<leader>s",      group = "Search" },
+                { "<leader>g",      group = "Git" },
+                { "<leader>l",      group = "lazy" },
+                { "<leader>t",      group = "toggle" },
+                { "<leader>tg",     group = "git" },
+                { "<leader>x",      group = "diagnostics" },
+                { "<leader>c",      group = "diagnostics" },
+                { "<localleader>d", group = "search dir" },
+            })
+        end,
+    },
 }
 -- vim: ts=4 sts=4 sw=4 et
