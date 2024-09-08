@@ -35,7 +35,7 @@ vim.g.maplocalleader = ' '
 require 'opts'
 require 'keymaps'
 require 'keybinds'
-require 'kickstart.format'
+-- require 'kickstart.format'
 
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -309,14 +309,10 @@ require('lazy').setup({
                 --     autostart = false
                 --
                 -- },
-                tsserver = {
+                ts_ls = {
                     autostart = false,
-                    server = {
-                        on_attach = function(client, bufnr)
-                            -- Custom on_attach for typescript-tools
-                        end,
-                    }
-
+                    -- disableDiagnostics = true,
+                    -- enableRegionDiagnostics = false
                 },
                 -- deno = {
                 --     diagnostics = 'disable',
@@ -387,6 +383,7 @@ require('lazy').setup({
             -- for you, so that they are available from within Neovim.
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
+                'ts_ls',
                 -- 'stylua',   -- Used to format lua code
                 -- 'prettier', -- Used to format code
                 -- 'shellcheck', -- Used to lint shell scripts
@@ -438,7 +435,7 @@ require('lazy').setup({
 
                 -- rust = { 'rust-analyzer' },
 
-                javascript = { "tsserver" },
+                javascript = { "prettierd" },
                 javascriptreact = { "prettierd" },
                 typescript = { "prettierd" },
                 typescriptreact = { "prettierd" },
@@ -723,5 +720,7 @@ end
 require('lspconfig').ruff_lsp.setup {
     on_attach = on_attach,
 }
+
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
