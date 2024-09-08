@@ -33,12 +33,6 @@ vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent =
 -- X!: Switch to next tab
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
--- X!: NOTE toggle things
-vim.api.nvim_set_keymap('n', '<leader>ts', ':set spell<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>tm', ':SupermavenToggle<CR>',
-  { noremap = true, silent = true, desc = "Toggle current line blame" })
-
 -- X!: NOTE plugin keymaps
 
 -- NOTE: zen mode
@@ -60,6 +54,8 @@ vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<localleader>=', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
+  { noremap = true, silent = true })
 
 -- NOTE: for git
 vim.api.nvim_set_keymap('n', '<leader>tgd', ':Gitsigns toggle_deleted<CR>',
@@ -72,7 +68,7 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!tg <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!tgit <CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
   { noremap = true, silent = true })

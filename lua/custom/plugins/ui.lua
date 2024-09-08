@@ -136,7 +136,7 @@ return {
             opts = {
 
                 options = {
-                    globalstatus = false,
+                    globalstatus = true,
                     icons_enabled = true,
                     -- theme = 'onedark',
                     -- theme = 'tokyonight',

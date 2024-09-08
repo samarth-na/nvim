@@ -306,12 +306,17 @@ require('lazy').setup({
                 -- tailwindcss = {
                 --     cmd = { 'tailwindcss-language-server', '--stdio' },
                 --     filetypes = { 'html' },
+                --     autostart = false
+                --
                 -- },
                 tsserver = {
-                    -- filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-                    cmd = { 'typescript-language-server', '--stdio' },
-                    separate_diagnostic_server = true,
-                    publish_diagnostic_on = "insert_leave",
+                    autostart = false,
+                    server = {
+                        on_attach = function(client, bufnr)
+                            -- Custom on_attach for typescript-tools
+                        end,
+                    }
+
                 },
                 -- deno = {
                 --     diagnostics = 'disable',
@@ -433,22 +438,24 @@ require('lazy').setup({
 
                 -- rust = { 'rust-analyzer' },
 
-                ["javascript"] = { "prettierd" },
-                ["javascriptreact"] = { "prettierd" },
-                ["typescript"] = { "prettierd" },
-                ["typescriptreact"] = { "prettierd" },
-                ["vue"] = { "prettierd" },
-                ["css"] = { "prettierd" },
-                ["scss"] = { "prettierd" },
-                ["less"] = { "prettierd" },
-                ["html"] = { "prettierd" },
-                ["json"] = { "prettierd" },
-                ["jsonc"] = { "prettierd" },
-                ["yaml"] = { "prettierd" },
-                ["markdown"] = { "prettierd" },
-                ["markdown.mdx"] = { "prettierd" },
-                ["graphql"] = { "prettierd" },
-                ["handlebars"] = { "prettierd" },
+                javascript = { "tsserver" },
+                javascriptreact = { "prettierd" },
+                typescript = { "prettierd" },
+                typescriptreact = { "prettierd" },
+                jsx = { "prettierd" },
+                tsx = { "prettierd" },
+                vue = { "prettierd" },
+                css = { "prettierd" },
+                scss = { "prettierd" },
+                less = { "prettierd" },
+                html = { "prettierd" },
+                json = { "prettierd" },
+                jsonc = { "prettierd" },
+                yaml = { "prettierd" },
+                markdown = { "prettierd" },
+                mdx = { "prettierd" },
+                graphql = { "prettierd" },
+                handlebars = { "prettierd" },
             },
         },
     },
@@ -557,13 +564,13 @@ require('lazy').setup({
                 },
                 sources = {
                     -- { name = "copilot",   group_index = 1 },
+                    { name = "luasnip", --[[ group_index = 3 ]] },
                     { name = 'codeium', --[[ group_index = 1 ]] },
                     { name = "supermaven", --[[ group_index = 1 ]] },
                     { name = "nvim_lsp", --[[ group_index = 2 ]] },
                     { name = "nvim_lua", --[[ group_index = 2 ]] },
                     { name = "buffer", --[[ group_index = 2 ]] },
                     { name = "path", --[[ group_index = 3 ]] },
-                    { name = "luasnip", --[[ group_index = 3 ]] },
                 },
             }
         end,
