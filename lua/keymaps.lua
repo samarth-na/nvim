@@ -36,6 +36,8 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 -- X!: NOTE toggle things
 vim.api.nvim_set_keymap('n', '<leader>ts', ':set spell<CR>',
   { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tm', ':SupermavenToggle<CR>',
+  { noremap = true, silent = true, desc = "Toggle current line blame" })
 
 -- X!: NOTE plugin keymaps
 
@@ -57,8 +59,6 @@ vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<localleader>=', ':NvimTreeToggle<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
 
 -- NOTE: for git
