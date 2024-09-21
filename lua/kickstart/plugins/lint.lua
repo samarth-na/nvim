@@ -6,11 +6,9 @@ return {
         config = function()
             local lint = require 'lint'
             lint.linters_by_ft = {
-                markdown = { 'markdownlint' },
-                -- javascript = { 'eslint' },
-                -- typescript = { 'eslint' },
-                -- javscriptreact = { 'eslint' },
-                -- typescriptreact = { 'eslint' },
+                -- markdown = { 'markdownlint' },
+                javascript = { 'eslint_d' },
+                typescript = { 'eslint_d' },
 
             }
 
@@ -35,8 +33,8 @@ return {
             -- }
             --
             -- You can disable the default linters by setting their filetypes to nil:
-            -- lint.linters_by_ft['clojure'] = nil
-            -- lint.linters_by_ft['dockerfile'] = nil
+            lint.linters_by_ft['javascript'] = { 'eslint_d' }
+            lint.linters_by_ft['typescript'] = { 'eslint_d' }
             -- lint.linters_by_ft['inko'] = nil
             -- lint.linters_by_ft['janet'] = nil
             -- lint.linters_by_ft['json'] = nil

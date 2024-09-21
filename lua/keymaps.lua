@@ -8,7 +8,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 
 -- X!: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
 -- X!: word remaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
@@ -68,7 +67,7 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!tgit <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!tg <CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
   { noremap = true, silent = true })

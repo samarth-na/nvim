@@ -311,6 +311,7 @@ require('lazy').setup({
                 -- },
                 ts_ls = {
                     autostart = false,
+                    cmd = { 'typescript-language-server', '--stdio' },
                     -- disableDiagnostics = true,
                     -- enableRegionDiagnostics = false
                 },
@@ -404,6 +405,12 @@ require('lazy').setup({
                         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities,
                             server.capabilities or {})
                         require('lspconfig')[server_name].setup(server)
+
+                        require("lspconfig").ts_ls.setup({
+                            handlers = {
+                                ['textDocument/publishDiagnostics'] = function() end
+                            }
+                        })
                     end,
                 },
             }
@@ -621,6 +628,7 @@ require('lazy').setup({
                 enable = true,
                 keymaps = {
                     init_selection = '<c-space>',
+                    init_selection = "<c-'>",
                     node_incremental = '<c-space>',
                     scope_incremental = '<c-i>',
                     node_decremental = '<M-space>',
