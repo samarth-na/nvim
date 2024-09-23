@@ -8,6 +8,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 
 -- X!: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set({ 'n' }, '<Esc>', ':nohlsearch <CR>', { silent = true })
 
 -- X!: word remaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
@@ -32,6 +33,10 @@ vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent =
 -- X!: Switch to next tab
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
+
+vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChat <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
 -- X!: NOTE plugin keymaps
 
 -- NOTE: zen mode
@@ -43,7 +48,7 @@ vim.api.nvim_set_keymap("n", "<localleader>z", ":ZenMode<cr>",
 -- NOTE: for trouble
 vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>xq', ':Trouble diagnostics<CR>',
+vim.api.nvim_set_keymap('n', '<localleader>q', ':Trouble diagnostics<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
   { noremap = true, silent = true })
@@ -51,9 +56,7 @@ vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
 -- NOTE: for nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<localleader>=', ':NvimTreeToggle<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-f>', ':NvimTreeToggle<CR>',
+vim.api.nvim_set_keymap('n', '<localleader>=', '<C-w>o<CR>',
   { noremap = true, silent = true })
 
 -- NOTE: for git
@@ -67,7 +70,16 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!tg <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
   { noremap = true, silent = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+-- vim: ts=2 sts=2 sw=2 et

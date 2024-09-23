@@ -6,15 +6,14 @@ return {
         event = "VeryLazy",
         keys = {
             -- 👇 in this section, choose your own keymappings!
+            -- {
+            --     "<C-f>",
+            --     "<cmd>Yazi<cr>",
+            --     desc = "Open yazi at the current file",
+            -- },
+
             {
-                "=-",
-                "<cmd>Yazi<cr>",
-                desc = "Open yazi at the current file",
-            },
-            {
-                -- NOTE: this requires a version of yazi that includes
-                -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-                '<c-up>',
+                '<c-f>',
                 "<cmd>Yazi toggle<cr>",
                 desc = "Resume the last yazi session",
             },
@@ -138,8 +137,7 @@ return {
                 options = {
                     globalstatus = true,
                     icons_enabled = true,
-                    -- theme = 'onedark',
-                    -- theme = 'tokyonight',
+                    theme = "auto",
                     component_separators = { left = '|', right = '|' },
                     section_separators = { left = '', right = ' ' },
                 },
@@ -161,10 +159,7 @@ return {
                 },
                 tabline = {
                     lualine_a = { '' },
-                    lualine_b = { { function()
-                        return ''
-                    end,
-                    }, },
+                    lualine_b = { '' },
                     lualine_c = { '', 'buffers' },
                     lualine_x = { 'tabs' },
                     lualine_y = {},
@@ -303,15 +298,17 @@ return {
             require('which-key').setup()
             local wk = require("which-key")
             wk.add({
-                { "<leader>f",      group = "Find" },
-                { "<leader>s",      group = "Search" },
-                { "<leader>g",      group = "Git" },
-                { "<leader>l",      group = "lazy" },
-                { "<leader>t",      group = "toggle" },
-                { "<leader>tg",     group = "git" },
-                { "<leader>x",      group = "diagnostics" },
-                { "<leader>c",      group = "diagnostics" },
-                { "<localleader>d", group = "search dir" },
+                { "<leader>f",      group = " Find" },
+                { "<leader>s",      group = " Search" },
+                { "<leader>g",      group = " Git" },
+                { "<leader>l",      group = " load" },
+                { "<leader>t",      group = " toggle" },
+                { "<leader>x",      group = " trouble table" },
+                { "<leader>tg",     group = " git" },
+                { "<localleader>q", group = " diagnostics" },
+                { "<leader>c",      group = " diagnostics" },
+                { "<leader>w",      group = " Workspace" },
+                { "<localleader>d", group = " search dir" },
             })
         end,
     },

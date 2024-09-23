@@ -1,9 +1,0 @@
-tags
-test.sh
-.luarc.json
-nvim
-.out
-.vim
-
-spell/
-lazy-lock.json
