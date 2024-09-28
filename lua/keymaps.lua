@@ -35,8 +35,11 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 
 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChat <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<localleader>c', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
 -- X!: NOTE plugin keymaps
 
 -- NOTE: zen mode
@@ -70,7 +73,6 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
   { noremap = true, silent = true })

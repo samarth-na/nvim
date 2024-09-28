@@ -221,11 +221,11 @@ return {
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
-            require("lspconfig").ts_ls.setup({
-              handlers = {
-                ['textDocument/publishDiagnostics'] = function() end
-              }
-            })
+            -- require("lspconfig").ts_ls.setup({
+            --   handlers = {
+            --     ['textDocument/publishDiagnostics'] = function() end
+            --   }
+            -- })
           end,
         },
       }

@@ -56,11 +56,15 @@ return {
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
-                -- defaults = {
-                --   mappings = {
-                --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                --   },
-                -- },
+                defaults = {
+
+                    layout_config = {
+                        width = 0.9,
+                    },
+                    mappings = {
+                        i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+                    },
+                },
                 -- pickers = {}
                 extensions = {
                     ['ui-select'] = {
@@ -107,7 +111,7 @@ return {
             ----------------------------------------------------------------------------------------
 
             -- extra telescope
-            vim.keymap.set('n', '<leader>sc', Builtin.commands, { desc = 'search commands' })
+            -- vim.keymap.set('n', '<leader>sc', Builtin.commands, { desc = 'search commands' })
             vim.keymap.set('n', '<leader>sh', Builtin.help_tags, { desc = 'Search Help' })
             vim.keymap.set('n', '<leader>sk', Builtin.keymaps, { desc = 'Search Keymaps' })
             vim.keymap.set('n', '<leader>st', Builtin.builtin, { desc = 'Search Telescope builtin' })
@@ -156,6 +160,8 @@ return {
                     }
                 })
             end, { desc = 'Fuzzily search in current buffer' })
+
+
             vim.keymap.set('n', '<leader>wg', function()
                 Builtin.live_grep(require('telescope.themes').get_dropdown {
                     grep_open_files = true,
@@ -168,6 +174,19 @@ return {
                 })
             end, { desc = 'grep in file' })
 
+
+            vim.keymap.set('n', '<leader>sc', function()
+                Builtin.commands(require('telescope.themes').get_dropdown {
+                    grep_open_files = true,
+                    prompt_title = 'Live Grep in Open Files',
+                    winblend = 1,
+                    previewer = false,
+                    layout_config = {
+                        height = 20,
+                        width = 158,
+                    }
+                })
+            end, { desc = 'grep in file' })
             ----------------------------------------------------------------------------------------
 
             vim.keymap.set('n', 'gw', function()
