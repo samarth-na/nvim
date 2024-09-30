@@ -6,7 +6,8 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        javascript = { 'eslint_d' },
+        javascript = { 'quick-lint-js' },
+        typescript = { 'quick-lint-js' },
 
         -- clojure = { "clj-kondo" },
         -- dockerfile = { "hadolint" },
@@ -30,7 +31,7 @@ return {
       }
       --
       -- You can disable the default linters by setting their filetypes to nil:
-      lint.linters_by_ft['javascript'] = { 'eslint_d' } -- lint.linters_by_ft['dockerfile'] = nil
+      -- lint.linters_by_ft['javascript'] = { 'eslint_d' } -- lint.linters_by_ft['dockerfile'] = nil
       -- lint.linters_by_ft['inko'] = nil
       -- lint.linters_by_ft['janet'] = nil
       -- lint.linters_by_ft['json'] = nil

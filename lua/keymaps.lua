@@ -40,6 +40,7 @@ vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true 
 vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<localleader>c', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap = true, silent = true })
 -- X!: NOTE plugin keymaps
 
 -- NOTE: zen mode
