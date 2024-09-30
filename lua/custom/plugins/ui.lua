@@ -5,13 +5,6 @@ return {
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
         keys = {
-            -- 👇 in this section, choose your own keymappings!
-            -- {
-            --     "<C-f>",
-            --     "<cmd>Yazi<cr>",
-            --     desc = "Open yazi at the current file",
-            -- },
-
             {
                 '<c-f>',
                 "<cmd>Yazi toggle<cr>",
@@ -22,12 +15,11 @@ return {
             -- if you want to open yazi instead of netrw, see below for more info
             open_for_directories = false,
             floating_window_scaling_factor = 1,
-            -- enable these if you are using the latest version of yazi
             -- use_ya_for_events_reading = true,
             -- use_yazi_client_id_flag = true,
 
             keymaps = {
-                show_help = '<f1>',
+                show_help = '?',
             },
         },
     },
@@ -231,7 +223,7 @@ return {
             sign_priority = 8, -- sign priority
             -- keywords recognized as todo comments
             keywords = {
-                FIX = {
+                FIX = { --
                     icon = " ", -- icon used for the sign, and in search results
                     color = "error", -- can be a hex color, or a named color (see below)
                     alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "IMP" }, -- a set of other keywords that all map to this FIX keywords
@@ -305,6 +297,8 @@ return {
                 { "<leader>t",      group = " toggle" },
                 { "<leader>x",      group = " trouble table" },
                 { "<leader>tg",     group = " git" },
+                { "<leader>d",      group = " document" },
+                { "<leader>cc",     group = " copilot" },
                 { "<localleader>q", group = " diagnostics" },
                 { "<leader>c",      group = " diagnostics" },
                 { "<leader>w",      group = " Workspace" },

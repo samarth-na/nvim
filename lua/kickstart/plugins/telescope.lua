@@ -81,7 +81,7 @@ return {
             Builtin = require 'telescope.builtin'
             vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
             vim.keymap.set('n', '<localleader>o', Builtin.oldfiles, { desc = 'old  opened files' })
-            -- vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'search in buffers(the opened files rn)' })
+            vim.keymap.set('n', '<leader>fo', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
             vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
             vim.keymap.set('n', '<leader><space>', Builtin.find_files, { desc = 'find files' })
             vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
@@ -111,7 +111,6 @@ return {
             ----------------------------------------------------------------------------------------
 
             -- extra telescope
-            -- vim.keymap.set('n', '<leader>sc', Builtin.commands, { desc = 'search commands' })
             vim.keymap.set('n', '<leader>sh', Builtin.help_tags, { desc = 'Search Help' })
             vim.keymap.set('n', '<leader>sk', Builtin.keymaps, { desc = 'Search Keymaps' })
             vim.keymap.set('n', '<leader>st', Builtin.builtin, { desc = 'Search Telescope builtin' })
@@ -178,7 +177,7 @@ return {
             vim.keymap.set('n', '<leader>sc', function()
                 Builtin.commands(require('telescope.themes').get_dropdown {
                     grep_open_files = true,
-                    prompt_title = 'Live Grep in Open Files',
+                    prompt_title = 'search commands',
                     winblend = 1,
                     previewer = false,
                     layout_config = {
