@@ -298,9 +298,8 @@ return {
                 { "<leader>x",      group = " trouble table" },
                 { "<leader>tg",     group = " git" },
                 { "<leader>d",      group = " document" },
-                { "<leader>cc",     group = " copilot" },
                 { "<localleader>q", group = " diagnostics" },
-                { "<leader>c",      group = " diagnostics" },
+                { "<leader>c",      group = " copilot" },
                 { "<leader>w",      group = " Workspace" },
                 { "<localleader>d", group = " search dir" },
             })

@@ -37,7 +37,9 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSave <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cl', ':CopilotChatLoad <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<localleader>c', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap = true, silent = true })
@@ -85,4 +87,54 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Place this in your key mappings section
+
+vim.keymap.set({ "n", "v" }, "<leader>cq",
+  function()
+    local input = vim.fn.input("Quick Chat: ")
+    if input ~= "" then
+      require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+    end
+  end,
+  { desc = "CopilotChat - Quick chat" }
+)
+
+vim.keymap.set("n", "<leader>cc",
+  function()
+    local actions = require("CopilotChat.actions")
+
+    local telescope = require("telescope.themes").get_dropdown({
+
+      prompt_title = 'search commands',
+      winblend = 1,
+      previewer = false,
+      layout_config = {
+        width = 0.5,
+        height = 0.4,
+      }
+    })
+
+    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions(), telescope)
+  end,
+  { desc = "CopilotChat - Prompt actions (Dropdown)" }
+)
+vim.keymap.set("v", "<leader>cp",
+  function()
+    local actions = require("CopilotChat.actions")
+
+    local telescope = require("telescope.themes").get_dropdown({
+
+      prompt_title = 'search commands',
+      winblend = 1,
+      previewer = false,
+      layout_config = {
+        width = 0.5,
+        height = 0.4,
+      }
+    })
+
+    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions(), telescope)
+  end,
+  { desc = "CopilotChat - Prompt actions (Dropdown)" }
+)
 -- vim: ts=2 sts=2 sw=2 et

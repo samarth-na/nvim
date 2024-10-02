@@ -41,7 +41,9 @@ return {
         javascriptreact = { 'prettierd', 'rustywind' },
         typescript = { 'prettierd', 'rustywind' },
         typescriptreact = { 'prettierd', 'rustywind' },
+        json = { 'prettierd', 'rustywind' },
         -- python = { 'black' },
+        --
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
