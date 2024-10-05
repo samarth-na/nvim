@@ -174,6 +174,19 @@ return {
             end, { desc = 'grep in file' })
 
 
+            vim.keymap.set('n', '<localleader>c', function()
+                Builtin.commands(require('telescope.themes').get_dropdown {
+                    prompt_title = 'search commands',
+                    winblend = 1,
+                    previewer = false,
+
+                    layout_config = {
+                        height = 0,
+                        width = 100,
+                    }
+                })
+            end, { desc = 'grep in file' })
+
             vim.keymap.set('n', '<leader>sc', function()
                 Builtin.commands(require('telescope.themes').get_dropdown {
                     grep_open_files = true,
@@ -185,7 +198,7 @@ return {
                         width = 158,
                     }
                 })
-            end, { desc = 'grep in file' })
+            end, { desc = 'commands' })
             ----------------------------------------------------------------------------------------
 
             vim.keymap.set('n', 'gw', function()

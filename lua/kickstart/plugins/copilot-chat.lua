@@ -19,13 +19,13 @@ return {
       show_help = false, -- Shows help message as virtual lines when waiting for user input
       auto_follow_cursor = true, -- Auto-follow cursor in chat
       auto_insert_mode = true, -- Automatically enter insert mode when opening window and on new prompt
-      insert_at_end = true, -- Move cursor to end of buffer when inserting text
+      insert_at_end = false, -- Move cursor to end of buffer when inserting text
       clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
       highlight_selection = true, -- Highlight selection in the source buffer when in the chat window
 
       window = {
-        layout = 'replace',     -- 'vertical', 'horizontal', 'float', 'replace'
-        width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1
+        layout = 'vertical',    -- 'vertical', 'horizontal', 'float', 'replace'
+        width = 0.4,            -- fractional width of parent, or absolute width in columns when > 1
         height = 0.5,           -- fractional height of parent, or absolute height in rows when > 1
         -- Options below only apply to floating windows
         relative = 'editor',    -- 'editor', 'win', 'cursor', 'mouse'

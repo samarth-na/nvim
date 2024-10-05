@@ -37,13 +37,12 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>cc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSave <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>cl', ':CopilotChatLoad <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<localleader>c', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSave ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cl', ':CopilotChatLoad ', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap = true, silent = true })
--- X!: NOTE plugin keymaps
+-- X!: plugin keymaps
 
 -- NOTE: zen mode
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
