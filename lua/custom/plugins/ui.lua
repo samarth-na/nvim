@@ -11,7 +11,7 @@ return {
             require("scrollbar.handlers.gitsigns").setup()
             require("scrollbar").setup({
                 show = true,
-                show_in_active_only = false,
+                show_in_active_only = true,
                 set_highlights = true,
                 folds = 1000,                -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
                 max_lines = false,           -- disables if no. of lines in buffer exceeds this
@@ -19,8 +19,8 @@ return {
                 throttle_ms = 100,
                 handle = {
                     text = " ",
-                    blend = 00,                 -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
-                    color = nil,
+                    blend = 90,                 -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
+                    color = "#ffffff",
                     color_nr = nil,             -- cterm
                     highlight = "CursorColumn",
                     hide_if_all_visible = true, -- Hides handle if all lines are visible
@@ -29,91 +29,51 @@ return {
                     Cursor = {
                         text = "•",
                         priority = 0,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "Normal",
                     },
                     Search = {
                         text = { "-", "=" },
                         priority = 1,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "Search",
                     },
                     Error = {
                         text = { "E", "E" },
                         priority = 2,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "DiagnosticVirtualTextError",
                     },
                     Warn = {
                         text = { "W", "W" },
                         priority = 3,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "DiagnosticVirtualTextWarn",
                     },
                     Info = {
                         text = { "I", "I" },
                         priority = 4,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "DiagnosticVirtualTextInfo",
                     },
                     Hint = {
                         text = { "H", "H" },
                         priority = 5,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "DiagnosticVirtualTextHint",
                     },
                     Misc = {
                         text = { "-", "=" },
                         priority = 6,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "Normal",
                     },
                     GitAdd = {
                         text = "┆",
                         priority = 7,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "GitSignsAdd",
                     },
                     GitChange = {
                         text = "┆",
                         priority = 7,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "GitSignsChange",
                     },
                     GitDelete = {
                         text = "▁",
                         priority = 7,
-                        gui = nil,
-                        color = nil,
-                        cterm = nil,
-                        color_nr = nil, -- cterm
                         highlight = "GitSignsDelete",
                     },
                 },
@@ -212,13 +172,12 @@ return {
         end,
         opts = {
             -- Main options --
-            style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-            transparent = false,          -- Show/hide background
-            term_colors = false,          -- Change terminal color as per the selected theme style
-            ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
-            cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+            style = 'dark',                                            -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+            transparent = false,                                       -- Show/hide background
+            term_colors = false,                                       -- Change terminal color as per the selected theme style
+            ending_tildes = false,                                     -- Show the end-of-buffer tildes. By default they are hidden
+            cmp_itemkind_reverse = false,                              -- reverse item kind highlights in cmp menu
 
-            -- toggle theme style ---
             toggle_style_key = '<leader>to',                           -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
             toggle_style_list = { 'dark', 'darker', 'cool', 'light' }, -- List of styles to toggle between
             -- Change code style ---
@@ -238,7 +197,6 @@ return {
             },
 
 
-            -- Lualine options --
             lualine = {
                 transparent = false, -- lualine center bar transparency
             },
@@ -347,7 +305,7 @@ return {
                     showcmd = false, -- disables the command in the last line of the screen
                     -- you may turn on/off statusline in zen mode by setting 'laststatus'
                     -- statusline will be shown only if 'laststatus' == 3
-                    laststatus = 0,             -- turn off the statusline in zen mode
+                    laststatus = 2,             -- turn off the statusline in zen mode
                 },
                 twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
                 gitsigns = { enabled = false }, -- disables git signs
@@ -440,7 +398,7 @@ return {
     },
     {
         'folke/which-key.nvim',
-        event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+        event = 'VimEnter',
         config = function()
             require('which-key').setup()
             local wk = require("which-key")
