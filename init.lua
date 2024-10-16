@@ -111,6 +111,5 @@ require 'lazy-plugins'
 
 -- lazy.nvim keys
 
--- Show help actions with telescope
 
--- vim: ts=2 sts=2 sw=2 et
+-- Show help actions with telescope

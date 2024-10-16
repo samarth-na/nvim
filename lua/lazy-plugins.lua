@@ -10,6 +10,13 @@
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+    {
+        'razak17/tailwind-fold.nvim',
+        opts = {},
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact', 'php', 'blade' },
+    },
+    { "https://github.com/wellle/targets.vim" },
     { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
 
     { 'https://github.com/paretje/nvim-man' },

@@ -21,6 +21,7 @@ vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 -- X!: end and start of line
 vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
 vim.api.nvim_set_keymap('n', 'H', '0', { noremap = true })
+
 -- X!: NOTE j and k moment
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

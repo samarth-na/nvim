@@ -6,11 +6,14 @@ vim.opt.shell = '/bin/zsh -i'
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.o.wrap = true
+vim.o.textwidth = 88
+vim.o.linebreak = true
+
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.opt.cursorline = true
--- vim.opt.colorcolumn = '80'
 
 vim.g.have_nerd_font = true
 
@@ -20,7 +23,7 @@ vim.opt.mouse = 'a'
 vim.opt.showmode = false
 
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -67,4 +70,11 @@ vim.opt.hlsearch = true
 vim.opt.linebreak = true
 
 vim.opt.conceallevel = 1
+
+------------------------
+---
+vim.opt.textwidth = 80
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 -- vim: ts=4 sts=4 sw=4 et
+--

@@ -164,6 +164,12 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
     {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    {
         'navarasu/onedark.nvim',
         init = function()
             vim.cmd.colorscheme 'onedark'
