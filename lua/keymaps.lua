@@ -90,35 +90,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Place this in your key mappings section
 
-vim.keymap.set({ "n", "v" }, "<leader>cq",
-  function()
-    local input = vim.fn.input("Quick Chat: ")
-    if input ~= "" then
-      require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-    end
-  end,
-  { desc = "CopilotChat - Quick chat" }
-)
-
-vim.keymap.set("n", "<leader>cc",
-  function()
-    local actions = require("CopilotChat.actions")
-
-    local telescope = require("telescope.themes").get_dropdown({
-
-      prompt_title = 'search commands',
-      winblend = 1,
-      previewer = false,
-      layout_config = {
-        width = 0.5,
-        height = 0.4,
-      }
-    })
-
-    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions(), telescope)
-  end,
-  { desc = "CopilotChat - Prompt actions (Dropdown)" }
-)
 vim.keymap.set("v", "<leader>cp",
   function()
     local actions = require("CopilotChat.actions")
@@ -138,4 +109,3 @@ vim.keymap.set("v", "<leader>cp",
   end,
   { desc = "CopilotChat - Prompt actions (Dropdown)" }
 )
--- vim: ts=2 sts=2 sw=2 et

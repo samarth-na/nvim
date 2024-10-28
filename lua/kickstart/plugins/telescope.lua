@@ -233,7 +233,7 @@ return {
 
             ----------------------------------------------------------------------------------------
 
-            vim.keymap.set('n', 'zs', function()
+            vim.keymap.set('n', 'gs', function()
                 Builtin.spell_suggest(require('telescope.themes').get_cursor {
                     winblend = 0,
                     previewer = true,

@@ -42,6 +42,7 @@ return {
         typescript = { 'prettierd', 'rustywind' },
         typescriptreact = { 'prettierd', 'rustywind' },
         json = { 'prettierd', 'rustywind' },
+        -- xml = { 'xmlformatter' },
         -- python = { 'black' },
         --
         --
