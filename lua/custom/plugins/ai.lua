@@ -8,7 +8,7 @@ return {
                     clear_suggestion = "<C-x>",
                     accept_word = "<C-f>",
                 },
-                ignore_filetypes = { cpp = true, copilotchat = true, markdown = true, },
+                ignore_filetypes = { cpp = true, copilotchat = true, markdown = false },
                 color = {
                     suggestion_color = "#ffffff",
                 },
