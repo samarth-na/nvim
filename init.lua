@@ -105,12 +105,3 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
-
-print("Kickstart.nvim loaded!")
--- Place this in your key mappings section
-
-
--- lazy.nvim keys
-
-
--- Show help actions with telescope
