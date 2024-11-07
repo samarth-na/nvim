@@ -80,6 +80,7 @@ return {
             -- See `:help telescope.builtin`
             Builtin = require 'telescope.builtin'
             vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
+            vim.keymap.set('n', '<leader>b', Builtin.buffers, { desc = 'search in buffers' })
             vim.keymap.set('n', '<localleader>o', Builtin.oldfiles, { desc = 'old  opened files' })
             vim.keymap.set('n', '<leader>fo', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
             vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
