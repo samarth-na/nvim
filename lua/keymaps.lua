@@ -8,7 +8,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 
 -- X!: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set({ 'n' }, '<Esc>', ':nohlsearch <CR>', { silent = true })
+vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
 -- X!: word remaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
