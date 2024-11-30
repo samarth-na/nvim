@@ -255,7 +255,7 @@ return {
                 sections = {
                     lualine_a = { '' },
                     lualine_b = { 'branch', 'diff', 'diagnostics' },
-                    lualine_c = { 'filename', 'encoding', 'filesize' },
+                    lualine_c = { 'encoding', 'filesize' },
                     lualine_x = { 'fileformat' },
                     lualine_y = { 'progress', 'location' },
                     lualine_z = {},

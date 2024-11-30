@@ -10,7 +10,12 @@
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+    -- Lua
+    {
+        "tjdevries/colorbuddy.nvim",
+    },
     -- {
+    --
     --     "m4xshen/hardtime.nvim",
     --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     --     opts = {}
@@ -23,7 +28,6 @@ require('lazy').setup({
     },
     { "https://github.com/wellle/targets.vim" },
     { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
-    { 'tpope/vim-dadbod' },
 
     { 'https://github.com/paretje/nvim-man' },
 
