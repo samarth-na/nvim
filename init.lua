@@ -105,14 +105,3 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
-
--- load nalin.lua as a module
-local nalin = require("nalin")
-
--- Set up plugins (ensure no utility functions are here)
-require('packer').startup(function(use)
-  -- Example plugins
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'neovim/nvim-lspconfig'
-  -- Add other plugins here...
-end)

@@ -3,10 +3,12 @@ return {
     ---@type LazySpec
     ---
 
-    { 'kevinhwang91/nvim-hlslens' },
 
     {
         'petertriho/nvim-scrollbar',
+        event = "BufRead",
+
+        dependencies = { 'kevinhwang91/nvim-hlslens' },
         config = function()
             require("scrollbar.handlers.gitsigns").setup()
             require("scrollbar").setup({
@@ -118,7 +120,6 @@ return {
     },
     {
         "mikavilpas/yazi.nvim",
-        event = "VeryLazy",
         keys = {
             {
                 '<c-f>',
@@ -140,6 +141,7 @@ return {
     },
     {
         'NvChad/nvim-colorizer.lua',
+        event = "BufRead",
         opts = {
             user_default_options = {
                 tailwind = true,
@@ -148,6 +150,8 @@ return {
     },
     {
         "roobert/tailwindcss-colorizer-cmp.nvim",
+        event = "BufRead",
+
         -- optionally, override the default options:
         config = function()
             require("tailwindcss-colorizer-cmp").setup({
@@ -157,6 +161,7 @@ return {
     },
     {
         'folke/trouble.nvim',
+        cmd = "Trouble",
         opts = {
             focus = true,
             transparent = true,
@@ -165,8 +170,7 @@ return {
     },
     {
         "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
+        event = "VeryLazy",
         opts = {},
     },
     {
@@ -213,6 +217,7 @@ return {
     },
     {
         'utilyre/barbecue.nvim',
+        event = "BufRead",
         name = 'barbecue',
         version = '*',
         dependencies = {
@@ -334,7 +339,7 @@ return {
     },
     {
         'folke/todo-comments.nvim',
-        event = 'VimEnter',
+        event = 'bufRead',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts =
         {
