@@ -10,13 +10,13 @@
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-    -- Lua
-    -- {
-    --
-    --     "m4xshen/hardtime.nvim",
-    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    --     opts = {}
-    -- },
+    {
+        "marcussimonsen/let-it-snow.nvim",
+        cmd = "LetItSnow", -- Wait with loading until command is run
+        opts = {
+            delay = 400,
+        },
+    },
     {
         'razak17/tailwind-fold.nvim',
         opts = {},

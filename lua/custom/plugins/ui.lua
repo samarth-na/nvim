@@ -231,9 +231,9 @@ return {
             lazy = true,
             config = function()
                 require('nvim-tree').setup {
-                    view = {
-                        width = 25,
-                    },
+                    -- view = {
+                    --     width = 25,
+                    -- },
                 }
             end,
         },
