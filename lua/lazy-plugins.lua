@@ -11,6 +11,16 @@
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
     {
+        "MysticalDevil/inlay-hints.nvim",
+        event = "LspAttach",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+            require("inlay-hints").setup(
+                {}
+            )
+        end
+    },
+    {
         "marcussimonsen/let-it-snow.nvim",
         cmd = "LetItSnow", -- Wait with loading until command is run
         opts = {
