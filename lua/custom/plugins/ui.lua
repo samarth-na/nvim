@@ -122,6 +122,11 @@ return {
         "mikavilpas/yazi.nvim",
         keys = {
             {
+                '<leader>y',
+                "<cmd>Yazi<cr>",
+                desc = "Open yazi",
+            },
+            {
                 '<c-f>',
                 "<cmd>Yazi toggle<cr>",
                 desc = "Resume the last yazi session",

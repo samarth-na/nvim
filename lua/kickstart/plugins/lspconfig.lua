@@ -169,8 +169,24 @@ return {
       local servers = {
         tailwindcss = { autostart = false },
         -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
+        -- gopls = {
+        --   hints = {
+        --     rangeVariableTypes = true,
+        --     parameterNames = true,
+        --     constantValues = true,
+        --     assignVariableTypes = true,
+        --     compositeLiteralFields = true,
+        --     compositeLiteralTypes = true,
+        --     functionTypeParameters = true,
+        --   },
+        -- },
+        basedpyright = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "openFilesOnly",
+            useLibraryCodeForTypes = true
+          }
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
