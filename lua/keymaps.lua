@@ -49,6 +49,8 @@ vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap 
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
+
+
 -- NOTE: zen mode
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
     { noremap = true, silent = true })
@@ -112,3 +114,11 @@ vim.keymap.set("v", "<leader>cp",
     end,
     { desc = "CopilotChat - Prompt actions (Dropdown)" }
 )
+
+vim.keymap.set("n", "<leader>td", function()
+    lspDiagnosticsVisible = not lspDiagnosticsVisible
+    vim.diagnostic.config({
+        virtual_text = lspDiagnosticsVisible,
+        underline = lspDiagnosticsVisible,
+    })
+end)
