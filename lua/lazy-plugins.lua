@@ -10,6 +10,7 @@
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+
     {
         "MysticalDevil/inlay-hints.nvim",
         event = "LspAttach",

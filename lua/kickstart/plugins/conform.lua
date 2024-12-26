@@ -33,6 +33,7 @@ return {
             end,
             formatters_by_ft = {
                 -- lua = { 'stylua' },
+                java = { 'jdtls' },
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
                 html = { 'prettierd', 'rustywind' },

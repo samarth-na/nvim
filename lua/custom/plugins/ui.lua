@@ -1,7 +1,16 @@
 return {
 
     ---@type LazySpec
-    ---
+
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    },
 
 
     {
@@ -236,9 +245,9 @@ return {
             lazy = true,
             config = function()
                 require('nvim-tree').setup {
-                    -- view = {
-                    --     width = 25,
-                    -- },
+                    view = {
+                        width = 25,
+                    },
                 }
             end,
         },
@@ -268,7 +277,7 @@ return {
                     lualine_c = { 'encoding', 'filesize' },
                     lualine_x = { 'fileformat' },
                     lualine_y = { 'progress', 'location' },
-                    lualine_z = {},
+                    lualine_z = { 'wpm' },
                 },
                 inactive_sections = {
                     lualine_a = {},
