@@ -62,7 +62,7 @@ return {
                         width = 0.9,
                     },
                     mappings = {
-                        i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+                        i = { ['<c-enter>'] = 'to_fuzzy_refine' }
                     },
                 },
                 -- pickers = {}

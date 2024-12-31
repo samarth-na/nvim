@@ -11,18 +11,9 @@
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
 
-    {
-        "MysticalDevil/inlay-hints.nvim",
-        event = "LspAttach",
-        dependencies = { "neovim/nvim-lspconfig" },
-        config = function()
-            require("inlay-hints").setup(
-                {
-                    only_current_line = true,
-                }
-            )
-        end
-    },
+    -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
+
+
     {
         "marcussimonsen/let-it-snow.nvim",
         cmd = "LetItSnow", -- Wait with loading until command is run
@@ -30,24 +21,10 @@ require('lazy').setup({
             delay = 400,
         },
     },
-    {
-        'razak17/tailwind-fold.nvim',
-        opts = {},
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        ft = { 'html', 'svelte', 'astro', 'vue', 'javascriptreact', 'typescriptreact', 'php', 'blade' },
-        event = "BufWritePost",
-    },
-    {
-        "https://github.com/wellle/targets.vim",
-        event = "insertEnter"
-    },
 
-    {
-        'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
-        main = 'ibl',
-        event = "BufRead",
-        opts = {},
-    },
+
+
+
 
 
     require 'kickstart/plugins/git',

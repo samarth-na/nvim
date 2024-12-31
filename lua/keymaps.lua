@@ -1,38 +1,32 @@
--- X!: exit to normal mode
 vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
 
---  X!: diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
--- X!: terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
--- X!: word remaps
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
+vim.keymap.set({ 'n' }, 'di<space>', 'diW', { silent = true })
+vim.keymap.set({ 'n' }, 'ci<space>', 'ciW', { silent = true })
+vim.keymap.set({ 'n' }, 'yi<space>', 'yiW', { silent = true })
 
 
--- X!: visual mode
 vim.keymap.set({ 'n' }, 'vv', 'V', { silent = true })
 
--- X!: end and start of line
 vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
 vim.api.nvim_set_keymap('n', 'H', '0', { noremap = true })
 
--- X!: NOTE j and k moment
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- X!: Switch to next buffer
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<s-Tab>', ':bNext<CR>', { noremap = true, silent = true })
 
 
--- X!: Switch to next tab
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
 
@@ -45,10 +39,10 @@ vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSave ', { noremap = true
 vim.api.nvim_set_keymap('n', '<leader>cl', ':CopilotChatLoad ', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap = true, silent = true })
--- X!: plugin keymaps
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
+
 
 
 -- NOTE: zen mode
@@ -83,6 +77,7 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
     { noremap = true, silent = true })
 
+
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
     { noremap = true, silent = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -93,7 +88,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
--- Place this in your key mappings section
 
 vim.keymap.set("v", "<leader>cp",
     function()
@@ -114,6 +108,7 @@ vim.keymap.set("v", "<leader>cp",
     end,
     { desc = "CopilotChat - Prompt actions (Dropdown)" }
 )
+
 
 vim.keymap.set("n", "<leader>td", function()
     lspDiagnosticsVisible = not lspDiagnosticsVisible

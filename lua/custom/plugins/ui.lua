@@ -3,6 +3,18 @@ return {
     ---@type LazySpec
 
     {
+        "MysticalDevil/inlay-hints.nvim",
+        event = "LspAttach",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+            require("inlay-hints").setup(
+                {
+                    only_current_line = true,
+                }
+            )
+        end
+    },
+    {
         'stevearc/oil.nvim',
         ---@module 'oil'
         ---@type oil.SetupOpts
