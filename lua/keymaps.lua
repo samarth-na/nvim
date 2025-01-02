@@ -7,6 +7,9 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
+vim.api.nvim_set_keymap('n', '<localleader>=', '<C-w>o<CR>',
+    { noremap = true, silent = true })
+
 vim.keymap.set({ 'n' }, 'dw', 'diw', { silent = true })
 vim.keymap.set({ 'n' }, 'yw', 'yiw', { silent = true })
 vim.keymap.set({ 'n' }, 'cw', 'ciw', { silent = true })
@@ -32,24 +35,29 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>tc', ':CopilotChatToggle <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lc', ':CopilotChat <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSave ', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>cl', ':CopilotChatLoad ', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>f', ':CopilotChatFix <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>e', ':CopilotChatExplain <CR>', { noremap = true, silent = true })
 
+
+-- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>td", function()
+    lspDiagnosticsVisible = not lspDiagnosticsVisible
+    vim.diagnostic.config({
+        virtual_text = lspDiagnosticsVisible,
+        underline = lspDiagnosticsVisible,
+    })
+end, { desc = "Toggle diagnostics" })
+
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
+    { noremap = true, silent = true })
 
 
--- NOTE: zen mode
+-- zen mode
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>",
     { noremap = true, silent = true })
 
--- NOTE: for trouble
+--  for trouble
 vim.api.nvim_set_keymap('n', '<leader>xx', ':Trouble<CR>',
     { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>qq', ':Trouble diagnostics<CR>',
@@ -59,27 +67,12 @@ vim.api.nvim_set_keymap('n', '<localleader>q', ':Trouble diagnostics<CR>',
 vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
     { noremap = true, silent = true })
 
--- NOTE: for nvim-tree
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
-    { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<localleader>=', '<C-w>o<CR>',
-    { noremap = true, silent = true })
+--  for nvim-tree
 
 -- NOTE: for git
-vim.api.nvim_set_keymap('n', '<leader>tgd', ':Gitsigns toggle_deleted<CR>',
-    { noremap = true, silent = true, desc = "togle git deleted" })
-vim.api.nvim_set_keymap('n', '<leader>tgl', ':Gitsigns toggle_current_line_blame<CR>',
-    { noremap = true, silent = true, desc = "Toggle current line blame" })
-vim.api.nvim_set_keymap('n', '<leader>gS', ':Gitsigns <CR>',
-    { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>',
-    { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gd', ':Gitsigns  diffthis<CR>',
+vim.api.nvim_set_keymap('n', '<leader>gg', ':Gitsigns <CR>',
     { noremap = true, silent = true })
 
-
-vim.api.nvim_set_keymap('n', '<leader>fg', ':Gitsigns <CR>',
-    { noremap = true, silent = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -87,33 +80,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
-
-
-vim.keymap.set("v", "<leader>cp",
-    function()
-        local actions = require("CopilotChat.actions")
-
-        local telescope = require("telescope.themes").get_dropdown({
-
-            prompt_title = 'search commands',
-            winblend = 1,
-            previewer = false,
-            layout_config = {
-                width = 0.5,
-                height = 0.4,
-            }
-        })
-
-        require("CopilotChat.integrations.telescope").pick(actions.prompt_actions(), telescope)
-    end,
-    { desc = "CopilotChat - Prompt actions (Dropdown)" }
-)
-
-
-vim.keymap.set("n", "<leader>td", function()
-    lspDiagnosticsVisible = not lspDiagnosticsVisible
-    vim.diagnostic.config({
-        virtual_text = lspDiagnosticsVisible,
-        underline = lspDiagnosticsVisible,
-    })
-end)
