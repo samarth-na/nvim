@@ -233,7 +233,7 @@ return {
 
 
             lualine = {
-                transparent = false, -- lualine center bar transparency
+                transparent = false,
             },
             trouble = {
                 transparent = true,
@@ -263,7 +263,6 @@ return {
             end,
         },
         {
-            -- Set lualine as statusline
             'nvim-lualine/lualine.nvim',
             event = 'InsertEnter',
 
