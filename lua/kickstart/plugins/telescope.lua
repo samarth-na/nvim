@@ -57,6 +57,26 @@ return {
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
                 defaults = {
+                    file_ignore_patterns = {
+                        "node_modules",
+                        "%.png", "%.jpg", "%.jpeg", "%.gif", "%.bmp", "%.tiff", "%.webp", "%jfif",
+                        -- Compiled files
+                        "%.class", "%.jar", "%.pyc", "%.o", "%.obj", "%.so", "%.dll", "%.a",
+                        "%.lib", "%.bin", "%.exe", "%.out", "%.hex", "%.elf", "%.ko", "%.mod",
+                        "%.ko", "%.dwo", "%.lo", "%.o", "%.ko", "%.so", "%.slo", "%.a", "%.la",
+                        "%.node", "%.d.ts", "%.js.map", "%.d.ts.map", "%.js.map", "%.ts.map",
+                        "%.d.ts.map", "%.ts.map", "%.d.ts.map", "%.ts.map", "%.d.ts.map",
+                        "%.ts.map", "%.d.ts.map", "%.ts.map", "%.d.ts.map", "%.ts.map",
+                        "%.d.ts.map", "%.ts.map", "%.d.ts.map", "%.ts.map", "%.d.ts.map",
+                        "%.ts.map", "%.d.ts.map", "%.ts.map", "%.d.ts.map", "%.ts.map",
+                        -- temprary files
+                        "%.tmp",
+                        -- Videos
+                        "%.mp4", "%.mkv", "%.avi", "%.mov", "%.wmv", "%.flv", "%.webm",
+                        -- PDFs
+                        "%.pdf",
+                        "__pycache__",
+                    },
 
                     layout_config = {
                         width = 0.9,
