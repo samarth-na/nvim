@@ -20,6 +20,7 @@ return {
         },
         opts = {
             workspaces = {
+                ui = { enable = false },
                 {
                     name = "obsidian",
                     path = "~/obsidian",
@@ -43,6 +44,7 @@ return {
     {
         'MeanderingProgrammer/render-markdown.nvim',
         opts = {
+            latex = { enabled = false },
             bullet = {
                 -- Turn on / off list bullet rendering
                 enabled = true,
@@ -83,7 +85,7 @@ return {
                 --  full:  full width of the window
                 -- Can also be an array of the above values in which case the 'level' is used
                 -- to index into the array using a clamp
-                width = 'level',
+                width = 'full',
                 -- Amount of padding to add to the left of headings
                 left_pad = 0,
                 -- Amount of padding to add to the right of headings when width is 'block'

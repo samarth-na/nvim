@@ -73,10 +73,7 @@ vim.opt.linebreak = true
 
 vim.opt.conceallevel = 1
 
-------------------------
----
 vim.opt.textwidth = 80
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 -- vim: ts=4 sts=4 sw=4 et
---

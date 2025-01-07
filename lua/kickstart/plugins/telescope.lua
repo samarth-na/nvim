@@ -12,6 +12,7 @@ return {
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
+            "debugloop/telescope-undo.nvim",
             { -- If encountering errors, see telescope-fzf-native README for installation instructions
                 'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -53,6 +54,7 @@ return {
             -- [[ Configure Telescope ]]
             -- See `:help telescope` and `:help telescope.setup()`
             require('telescope').setup {
+                require("telescope").load_extension("undo"),
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
@@ -127,7 +129,9 @@ return {
             vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks' })
             vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks' })
             vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
-            vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'Search current Word' })
+            vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'search current Word' })
+
+            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "search undo" })
 
             ----------------------------------------------------------------------------------------
 
