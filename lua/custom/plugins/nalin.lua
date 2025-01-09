@@ -5,6 +5,12 @@ return {
         cmd = { 'LiveServerStart', 'LiveServerStop' },
         config = true
     },
+    {
+        'IogaMaster/neocord',
+
+        event = "VeryLazy"
+
+    }
 }
 -- IMP:
 -- format to add plugins:

@@ -43,7 +43,7 @@ return {
                 typescript = { 'prettierd', 'rustywind' },
                 typescriptreact = { 'prettierd', 'rustywind' },
                 json = { 'prettierd' },
-                markdown = { 'prettierd' },
+                -- markdown = { 'prettierd' },
                 -- python = { 'black' },
                 --
                 --
