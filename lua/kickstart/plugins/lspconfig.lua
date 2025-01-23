@@ -252,6 +252,11 @@ return {
                 ['textDocument/publishDiagnostics'] = function() end
               }
             })
+            require("lspconfig").pylyzer.setup({
+              handlers = {
+                ['textDocument/publishDiagnostics'] = function() end
+              }
+            })
             -- require("lspconfig").ts_ls.setup({
             --   handlers = {
             --     ['textDocument/publishDiagnostics'] = function() end

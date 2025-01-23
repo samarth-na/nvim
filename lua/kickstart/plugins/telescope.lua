@@ -130,8 +130,8 @@ return {
             vim.keymap.set('n', '<leader>sm', Builtin.marks, { desc = 'search marks' })
             vim.keymap.set('n', '<leader>sg', Builtin.live_grep, { desc = 'search by grep' })
             vim.keymap.set('n', '<leader>sw', Builtin.grep_string, { desc = 'search current Word' })
+            vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>", { desc = "search undo" })
 
-            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "search undo" })
 
             ----------------------------------------------------------------------------------------
 
