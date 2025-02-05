@@ -31,16 +31,6 @@ return {
     --     end,
     -- },
     -- { "github/copilot.vim" },
-    -- {
-    --     "zbirenbaum/copilot-cmp",
-    --     config = function()
-    --         require("copilot").setup({
-    --             suggestion = { enabled = true },
-    --             panel = { enabled = false },
-    --         })
-    --     end
-    -- },
-
-
 }
+
 -- vim: ts=4 sts=4 sw=4 et

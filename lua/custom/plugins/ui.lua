@@ -26,7 +26,7 @@ return {
 
     {
         'petertriho/nvim-scrollbar',
-        event = "BufRead",
+        -- event = "BufRead",
 
         dependencies = { 'kevinhwang91/nvim-hlslens' },
         config = function()

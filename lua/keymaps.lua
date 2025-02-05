@@ -41,6 +41,8 @@ vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silen
 
 
 -- toggle stuff
+vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
 
