@@ -43,8 +43,7 @@ return {
                 typescript = { 'prettierd', 'rustywind' },
                 typescriptreact = { 'prettierd', 'rustywind' },
                 json = { 'prettierd' },
-                -- markdown = { 'prettierd' },
-                -- python = { 'black' },
+                python = { 'black' },
                 --
                 --
                 -- You can use 'stop_after_first' to run the first available formatter from the list
