@@ -39,6 +39,7 @@ return {
                 html = { 'prettierd', 'rustywind' },
                 css = { 'prettierd', 'rustywind' },
                 javascript = { 'prettierd', 'rustywind' },
+                markdown = { 'prettierd' },
                 javascriptreact = { 'prettierd', 'rustywind' },
                 typescript = { 'prettierd', 'rustywind' },
                 typescriptreact = { 'prettierd', 'rustywind' },

@@ -7,6 +7,9 @@ vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
+vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>', { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>', { desc = 'Go to next [D]iagnostic message' })
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n' }, '<Esc><Esc>', ':nohlsearch <CR>', { silent = true })
 
@@ -42,10 +45,13 @@ vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silen
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lt", ":LspStart tailwindcss<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
 
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set("n", "<leader>td", function()
     lspDiagnosticsVisible = not lspDiagnosticsVisible
     vim.diagnostic.config({
