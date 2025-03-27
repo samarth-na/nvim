@@ -38,7 +38,7 @@ require('lazy').setup({
 
     require 'kickstart/plugins/cmp',
 
-    -- require 'kickstart/plugins/copilot-chat',
+    require 'kickstart/plugins/copilot-chat',
 
     require 'kickstart/plugins/treesitter',
 
