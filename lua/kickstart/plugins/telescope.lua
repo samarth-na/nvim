@@ -104,7 +104,7 @@ return {
             vim.keymap.set('n', '<leader>o', Builtin.oldfiles, { desc = 'old  opened files' })
             vim.keymap.set('n', '<leader>b', Builtin.buffers, { desc = 'search in buffers' })
             vim.keymap.set('n', '<localleader>o', Builtin.oldfiles, { desc = 'old  opened files' })
-            vim.keymap.set('n', '<leader>fo', Builtin.buffers, { desc = 'search in buffers(the opened files rn)' })
+            vim.keymap.set('n', '<leader>fo', Builtin.oldfiles, { desc = 'search in buffers(the opened files rn)' })
             vim.keymap.set('n', '<leader>ff', Builtin.find_files, { desc = 'find files' })
             vim.keymap.set('n', '<leader><space>', Builtin.find_files, { desc = 'find files' })
             vim.keymap.set('n', '<leader>fc', Builtin.colorscheme, { desc = 'colorscheme' })
@@ -255,7 +255,7 @@ return {
 
             ----------------------------------------------------------------------------------------
 
-            vim.keymap.set('n', 'gs', function()
+            vim.keymap.set('n', '<localleader>s', function()
                 Builtin.spell_suggest(require('telescope.themes').get_cursor {
                     winblend = 0,
                     previewer = true,

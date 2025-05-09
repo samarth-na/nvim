@@ -34,6 +34,7 @@ return {
             formatters_by_ft = {
                 -- lua = { 'stylua' },
                 java = { 'google-java-format' },
+                php = { 'prettierd', },
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
                 html = { 'prettierd', 'rustywind' },
