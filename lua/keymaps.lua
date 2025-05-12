@@ -42,6 +42,8 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
@@ -50,8 +52,7 @@ vim.api.nvim_set_keymap("n", "<leader>lt", ":LspStart tailwindcss<CR>", { norema
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+
 vim.keymap.set("n", "<leader>td", function()
     lspDiagnosticsVisible = not lspDiagnosticsVisible
     vim.diagnostic.config({
@@ -60,8 +61,13 @@ vim.keymap.set("n", "<leader>td", function()
     })
 end, { desc = "Toggle diagnostics" })
 
+
+vim.api.nvim_set_keymap('n', '<leader>tc', ':TSContextToggle<CR>',
+    { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
     { noremap = true, silent = true })
+
 
 
 -- zen mode
@@ -86,6 +92,7 @@ vim.api.nvim_set_keymap('n', '<leader>gg', ':Gitsigns <CR>',
 vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>',
     { noremap = true })
 
+
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -93,3 +100,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
+
+local function toggle_boolean()
+    local word = vim.fn.expand("<cword>")
+    if word == "true" then
+        vim.api.nvim_feedkeys([["_diw]], "n", false)
+        vim.schedule(function()
+            vim.api.nvim_put({ "false" }, "c", false, true)
+        end)
+    elseif word == "false" then
+        vim.api.nvim_feedkeys([["_diw]], "n", false)
+        vim.schedule(function()
+            vim.api.nvim_put({ "true" }, "c", false, true)
+        end)
+    end
+end
+
+-- Create a keymap for normal mode
+vim.keymap.set("n", "gt", toggle_boolean, { desc = "Toggle true/false" })

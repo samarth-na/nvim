@@ -208,14 +208,14 @@ return {
         end,
         opts = {
             -- Main options --
-            style = 'dark',                                            -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-            transparent = false,                                       -- Show/hide background
-            term_colors = false,                                       -- Change terminal color as per the selected theme style
-            ending_tildes = false,                                     -- Show the end-of-buffer tildes. By default they are hidden
-            cmp_itemkind_reverse = false,                              -- reverse item kind highlights in cmp menu
+            style = 'dark',                                  -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+            transparent = false,                             -- Show/hide background
+            term_colors = false,                             -- Change terminal color as per the selected theme style
+            ending_tildes = false,                           -- Show the end-of-buffer tildes. By default they are hidden
+            cmp_itemkind_reverse = false,                    -- reverse item kind highlights in cmp menu
 
-            toggle_style_key = '<leader>to',                           -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-            toggle_style_list = { 'dark', 'darker', 'cool', 'light' }, -- List of styles to toggle between
+            toggle_style_key = '<leader>to',                 -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+            toggle_style_list = { 'dark', 'cool', 'light' }, -- List of styles to toggle between
             -- Change code style ---
             -- Options are italic, bold, underline, none
             -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
@@ -232,13 +232,9 @@ return {
                 background = false, -- use background color for virtual text
             },
 
-
             lualine = {
                 transparent = false,
             },
-            trouble = {
-                transparent = true,
-            }
         },
     },
     {

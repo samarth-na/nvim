@@ -1,5 +1,6 @@
 return {
     "mbbill/undotree",
+    { "nvim-treesitter/nvim-treesitter-context" },
 
     {
         "jake-stewart/auto-cmdheight.nvim",
