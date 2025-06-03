@@ -111,9 +111,9 @@ return {
 
 
 
-            vim.api.nvim_set_keymap('n', '<localleader>a',
-                [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
-                { noremap = true, silent = true, desc = 'find in all files' })
+            -- vim.api.nvim_set_keymap('n', '<localleader>a',
+            --     [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],
+            --     { noremap = true, silent = true, desc = 'find in all files' })
 
             vim.api.nvim_set_keymap('n', '<leader>fa',
                 [[<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>]],

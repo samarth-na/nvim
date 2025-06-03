@@ -1,5 +1,18 @@
 return {
+    'nickeb96/fish.vim',
     "mbbill/undotree",
+    -- {
+    --     'ck-zhang/mistake.nvim',
+    --     config = function()
+    --         local plugin = require 'mistake'
+    --         vim.defer_fn(function()
+    --             plugin.setup()
+    --         end, 500)
+    --
+    --         vim.keymap.set('n', '<localleader>a', plugin.add_entry_under_cursor,
+    --             { desc = '[M]istake add [C]urrent word' })
+    --     end,
+    -- },
     { "nvim-treesitter/nvim-treesitter-context" },
 
     {

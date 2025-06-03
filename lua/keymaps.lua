@@ -52,6 +52,7 @@ vim.api.nvim_set_keymap("n", "<leader>lt", ":LspStart tailwindcss<CR>", { norema
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>",
     { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>tS", ":set spell <CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>td", function()
     lspDiagnosticsVisible = not lspDiagnosticsVisible

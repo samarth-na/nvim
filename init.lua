@@ -99,6 +99,8 @@ require 'options'
 -- [[ Basic Keymaps & beybinds ]]
 require 'keymaps'
 
+require 'macros'
+
 require 'keybinds'
 
 -- [[ Install `lazy.nvim` plugin manager ]]

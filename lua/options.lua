@@ -8,7 +8,7 @@ vim.opt.relativenumber = true
 
 vim.o.wrap = true
 vim.o.textwidth = 88
-vim.o.linebreak = true
+vim.o.linebreak = false
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
