@@ -6,8 +6,6 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('i', '<C-e>', '<Esc>', { desc = '' })
--- WARN: Map Ctrl-\ to open a floating tmux window
-vim.keymap.set('n', '<C-\\>', ':!tmux popup <cr>', { desc = 'new floating tmux window' })
 
 -- WARN: Map alt-q/alt-Q to close current window
 vim.keymap.set({ 'n', 'v' }, '<M-q>', ':q<CR>', { silent = true })

@@ -22,7 +22,7 @@ vim.g.have_nerd_font = true
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus'
@@ -67,13 +67,15 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Enable virtualedit for block mode (allows selecting beyond text)
+vim.opt.virtualedit = "block"
+
 vim.opt.hlsearch = true
 
 vim.opt.linebreak = true
 
 vim.opt.conceallevel = 1
 
-vim.opt.textwidth = 80
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 -- vim: ts=4 sts=4 sw=4 et
