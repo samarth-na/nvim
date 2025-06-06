@@ -155,14 +155,13 @@ After installing all the dependencies continue with the [Install Kickstart](#Ins
 
 #### mac Install
 
-<details><summary>Ubuntu Install Steps</summary>
+<details><summary>macos Install Steps</summary>
 
 ```zsh
 brew install nvim
 ```
 
 </details>
-#### Windows Installation
 
 <details><summary>Windows with Microsoft C++ Build Tools and CMake</summary>
 Installation may require installing build tools and updating the run command for `telescope-fzf-native`
