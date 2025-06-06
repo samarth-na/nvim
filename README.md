@@ -163,6 +163,8 @@ brew install nvim
 
 </details>
 
+#### windows Install
+
 <details><summary>Windows with Microsoft C++ Build Tools and CMake</summary>
 Installation may require installing build tools and updating the run command for `telescope-fzf-native`
 
