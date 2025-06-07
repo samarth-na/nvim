@@ -1,5 +1,5 @@
 return {
-    'nickeb96/fish.vim',
+
     "mbbill/undotree",
     -- {
     --     'ck-zhang/mistake.nvim',

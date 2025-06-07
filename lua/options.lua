@@ -1,7 +1,12 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 
-vim.opt.shell = '/bin/zsh -i'
+vim.o.shell = "/usr/bin/fish"
+vim.o.shellcmdflag = "-c"
+-- vim.o.shellredir = ">%s 2>&1"
+-- vim.o.shellpipe = "| tee"
+-- vim.o.shellquote = ""
+-- vim.o.shellxquote = ""
 
 vim.opt.number = true
 vim.opt.relativenumber = true

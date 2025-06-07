@@ -12,7 +12,7 @@ vim.keymap.set({ 'n', 'v' }, '<M-q>', ':q<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<M-Q>', ':qa!<CR>', { silent = true })
 
 -- WARN: shell commands
-vim.api.nvim_set_keymap('n', '<M-t>', ':!ChangeTmuxPane <CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<M-t>', ':!changeTmuxPane <CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-r>', ':! ~/.zsh/scripts/run.sh <CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-g>', ':!gin && tg <CR>', { noremap = true })
 
@@ -20,7 +20,7 @@ vim.api.nvim_set_keymap('n', '<M-g>', ':!gin && tg <CR>', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<C-s>', ':w<CR> ', { silent = true })
 
 -- NOTE: Map Ctrl-x to delete current buffer
-vim.api.nvim_set_keymap('n', '<C-x>', ':bdelete<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-x>', ':NvimTreeClose | bdelete<CR>', { noremap = true, silent = true })
 
 -- NOTE: Keep the cursor centered after Ctrl-d and Ctrl-u
 vim.keymap.set('n', '<C-d>', "<c-d>zz")
