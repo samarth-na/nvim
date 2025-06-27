@@ -9,6 +9,10 @@ return {
         main = 'nvim-treesitter.configs', -- Sets main module to use for opts
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
+            filters = {
+        dotfiles = false, -- 👈 Show all dotfiles including .env, .env.local
+        custom = {},      -- 👈 Ensure .env is NOT in this list
+      },
             ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
             -- Autoinstall languages that are not installed
             auto_install = true,
