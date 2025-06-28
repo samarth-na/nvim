@@ -135,10 +135,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         tailwindcss = { autostart = false },
-        solidity = {
-          cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
-          filetypes = { "solidity" },
-        },
+
         -- clangd = {},
         -- gopls = {
         --   hints = {
