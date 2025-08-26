@@ -41,7 +41,7 @@ return {
                 throttle_ms = 100,
                 handle = {
                     text = " ",
-                    blend = 90,                 -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
+                    blend = 80,                 -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
                     color = "#ffffff",
                     color_nr = nil,             -- cterm
                     highlight = "CursorColumn",
@@ -208,14 +208,14 @@ return {
         end,
         opts = {
             -- Main options --
-            style = 'cool',                                  -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-            transparent = false,                             -- Show/hide background
-            term_colors = false,                             -- Change terminal color as per the selected theme style
-            ending_tildes = false,                           -- Show the end-of-buffer tildes. By default they are hidden
-            cmp_itemkind_reverse = false,                    -- reverse item kind highlights in cmp menu
+            style = 'cool',                          -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+            transparent = false,                     -- Show/hide background
+            term_colors = false,                     -- Change terminal color as per the selected theme style
+            ending_tildes = false,                   -- Show the end-of-buffer tildes. By default they are hidden
+            cmp_itemkind_reverse = false,            -- reverse item kind highlights in cmp menu
 
-            toggle_style_key = '<leader>to',                 -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-            toggle_style_list = { 'dark', 'cool', 'light' }, -- List of styles to toggle between
+            toggle_style_key = '<leader>to',         -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+            toggle_style_list = { 'cool', 'light' }, -- List of styles to toggle between
             -- Change code style ---
             -- Options are italic, bold, underline, none
             -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'

@@ -90,7 +90,7 @@ vim.api.nvim_set_keymap('n', '<leader>xr', ':Trouble lsp_references<CR>',
 -- NOTE: for git
 vim.api.nvim_set_keymap('n', '<leader>gg', ':Gitsigns <CR>',
     { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lg', ':!gin && tg <CR>',
+vim.api.nvim_set_keymap('n', '<leader>lg', ':!tg <CR>',
     { noremap = true })
 
 
@@ -118,4 +118,3 @@ local function toggle_boolean()
 end
 
 -- Create a keymap for normal mode
-vim.keymap.set("n", "gt", toggle_boolean, { desc = "Toggle true/false" })

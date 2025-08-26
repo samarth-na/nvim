@@ -27,6 +27,11 @@ return {
         'j-hui/fidget.nvim',
         tag = "v1.5.0",
         opts = {
+          integration = {
+            ["nvim-tree"] = {
+              enable = true, -- Integrate with nvim-tree/nvim-tree.lua (if installed)
+            },
+          },
         }
       },
 
@@ -193,6 +198,13 @@ return {
         },
         --
 
+        rust_analyzer = {
+          settings = {
+            diagnostics = {
+              disabled = { "unlinked-file" },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
