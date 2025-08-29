@@ -6,6 +6,8 @@ _This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kicksta
 
 A starting point for Neovim that is:
 
+- [x] asd
+
 - Small
 - Modular
 - Completely Documented

@@ -28,8 +28,27 @@ return {
     {
         'MeanderingProgrammer/render-markdown.nvim',
         opts = {
+            checkbox = {
+                unchecked = {
+                    -- Replaces '[ ]' of 'task_list_marker_unchecked'.
+                    icon = '󰄱 ',
+                    -- Highlight for the unchecked icon.
+                    highlight = 'RenderMarkdownLink',
+                    -- Highlight for item associated with unchecked checkbox.
+                    scope_highlight = nil,
+                },
+                checked = {
+                    -- Replaces '[x]' of 'task_list_marker_checked'.
+                    icon = '󰱒 ',
+                    -- Highlight for the checked icon.
+                    highlight = 'RenderMarkdownLink',
+                    -- Highlight for item associated with checked checkbox.
+                    scope_highlight = nil,
+                },
+            },
             latex = { enabled = false },
             bullet = {
+                highlight = 'RenderMarkdownBullet',
                 -- Turn on / off list bullet rendering
                 enabled = true,
                 -- Replaces '-'|'+'|'*' of 'list_item'
@@ -47,6 +66,9 @@ return {
                 right_pad = 0,
                 -- Highlight for the bullet icon
                 highlight = 'RenderMarkdownBullet',
+            },
+            list = {
+                color = 'blue',
             },
             heading = {
                 -- Turn on / off heading icon & background rendering
