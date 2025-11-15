@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend with Tailwind CSS</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-800">My App</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Our Frontend</h2>
+            <p class="text-xl md:text-2xl mb-8">Built with Tailwind CSS for modern web development</p>
+            <button class="btn-primary text-lg" onclick="showAlert()">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Features</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card">
+                <div class="text-4xl mb-4">🚀</div>
+                <h4 class="text-xl font-semibold mb-2">Fast Development</h4>
+                <p class="text-gray-600">Build beautiful interfaces quickly with utility-first CSS classes.</p>
+            </div>
+            <div class="card">
+                <div class="text-4xl mb-4">🎨</div>
+                <h4 class="text-xl font-semibold mb-2">Customizable</h4>
+                <p class="text-gray-600">Easily customize your design system to match your brand.</p>
+            </div>
+            <div class="card">
+                <div class="text-4xl mb-4">📱</div>
+                <h4 class="text-xl font-semibold mb-2">Responsive</h4>
+                <p class="text-gray-600">Mobile-first design that looks great on all devices.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4 text-gray-800">Modern Design</h3>
+                    <p class="text-gray-600 mb-4">
+                        Our frontend is built with the latest technologies and best practices. 
+                        Tailwind CSS provides a powerful utility-first approach that makes 
+                        styling fast and maintainable.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        With responsive design built-in, your application will look great 
+                        on any device, from mobile phones to large desktop screens.
+                    </p>
+                    <button class="btn-primary">Learn More</button>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 h-64 rounded-lg shadow-xl"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 My App. Built with Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

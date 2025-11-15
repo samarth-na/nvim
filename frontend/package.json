@@ -1,0 +1,27 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend project with Tailwind CSS",
+  "main": "src/index.html",
+  "scripts": {
+    "build:css": "postcss src/input.css -o public/output.css && cp public/output.css src/output.css",
+    "watch:css": "postcss src/input.css -o public/output.css --watch",
+    "build": "npm run build:css",
+    "dev": "npm run watch:css",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "tailwind",
+    "css",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.17"
+  }
+}
