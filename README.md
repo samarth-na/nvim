@@ -10,6 +10,10 @@ A starting point for Neovim that is:
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
+## Requirements
+
+- **Neovim 0.11.5+** (required for this configuration)
+
 ## Installation
 
 ### Install Neovim

@@ -1,7 +1,7 @@
 return {
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
-        event = 'bufRead',
+        event = 'BufRead',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
@@ -25,7 +25,7 @@ return {
                 keymaps = {
                     init_selection = '<c-space>',
                     node_incremental = '<c-space>',
-                    scope_incremental = '<c-i>',
+                    scope_incremental = '<c-s>',
                     node_decremental = '<M-space>',
                 },
             },

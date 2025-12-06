@@ -10,13 +10,17 @@ return {
         opts = {
             signs = {
                 add = { text = '+' },
-                unstaged = { text = '▌' },
                 change = { text = '~' },
                 delete = { text = '_' },
                 topdelete = { text = '‾' },
                 changedelete = { text = '~' },
-                normal = { text = '┆' },
-                default = { text = '┆' },
+            },
+            signs_staged = {
+                add = { text = '┃' },
+                change = { text = '┃' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
             },
         },
     },
