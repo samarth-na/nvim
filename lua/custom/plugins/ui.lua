@@ -357,7 +357,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "bufRead",
+		event = "BufRead",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			signs = false, -- show icons in the signs column

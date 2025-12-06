@@ -1,11 +1,11 @@
 vim.keymap.set({ 'i' }, 'jk', '<Esc>', { silent = true })
 vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
 
+-- Declare diagnostic visibility state
+local lspDiagnosticsVisible = true
 
-vim.keymap.set({ 'i' }, 'jj', '<Esc>', { silent = true })
-
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, { desc = 'Go to next [D]iagnostic message' })
 
 vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>', { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>', { desc = 'Go to next [D]iagnostic message' })
@@ -41,9 +41,6 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':tabnext<CR>', { noremap = true, 
 
 vim.api.nvim_set_keymap('n', '<leader>ll', ':Lazy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lm', ':Mason<CR>', { noremap = true, silent = true })
-
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })

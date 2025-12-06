@@ -1,5 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
+-- Neovim 0.11.5 compatible configuration
 
 vim.o.shell = "/usr/bin/fish"
 vim.o.shellcmdflag = "-c"

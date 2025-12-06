@@ -41,7 +41,7 @@ return {
     },
     {
         "https://github.com/wellle/targets.vim",
-        event = "insertEnter"
+        event = "InsertEnter"
     },
     {
         'razak17/tailwind-fold.nvim',
