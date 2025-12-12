@@ -14,7 +14,6 @@ vim.keymap.set({ 'n', 'v' }, '<M-Q>', ':qa!<CR>', { silent = true })
 -- WARN: shell commands
 vim.api.nvim_set_keymap('n', '<M-t>', ':!changeTmuxPane <CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-r>', ':!run <CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<M-g>', ':!gin && tg <CR>', { noremap = true })
 
 -- NOTE: Map Ctrl-s to save current buffer
 vim.keymap.set({ 'n', 'v' }, '<C-s>', ':w<CR> ', { silent = true })

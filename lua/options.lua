@@ -11,6 +11,7 @@ vim.o.shellcmdflag = "-c"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+
 vim.o.wrap = true
 vim.o.textwidth = 80
 
