@@ -111,6 +111,7 @@ return {
 
 			local ensure_installed = {
 				"stylua",
+				"lua_ls",
 				"prettierd",
 				"html-lsp",
 				"clang-format",

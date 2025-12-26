@@ -11,15 +11,15 @@ vim.o.shellcmdflag = "-c"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-
 vim.o.wrap = true
 vim.o.textwidth = 80
+vim.opt.colorcolumn = "80"
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        vim.o.textwidth = 0
-    end,
+	pattern = "markdown",
+	callback = function()
+		vim.o.textwidth = 0
+	end,
 })
 
 vim.o.linebreak = false
@@ -29,17 +29,15 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
-vim.opt.cursorline = true
-
 vim.g.have_nerd_font = true
 
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
 vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus'
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
@@ -53,7 +51,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 300
@@ -73,7 +71,7 @@ vim.opt.list = false
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true

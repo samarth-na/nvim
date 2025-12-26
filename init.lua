@@ -110,3 +110,5 @@ require("lazy-bootstrap")
 
 -- [[ Configure and install plugins ]]
 require("lazy-plugins")
+
+vim.cmd("LetItSnow")
