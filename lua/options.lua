@@ -12,7 +12,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.o.wrap = true
-vim.o.textwidth = 80
+vim.o.textwidth = 8000
 vim.opt.colorcolumn = "80"
 
 vim.api.nvim_create_autocmd("FileType", {

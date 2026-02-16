@@ -9,6 +9,7 @@ return {
 		config = function()
 			require("inlay-hints").setup({
 				only_current_line = true,
+				enable = false,
 			})
 		end,
 	},
