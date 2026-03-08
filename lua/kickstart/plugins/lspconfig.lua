@@ -112,7 +112,6 @@ return {
 			local ensure_installed = {
 				"stylua",
 				"lua_ls",
-				"prettierd",
 				"html-lsp",
 				"clang-format",
 			}
@@ -135,7 +134,7 @@ return {
 					"basedpyright",
 					"clangd",
 					"denols",
-					"ts_ls",
+					-- "ts_ls",
 				},
 				handlers = {
 					-- Default handler
@@ -251,39 +250,39 @@ return {
 					-- Only check for Node.js if NO deno.json found
 					local node_root = vim.fs.root(bufnr, { "package.json" })
 					if node_root then
-						print("Found package.json at: " .. node_root .. " - Starting ts_ls")
-						vim.lsp.start({
-							name = "ts_ls",
-							cmd = { "typescript-language-server", "--stdio" },
-							root_dir = node_root,
-							capabilities = capabilities,
-							settings = {
-								typescript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-								javascript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-							},
-						})
+						print("Found package.json at: " .. node_root .. " - Starting ts_go")
+						-- vim.lsp.start({
+						-- 	name = "ts_ls",
+						-- 	cmd = { "typescript-language-server", "--stdio" },
+						-- 	root_dir = node_root,
+						-- 	capabilities = capabilities,
+						-- 	settings = {
+						-- 		typescript = {
+						-- 			inlayHints = {
+						-- 				includeInlayParameterNameHints = "all",
+						-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						-- 				includeInlayFunctionParameterTypeHints = true,
+						-- 				includeInlayVariableTypeHints = true,
+						-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+						-- 				includeInlayPropertyDeclarationTypeHints = true,
+						-- 				includeInlayFunctionLikeReturnTypeHints = true,
+						-- 				includeInlayEnumMemberValueHints = true,
+						-- 			},
+						-- 		},
+						-- 		javascript = {
+						-- 			inlayHints = {
+						-- 				includeInlayParameterNameHints = "all",
+						-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						-- 				includeInlayFunctionParameterTypeHints = true,
+						-- 				includeInlayVariableTypeHints = true,
+						-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+						-- 				includeInlayPropertyDeclarationTypeHints = true,
+						-- 				includeInlayFunctionLikeReturnTypeHints = true,
+						-- 				includeInlayEnumMemberValueHints = true,
+						-- 			},
+						-- 		},
+						-- 	},
+						-- })
 					end
 				end,
 			})
