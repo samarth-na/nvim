@@ -42,7 +42,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lt", ":LspStart tailwindcss<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
 vim.keymap.set("n", "<leader>ld", ":LspStart denols<CR>", { desc = "Start Deno LSP" })
 

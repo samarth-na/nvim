@@ -134,6 +134,7 @@ return {
 					"basedpyright",
 					"clangd",
 					"denols",
+					"tailwindcss",
 					-- "ts_ls",
 				},
 				handlers = {
@@ -200,6 +201,12 @@ return {
 
 					-- SKIP denols and ts_ls - we handle manually
 					denols = function() end,
+					tailwindcss = function()
+						lspconfig.tailwindcss.setup({
+							capabilities = capabilities,
+							autostart = false,
+						})
+					end,
 					ts_ls = function() end,
 				},
 			})
