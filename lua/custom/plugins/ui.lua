@@ -24,7 +24,7 @@ return {
 
 	{
 		"petertriho/nvim-scrollbar",
-		-- event = "BufRead",
+		event = "BufReadPost",
 
 		dependencies = { "kevinhwang91/nvim-hlslens" },
 		config = function()
@@ -164,7 +164,7 @@ return {
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
-		event = "BufRead",
+		event = "BufReadPost",
 		opts = {
 			user_default_options = {
 				tailwind = true,
@@ -173,7 +173,7 @@ return {
 	},
 	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",
-		event = "BufRead",
+		event = "BufReadPost",
 
 		-- optionally, override the default options:
 		config = function()
@@ -237,7 +237,7 @@ return {
 	},
 	{
 		"utilyre/barbecue.nvim",
-		event = "BufRead",
+		event = "BufReadPost",
 		name = "barbecue",
 		-- version = '*',
 		dependencies = {
@@ -248,7 +248,7 @@ return {
 	{
 		{
 			"nvim-tree/nvim-tree.lua",
-			lazy = true,
+			cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus", "NvimTreeFindFile" },
 			config = function()
 				require("nvim-tree").setup({
 					view = {
@@ -259,7 +259,7 @@ return {
 		},
 		{
 			"nvim-lualine/lualine.nvim",
-			event = "InsertEnter",
+			event = { "BufReadPost", "BufNewFile" },
 
 			nvimlogo = {
 				function()
@@ -293,9 +293,9 @@ return {
 					lualine_z = {},
 				},
 				tabline = {
-					lualine_a = { "" },
+					lualine_a = { "buffers" },
 					lualine_b = { "" },
-					lualine_c = { "", "buffers" },
+					lualine_c = { "" },
 					lualine_x = { "tabs" },
 					lualine_y = {},
 					lualine_z = { "mode" },
@@ -358,7 +358,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "bufRead",
+		event = "BufReadPost",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			signs = false, -- show icons in the signs column
@@ -427,7 +427,7 @@ return {
 	},
 	{
 		"folke/which-key.nvim",
-		event = "VimEnter",
+		event = "VeryLazy",
 		config = function()
 			require("which-key").setup()
 			local wk = require("which-key")

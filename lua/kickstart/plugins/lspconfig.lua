@@ -16,6 +16,7 @@ return {
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -64,7 +65,7 @@ return {
 					-- KILL ts_ls if we're in a Deno project
 					if client and client.name == "ts_ls" then
 						local bufnr = event.buf
-						local has_deno = vim.fs.root(bufnr, { "deno.json", "deno. jsonc" })
+						local has_deno = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
 						if has_deno then
 							vim.notify("Stopping ts_ls in Deno project", vim.log.levels.WARN)
 							vim.lsp.stop_client(client.id, true)
@@ -213,7 +214,7 @@ return {
 
 			-- Manual handling for Deno vs Node. js
 			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-				pattern = { "*.js", "*. jsx", "*.ts", "*. tsx" },
+				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
 				callback = function()
 					local bufnr = vim.api.nvim_get_current_buf()
 
@@ -226,7 +227,7 @@ return {
 					end
 
 					-- Try to find deno. json first (DENO TAKES PRIORITY)
-					local deno_root = vim.fs.root(bufnr, { "deno.json", "deno. jsonc" })
+					local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
 					if deno_root then
 						print("Found deno.json at:  " .. deno_root .. " - Starting denols")
 						vim.lsp.start({
