@@ -62,6 +62,9 @@ vim.api.nvim_set_keymap("n", "<leader>tc", ":TSContextToggle<CR>", { noremap = t
 
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
+-- markdown preview
+vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
+
 -- zen mode
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>", { noremap = true, silent = true })
 
