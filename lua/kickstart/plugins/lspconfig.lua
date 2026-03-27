@@ -129,6 +129,9 @@ return {
 
 			-- Setup mason-lspconfig for auto-installing and setting up servers
 			require("mason-lspconfig").setup({
+				automatic_enable = {
+					exclude = { "tailwindcss" },
+				},
 				ensure_installed = {
 					"lua_ls",
 					"rust_analyzer",
