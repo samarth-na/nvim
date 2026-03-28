@@ -50,6 +50,12 @@ vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap =
 
 vim.api.nvim_set_keymap("n", "<leader>tS", ":set spell <CR>", { noremap = true, silent = true })
 
+lspDiagnosticsVisible = true
+vim.diagnostic.config({
+	virtual_text = lspDiagnosticsVisible,
+	underline = lspDiagnosticsVisible,
+})
+
 vim.keymap.set("n", "<leader>td", function()
 	lspDiagnosticsVisible = not lspDiagnosticsVisible
 	vim.diagnostic.config({

@@ -215,6 +215,21 @@ return {
 				},
 			})
 
+			-- tsgo setup (not in mason registry, use new vim.lsp.config API)
+			vim.lsp.config("tsgo", {
+				capabilities = capabilities,
+				init_options = {
+					disablePushDiagnostics = true,
+				},
+				handlers = {
+					["textDocument/publishDiagnostics"] = function() end,
+					["textDocument/diagnostic"] = function()
+						return { items = {} }
+					end,
+				},
+			})
+			vim.lsp.enable("tsgo")
+
 			-- Manual handling for Deno vs Node. js
 			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
@@ -224,7 +239,7 @@ return {
 					-- Check if LSP already attached to this buffer
 					local clients = vim.lsp.get_clients({ bufnr = bufnr })
 					for _, client in ipairs(clients) do
-						if client.name == "denols" or client.name == "ts_ls" then
+						if client.name == "denols" or client.name == "tsgo" then
 							return
 						end
 					end
@@ -256,44 +271,6 @@ return {
 							},
 						})
 						return -- STOP HERE - don't check for Node. js
-					end
-
-					-- Only check for Node.js if NO deno.json found
-					local node_root = vim.fs.root(bufnr, { "package.json" })
-					if node_root then
-						print("Found package.json at: " .. node_root .. " - Starting ts_go")
-						-- vim.lsp.start({
-						-- 	name = "ts_ls",
-						-- 	cmd = { "typescript-language-server", "--stdio" },
-						-- 	root_dir = node_root,
-						-- 	capabilities = capabilities,
-						-- 	settings = {
-						-- 		typescript = {
-						-- 			inlayHints = {
-						-- 				includeInlayParameterNameHints = "all",
-						-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						-- 				includeInlayFunctionParameterTypeHints = true,
-						-- 				includeInlayVariableTypeHints = true,
-						-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-						-- 				includeInlayPropertyDeclarationTypeHints = true,
-						-- 				includeInlayFunctionLikeReturnTypeHints = true,
-						-- 				includeInlayEnumMemberValueHints = true,
-						-- 			},
-						-- 		},
-						-- 		javascript = {
-						-- 			inlayHints = {
-						-- 				includeInlayParameterNameHints = "all",
-						-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						-- 				includeInlayFunctionParameterTypeHints = true,
-						-- 				includeInlayVariableTypeHints = true,
-						-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-						-- 				includeInlayPropertyDeclarationTypeHints = true,
-						-- 				includeInlayFunctionLikeReturnTypeHints = true,
-						-- 				includeInlayEnumMemberValueHints = true,
-						-- 			},
-						-- 		},
-						-- 	},
-						-- })
 					end
 				end,
 			})
