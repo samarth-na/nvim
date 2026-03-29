@@ -10,7 +10,7 @@ return {
 		opts = {
 			signs = {
 				add = { text = "+" },
-				unstaged = { text = "▌" },
+				unstaged = { text = "┆" },
 				change = { text = "~" },
 				delete = { text = "_" },
 				topdelete = { text = "‾" },

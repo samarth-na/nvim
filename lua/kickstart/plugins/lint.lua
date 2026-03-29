@@ -6,8 +6,8 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				javascript = { "quick-lint-js" },
-				typescript = { "quick-lint-js" },
+				-- javascript = { "quick-lint-js" },
+				-- typescript = { "quick-lint-js" },
 
 				-- clojure = { "clj-kondo" },
 				-- dockerfile = { "hadolint" },
