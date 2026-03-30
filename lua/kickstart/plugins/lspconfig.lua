@@ -139,7 +139,7 @@ return {
 					"clangd",
 					"denols",
 					"tailwindcss",
-					-- "ts_ls",
+					"ts_ls",
 				},
 				handlers = {
 					-- Default handler
@@ -215,21 +215,6 @@ return {
 				},
 			})
 
-			-- tsgo setup (not in mason registry, use new vim.lsp.config API)
-			vim.lsp.config("tsgo", {
-				capabilities = capabilities,
-				init_options = {
-					disablePushDiagnostics = true,
-				},
-				handlers = {
-					["textDocument/publishDiagnostics"] = function() end,
-					["textDocument/diagnostic"] = function()
-						return { items = {} }
-					end,
-				},
-			})
-			vim.lsp.enable("tsgo")
-
 			-- Manual handling for Deno vs Node. js
 			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
@@ -239,7 +224,7 @@ return {
 					-- Check if LSP already attached to this buffer
 					local clients = vim.lsp.get_clients({ bufnr = bufnr })
 					for _, client in ipairs(clients) do
-						if client.name == "denols" or client.name == "tsgo" then
+						if client.name == "denols" then
 							return
 						end
 					end

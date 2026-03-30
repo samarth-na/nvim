@@ -88,6 +88,7 @@ vim.opt.linebreak = true
 
 vim.opt.conceallevel = 1
 
+vim.opt.backspace = "start,indent,eol"
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 -- vim: ts=4 sts=4 sw=4 et

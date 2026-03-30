@@ -66,21 +66,49 @@ return {
 				--
 				-- No, but seriously. Please read `:help ins-completion`, it is really good!
 				mapping = cmp.mapping.preset.insert({
-					-- Select the [n]ext item
 					["<C-n>"] = cmp.mapping.select_next_item(),
-					-- Select the [p]revious item
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
-					-- scroll the documentation window [b]ack / [f]orward
-					-- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-					-- ['<C-g>'] = cmp.mapping.scroll_docs(4),
+					["<Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.mapping.confirm({ select = true })()
+						else
+							fallback()
+						end
+					end,
+					["<S-Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item({ select = true })
+						else
+							fallback()
+						end
+					end,
 
-					-- Accept ([y]es) the completion.
-					--  This will auto-import if your LSP supports it.
-					--  This will expand snippets if the LSP sent a snippet.
-					["<tab>"] = cmp.mapping.confirm({ select = true }),
+					["<C-i>"] = function(fallback)
+						if cmp.visible() then
+							cmp.mapping.confirm({ select = true })()
+						else
+							fallback()
+						end
+					end,
 
-					["<C-i>"] = cmp.mapping.confirm({ select = true }),
+					["<C-j>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item({ select = true })
+						else
+							fallback()
+						end
+					end,
+
+					["<C-k>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item({ select = true })
+						else
+							fallback()
+						end
+					end,
+
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
