@@ -7,6 +7,12 @@ return {
 		},
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+			-- Compatibility fix for the archived master branch on Neovim 0.12.
+			-- See lua/custom/treesitter_compat.lua for details.
+			require("custom.treesitter_compat")
+		end,
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
