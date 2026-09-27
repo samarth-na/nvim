@@ -23,11 +23,24 @@ This is a personal Neovim configuration based on kickstart.nvim. Not a software 
 
 ## Configuration quirks
 
-- Shell: **fish** (`vim.o.shell = "/usr/bin/fish"`)
+- Shell: **fish** — resolved from `PATH` via `vim.fn.exepath("fish")`, falls back to `/bin/sh`
 - Tabs: 4 spaces, expandtab enabled
 - Line width: 80 chars (`.stylua.toml`)
 - Clipboard: delayed init via `schedule()` - needed for clipboard to work
 - `vim.g.have_nerd_font = true` - Nerd Font enabled
+- `lazy.setup()` takes `{ spec = { ...plugins } }` — anything placed *outside* `spec` is a
+  root option, anything inside is a plugin spec. Putting a root option inside `spec`
+  silently does nothing.
+- `nvim-treesitter` is on the **rewrite (main) branch**: no `ensure_installed` /
+  `auto_install`. Use `:TSInstall <lang>` / `:TSUpdate`, which need `tree-sitter-cli`.
+- `render-markdown.nvim` is v8: `indent.chars` → `indent.icon`, and the `list` table is gone
+  (use `bullet`).
+
+## External binaries
+
+- Required: `tree-sitter-cli`, `fd`, `ripgrep`
+- Optional: `wget`, `ghostscript` (PDF images), `tectonic`/`pdflatex` (LaTeX math),
+  `@mermaid-js/mermaid-cli` (Mermaid diagrams)
 
 ## File structure
 

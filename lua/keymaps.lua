@@ -1,7 +1,9 @@
 vim.keymap.set({ "i" }, "jk", "<Esc>", { silent = true })
 vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
-vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<D-v>", '"+p', { silent = true })
+vim.keymap.set("i", "<D-v>", '<C-r>+', { silent = true })
+vim.keymap.set("c", "<D-v>", '<C-r>+', { silent = true })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -37,16 +39,15 @@ vim.api.nvim_set_keymap("n", "<leader><Tab>", ":tabnext<CR>", { noremap = true, 
 vim.api.nvim_set_keymap("n", "<leader>ll", ":Lazy<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lm", ":Mason<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-
 -- toggle stuff
-vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>as", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>th", function()
+	require("snacks").picker.colorschemes()
+end, { desc = "Browse themes" })
 vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
-vim.keymap.set("n", "<leader>ld", ":LspStart denols<CR>", { desc = "Start Deno LSP" })
 
-vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ti", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>tS", ":set spell <CR>", { noremap = true, silent = true })
 
@@ -66,10 +67,23 @@ end, { desc = "Toggle diagnostics" })
 
 vim.api.nvim_set_keymap("n", "<leader>tc", ":TSContextToggle<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>e", function()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.bo[buf].filetype == "snacks_dashboard" then
+			vim.api.nvim_buf_delete(buf, { force = true })
+			break
+		end
+	end
+	vim.cmd("NvimTreeToggle")
+end, { noremap = true, silent = true })
 
--- zen mode
-vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>", { noremap = true, silent = true })
+-- markdown preview
+vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
+
+-- zen mode (snacks)
+vim.keymap.set("n", "<leader>z", function()
+	Snacks.zen()
+end, { desc = "Zen Mode" })
 
 --  for trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", ":Trouble<CR>", { noremap = true, silent = true })
@@ -80,14 +94,23 @@ vim.api.nvim_set_keymap("n", "<leader>xr", ":Trouble lsp_references<CR>", { nore
 --  for nvim-tree
 
 -- NOTE: for git
-vim.api.nvim_set_keymap("n", "<leader>gg", ":Gitsigns <CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lg", ":!tg <CR>", { noremap = true })
+vim.keymap.set("n", "<leader>lg", ":!tg <CR>", { noremap = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.tiff", "*.webp", "*.svg", "*.ico" },
+	group = vim.api.nvim_create_augroup("image-preview", { clear = true }),
+	callback = function()
+		vim.bo.buftype = "nowrite"
+		vim.bo.modifiable = false
+		vim.bo.readonly = true
 	end,
 })
 
@@ -105,5 +128,23 @@ local function toggle_boolean()
 		end)
 	end
 end
+
+-- ai tools
+vim.keymap.set("n", "<leader>ak", function()
+	Snacks.terminal({ cmd = "kilo" })
+end, { desc = "Kilo AI" })
+
+vim.keymap.set("n", "<leader>ao", function()
+	vim.cmd("Opencode toggle")
+end, { desc = "OpenCode" })
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "OpencodeToggle",
+	callback = function()
+		vim.defer_fn(function()
+			vim.cmd("only")
+		end, 100)
+	end,
+})
 
 -- Create a keymap for normal mode

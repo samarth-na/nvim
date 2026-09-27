@@ -1,5 +1,4 @@
 return {
-
 	{
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle", "UndotreeShow", "UndotreeHide", "UndotreeFocus" },
@@ -26,22 +25,14 @@ return {
 		"jake-stewart/auto-cmdheight.nvim",
 		event = "CmdlineEnter",
 		opts = {
-			-- max cmdheight before displaying hit enter prompt.
 			max_lines = 5,
-
-			-- number of seconds until the cmdheight can restore.
 			duration = 2,
-
-			-- whether key press is required to restore cmdheight.
 			remove_on_key = true,
-
-			-- always clear the cmdline after duration and key press.
-			-- by default it will only happen when cmdheight changed.
 			clear_always = false,
 		},
 	},
 	{
-		"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
+		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		event = "BufReadPost",
 		opts = {},
@@ -53,20 +44,104 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
+		opts = {},
 	},
 	{
 		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		version = "*",
 		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					change = "cs",
-				},
-			})
-		end,
+		opts = {},
+	},
+
+	{
+		"echasnovski/mini.ai",
+		version = "*",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"echasnovski/mini.splitjoin",
+		version = "*",
+		event = "VeryLazy",
+		opts = {
+			mappings = {
+				toggle = "<leader>tj",
+			},
+		},
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {
+			modes = {
+				search = { enabled = false },
+			},
+		},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
+	},
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>re",
+				function()
+					require("refactoring").refactor("Extract Function")
+				end,
+				desc = "Extract function",
+				mode = "v",
+			},
+			{
+				"<leader>rv",
+				function()
+					require("refactoring").refactor("Extract Variable")
+				end,
+				desc = "Extract variable",
+				mode = "v",
+			},
+			{
+				"<leader>ri",
+				function()
+					require("refactoring").refactor("Inline Variable")
+				end,
+				desc = "Inline variable",
+			},
+			{
+				"<leader>rb",
+				function()
+					require("refactoring").refactor("Extract Block")
+				end,
+				desc = "Extract block",
+			},
+		},
 	},
 }

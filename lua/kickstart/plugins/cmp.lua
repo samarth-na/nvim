@@ -3,11 +3,6 @@ return {
 		"hrsh7th/nvim-cmp", --cmp stands for completion duh
 		event = "InsertEnter",
 		dependencies = {
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -32,11 +27,8 @@ return {
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
-
-			-- Adds other completion capabilities.
-			--  nvim-cmp does not ship with all sources by default. They are split
-			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 		},
 		config = function()
@@ -66,21 +58,41 @@ return {
 				--
 				-- No, but seriously. Please read `:help ins-completion`, it is really good!
 				mapping = cmp.mapping.preset.insert({
-					-- Select the [n]ext item
 					["<C-n>"] = cmp.mapping.select_next_item(),
-					-- Select the [p]revious item
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
-					-- scroll the documentation window [b]ack / [f]orward
-					-- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-					-- ['<C-g>'] = cmp.mapping.scroll_docs(4),
+					["<Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.mapping.confirm({ select = true })()
+						else
+							fallback()
+						end
+					end,
+					["<S-Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end,
 
-					-- Accept ([y]es) the completion.
-					--  This will auto-import if your LSP supports it.
-					--  This will expand snippets if the LSP sent a snippet.
-					["<tab>"] = cmp.mapping.confirm({ select = true }),
+					["<C-j>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end,
 
-					["<C-i>"] = cmp.mapping.confirm({ select = true }),
+					["<C-k>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end,
+
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
@@ -108,24 +120,39 @@ return {
 					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 				}),
 				sources = {
-					-- { name = "copilot",   group_index = 1 },
-					-- { name = 'codeium', --[[ group_index = 1 ]] },
-					-- { name = "supermaven", --[[ group_index = 1 ]] },
 					{
-						name = "nvim_lua", --[[ group_index = 2 ]]
+						name = "nvim_lsp",
 					},
 					{
-						name = "nvim_lsp", --[[ group_index = 2 ]]
+						name = "luasnip",
 					},
 					{
-						name = "luasnip", --[[ group_index = 3 ]]
+						name = "buffer",
+						keyword_length = 3,
 					},
 					{
-						name = "buffer", --[[ group_index = 2 ]]
+						name = "path",
 					},
-					{
-						name = "path", --[[ group_index = 3 ]]
+				},
+				window = {
+					completion = {
+						border = "rounded",
+						winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
 					},
+					documentation = {
+						border = "rounded",
+					},
+				},
+				formatting = {
+					format = function(entry, item)
+item.menu = ({
+						nvim_lsp = "[lsp]",
+							luasnip = "[snip]",
+							buffer = "[buf]",
+							path = "[path]",
+						})[entry.source.name]
+						return item
+					end,
 				},
 			})
 		end,

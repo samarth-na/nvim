@@ -1,17 +1,107 @@
 return {
-
-	---@type LazySpec
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			terminal = {},
+			picker = {},
+			notifier = { enabled = true },
+			dashboard = {
+				preset = {
+					header = [[
+███╗   ██╗███████╗██████╗ ██████╗ ███████╗██╗   ██╗
+████╗  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██║   ██║
+██╔██╗ ██║█████╗  ██████╔╝██║  ██║█████╗  ██║   ██║
+██║╚██╗██║██╔══╝  ██╔══██╗██║  ██║██╔══╝  ╚██╗ ██╔╝
+██║ ╚████║███████╗██║  ██║██████╔╝███████╗ ╚████╔╝
+╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝  ╚═══╝]],
+				},
+				sections = {
+					{ section = "header" },
+					{ section = "keys", gap = 1, padding = 1 },
+					{ section = "recent_files", cwd = true, limit = 6, padding = 1 },
+					{ section = "projects", padding = 1 },
+				},
+			},
+			image = {
+				enable = true,
+				doc = { enable = true },
+			},
+			indent = {
+				enabled = true,
+				animate = { enabled = false },
+			},
+			scope = { enabled = true },
+			zen = { enabled = true },
+			lazygit = { configure = true },
+		},
+		keys = {
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
+			{
+				"<leader>gb",
+				function()
+					Snacks.lazygit.blame_line()
+				end,
+				desc = "Lazygit Blame Line",
+			},
+			{
+				"<C-/>",
+				function()
+					Snacks.terminal()
+				end,
+				desc = "Toggle terminal",
+				mode = { "n", "t" },
+			},
+		},
+	},
 
 	{
-		"MysticalDevil/inlay-hints.nvim",
-		event = "LspAttach",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("inlay-hints").setup({
-				only_current_line = true,
-				enable = false,
-			})
-		end,
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = true,
+	},
+
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = true,
+	},
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = true,
+	},
+
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = true,
+	},
+
+	{
+		"Mofiqul/dracula.nvim",
+		lazy = true,
+	},
+
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = true,
+	},
+
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = true,
+	},
+
+	{
+		"sainnhe/edge",
+		lazy = true,
 	},
 	-- {
 	--     'stevearc/oil.nvim',
@@ -261,12 +351,6 @@ return {
 			"nvim-lualine/lualine.nvim",
 			event = { "BufReadPost", "BufNewFile" },
 
-			nvimlogo = {
-				function()
-					return ""
-				end,
-			},
-
 			opts = {
 
 				options = {
@@ -281,9 +365,9 @@ return {
 					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "encoding", "filesize" },
 					lualine_x = { "fileformat" },
-					lualine_y = { "progress", "location" },
-					lualine_z = { "wpm" },
-				},
+lualine_y = { "progress", "location" },
+				lualine_z = { "searchcount" },
+			},
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
@@ -301,59 +385,6 @@ return {
 					lualine_z = { "mode" },
 				},
 			},
-		},
-	},
-	{
-		"folke/zen-mode.nvim",
-		cmd = "ZenMode",
-		opts = {
-
-			window = {
-				backdrop = 1.2, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-				-- height and width can be:
-				-- * an absolute number of cells when > 1
-				-- * a percentage of the width / height of the editor when <= 1
-				-- * a function that returns the width or the height
-				width = 92, -- width of the Zen window
-				height = 1, -- height of the Zen window
-				-- by default, no options are changed for the Zen window
-				-- uncomment any of the options below, or add other vim.wo options you want to apply
-				options = {
-					-- signcolumn = "no", -- disable signcolumn
-					-- number = false, -- disable number column
-					-- relativenumber = false, -- disable relative numbers
-					-- cursorline = false, -- disable cursorline
-					-- cursorcolumn = false, -- disable cursor column
-					-- foldcolumn = "0", -- disable fold column
-					-- list = false, -- disable whitespace characters
-				},
-			},
-			plugins = {
-				options = {
-					enabled = true,
-					ruler = false, -- disables the ruler text in the cmd line area
-					showcmd = false, -- disables the command in the last line of the screen
-					-- you may turn on/off statusline in zen mode by setting 'laststatus'
-					-- statusline will be shown only if 'laststatus' == 3
-					laststatus = 2, -- turn off the statusline in zen mode
-				},
-				twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
-				gitsigns = { enabled = false }, -- disables git signs
-				tmux = { enabled = false }, -- disables the tmux statusline
-				-- this will change the font size on kitty when in zen mode
-				-- to make this work, you need to set the following kitty options:
-				-- - allow_remote_control socket-only
-				-- - listen_on unix:/tmp/kitty
-				-- wezterm = {
-				--     enabled = false,
-				--     -- can be either an absolute font size or the number of incremental steps
-				--     font = '+4', -- (10% increase per step)
-				-- },
-			},
-			-- callback where you can add custom code when the Zen window opens
-			-- on_open = function(win) end,
-			-- callback where you can add custom code when the Zen window closes
-			-- on_close = function() end,
 		},
 	},
 	{
@@ -431,7 +462,7 @@ return {
 		config = function()
 			require("which-key").setup()
 			local wk = require("which-key")
-			wk.add({
+wk.add({
 				{ "<leader>f", group = " Find" },
 				{ "<leader>s", group = " Search" },
 				{ "<leader>g", group = " Git" },
@@ -441,11 +472,46 @@ return {
 				{ "<leader>tg", group = " git" },
 				{ "<leader>d", group = " document" },
 				{ "<localleader>q", group = " diagnostics" },
-				{ "<leader>c", group = " copilot" },
+			{ "<leader>a", group = " ai" },
+			{ "<leader>o", group = " opencode" },
+			{ "<leader>k", group = " kilo" },
+				{ "<leader>r", group = " refactor" },
 				{ "<leader>w", group = " Workspace" },
 				{ "<localleader>d", group = " search dir" },
 			})
 		end,
+	},
+
+	{
+		"rmagatti/auto-session",
+		lazy = false,
+		opts = {
+			log_level = "error",
+			suppressed_dirs = { "~/", "~/Downloads", "/" },
+			auto_restore = true,
+			auto_create = true,
+			post_restore_cmds = {
+				function()
+					vim.schedule(function()
+						local bufs = vim.fn.getbufinfo({ buflisted = 1, bufloaded = 1 })
+						local real_bufs = 0
+						for _, b in ipairs(bufs) do
+							local name = vim.fn.fnamemodify(b.name, ":t")
+							if b.name ~= "" and name ~= "NvimTree_1" and vim.bo[b.bufnr].buftype == "" then
+								real_bufs = real_bufs + 1
+							end
+						end
+						if real_bufs == 0 then
+							vim.cmd("silent! NvimTreeClose")
+							vim.cmd("silent! enew")
+							if Snacks and Snacks.dashboard then
+								Snacks.dashboard()
+							end
+						end
+					end)
+				end,
+			},
+		},
 	},
 }
 -- vim: ts=4 sts=4 sw=4 et
