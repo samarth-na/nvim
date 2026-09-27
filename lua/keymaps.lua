@@ -42,9 +42,16 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
-vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
-vim.keymap.set("n", "<leader>ld", ":LspStart denols<CR>", { desc = "Start Deno LSP" })
+-- Neovim 0.12 provides `:lsp enable` and `:LspStart` is gone from nvim-lspconfig.
+vim.keymap.set("n", "<leader>lw", function()
+	vim.lsp.enable("tailwindcss")
+end, { desc = "Start Tailwind CSS LSP" })
+vim.keymap.set("n", "<leader>lt", function()
+	vim.lsp.enable("ts_ls")
+end, { desc = "Start TypeScript LSP" })
+vim.keymap.set("n", "<leader>ld", function()
+	vim.lsp.enable("denols")
+end, { desc = "Start Deno LSP" })
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
 

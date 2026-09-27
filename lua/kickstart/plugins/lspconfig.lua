@@ -43,7 +43,7 @@ return {
 				callback = function(event)
 					local map = function(keys, func, desc, mode)
 						mode = mode or "n"
-						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+						vim.keymap.set(mode, keys, func, { buf = event.buf, desc = "LSP: " .. desc })
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
@@ -68,22 +68,22 @@ return {
 						local has_deno = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
 						if has_deno then
 							vim.notify("Stopping ts_ls in Deno project", vim.log.levels.WARN)
-							vim.lsp.stop_client(client.id, true)
+							client:stop(true)
 							return
 						end
 					end
 
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-							buffer = event.buf,
+							buf = event.buf,
 							group = highlight_augroup,
 							callback = vim.lsp.buf.document_highlight,
 						})
 
 						vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-							buffer = event.buf,
+							buf = event.buf,
 							group = highlight_augroup,
 							callback = vim.lsp.buf.clear_references,
 						})
@@ -92,12 +92,12 @@ return {
 							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
 							callback = function(event2)
 								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buf = event2.buf })
 							end,
 						})
 					end
 
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
@@ -107,6 +107,11 @@ return {
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+			-- mason-lspconfig v2 configures servers through `vim.lsp.config`; the
+			-- old `handlers` table was removed. Apply the capabilities to every
+			-- server config and keep per-server options as `vim.lsp.config` calls.
+			vim.lsp.config("*", { capabilities = capabilities })
 
 			require("mason").setup()
 
@@ -118,19 +123,11 @@ return {
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-			local lspconfig = require("lspconfig")
-
-			-- Default setup function for mason-lspconfig
-			local default_setup = function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end
-
-			-- Setup mason-lspconfig for auto-installing and setting up servers
+			-- Setup mason-lspconfig for auto-installing and setting up servers.
+			-- denols, ts_ls and tailwindcss are started manually.
 			require("mason-lspconfig").setup({
 				automatic_enable = {
-					exclude = { "tailwindcss" },
+					exclude = { "tailwindcss", "denols", "ts_ls" },
 				},
 				ensure_installed = {
 					"lua_ls",
@@ -141,77 +138,47 @@ return {
 					"tailwindcss",
 					-- "ts_ls",
 				},
+			})
+
+			-- Custom Lua LSP
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						hint = {
+							enable = true,
+							onlyCurrentLine = false,
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+					},
+				},
+			})
+
+			-- Custom Rust Analyzer
+			vim.lsp.config("rust_analyzer", {
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							disabled = { "unlinked-file" },
+						},
+					},
+				},
+			})
+
+			-- Custom Python LSP
+			vim.lsp.config("basedpyright", {
+				settings = {
+					basedpyright = {
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							useLibraryCodeForTypes = true,
+						},
+					},
+				},
 				handlers = {
-					-- Default handler
-					default_setup,
-
-					-- Custom Lua LSP
-					lua_ls = function()
-						lspconfig.lua_ls.setup({
-							capabilities = capabilities,
-							settings = {
-								Lua = {
-									hint = {
-										enable = true,
-										onlyCurrentLine = false,
-									},
-									completion = {
-										callSnippet = "Replace",
-									},
-								},
-							},
-						})
-					end,
-
-					-- Custom Rust Analyzer
-					rust_analyzer = function()
-						lspconfig.rust_analyzer.setup({
-							capabilities = capabilities,
-							settings = {
-								["rust-analyzer"] = {
-									diagnostics = {
-										disabled = { "unlinked-file" },
-									},
-								},
-							},
-						})
-					end,
-
-					-- Custom Python LSP
-					basedpyright = function()
-						lspconfig.basedpyright.setup({
-							capabilities = capabilities,
-							settings = {
-								basedpyright = {
-									analysis = {
-										autoSearchPaths = true,
-										diagnosticMode = "openFilesOnly",
-										useLibraryCodeForTypes = true,
-									},
-								},
-							},
-							handlers = {
-								["textDocument/publishDiagnostics"] = function() end,
-							},
-						})
-					end,
-
-					-- Custom Clangd
-					clangd = function()
-						lspconfig.clangd.setup({
-							capabilities = capabilities,
-						})
-					end,
-
-					-- SKIP denols and ts_ls - we handle manually
-					denols = function() end,
-					tailwindcss = function()
-						lspconfig.tailwindcss.setup({
-							capabilities = capabilities,
-							autostart = false,
-						})
-					end,
-					ts_ls = function() end,
+					["textDocument/publishDiagnostics"] = function() end,
 				},
 			})
 

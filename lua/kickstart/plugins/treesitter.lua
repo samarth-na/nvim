@@ -1,6 +1,10 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		-- Pinned to the last archived "master" commit. The "main" branch rewrite
+		-- removes `nvim-treesitter.configs`, which the setup below uses. Delete
+		-- this pin after migrating to the "main" branch API.
+		commit = "42fc28ba918343ebfd5565147a42a26580579482",
 		event = "BufReadPost",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
