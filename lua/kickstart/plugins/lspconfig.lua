@@ -62,17 +62,6 @@ return {
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-					-- KILL ts_ls if we're in a Deno project
-					if client and client.name == "ts_ls" then
-						local bufnr = event.buf
-						local has_deno = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
-						if has_deno then
-							vim.notify("Stopping ts_ls in Deno project", vim.log.levels.WARN)
-							client:stop(true)
-							return
-						end
-					end
-
 					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -124,19 +113,19 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			-- Setup mason-lspconfig for auto-installing and setting up servers.
-			-- denols, ts_ls and tailwindcss are started manually.
+			-- tailwindcss is started manually, and ts_ls is excluded so it never
+			-- fights with the TypeScript server enabled below.
 			require("mason-lspconfig").setup({
 				automatic_enable = {
-					exclude = { "tailwindcss", "denols", "ts_ls" },
+					exclude = { "tailwindcss", "ts_ls" },
 				},
 				ensure_installed = {
 					"lua_ls",
 					"rust_analyzer",
 					"basedpyright",
 					"clangd",
-					"denols",
 					"tailwindcss",
-					-- "ts_ls",
+					"tsc",
 				},
 			})
 
@@ -182,65 +171,11 @@ return {
 				},
 			})
 
-			-- tsgo setup (not in mason registry, use new vim.lsp.config API)
-			vim.lsp.config("tsgo", {
-				capabilities = capabilities,
-				init_options = {
-					disablePushDiagnostics = true,
-				},
-				handlers = {
-					["textDocument/publishDiagnostics"] = function() end,
-					["textDocument/diagnostic"] = function()
-						return { items = {} }
-					end,
-				},
-			})
-			vim.lsp.enable("tsgo")
-
-			-- Manual handling for Deno vs Node. js
-			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
-				callback = function()
-					local bufnr = vim.api.nvim_get_current_buf()
-
-					-- Check if LSP already attached to this buffer
-					local clients = vim.lsp.get_clients({ bufnr = bufnr })
-					for _, client in ipairs(clients) do
-						if client.name == "denols" or client.name == "tsgo" then
-							return
-						end
-					end
-
-					-- Try to find deno. json first (DENO TAKES PRIORITY)
-					local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
-					if deno_root then
-						print("Found deno.json at:  " .. deno_root .. " - Starting denols")
-						vim.lsp.start({
-							name = "denols",
-							cmd = { "deno", "lsp" },
-							root_dir = deno_root,
-							capabilities = capabilities,
-							settings = {
-								deno = {
-									enable = true,
-									unstable = true,
-									lint = true,
-									suggest = {
-										imports = {
-											hosts = {
-												["https://deno.land"] = true,
-												["https://cdn.nest.land"] = true,
-												["https://crux.land"] = true,
-											},
-										},
-									},
-								},
-							},
-						})
-						return -- STOP HERE - don't check for Node. js
-					end
-				end,
-			})
+			-- TypeScript language server. `tsc` is the official TypeScript 7+
+			-- language server; the older `tsgo` server is deprecated in favor of
+			-- it. The binary is installed by mason (see `ensure_installed` above)
+			-- and resolved by nvim-lspconfig.
+			vim.lsp.enable("tsc")
 		end,
 	},
 }

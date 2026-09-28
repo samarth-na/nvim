@@ -47,11 +47,8 @@ vim.keymap.set("n", "<leader>lw", function()
 	vim.lsp.enable("tailwindcss")
 end, { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", function()
-	vim.lsp.enable("ts_ls")
+	vim.lsp.enable("tsc")
 end, { desc = "Start TypeScript LSP" })
-vim.keymap.set("n", "<leader>ld", function()
-	vim.lsp.enable("denols")
-end, { desc = "Start Deno LSP" })
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
 
