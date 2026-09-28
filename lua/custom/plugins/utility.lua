@@ -61,12 +61,8 @@ return {
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					change = "cs",
-				},
-			})
-		end,
+		-- nvim-surround v4 sets its default keymaps when the plugin loads, and
+		-- `setup()` is configuration-only. `keymaps` was removed in v4 and the
+		-- default change map is already `cs`.
 	},
 }
