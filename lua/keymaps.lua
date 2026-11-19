@@ -41,14 +41,11 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
 -- toggle stuff
-vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ts", ":SweepToggle <CR>", { noremap = true, silent = true })
 -- Neovim 0.12 provides `:lsp enable` and `:LspStart` is gone from nvim-lspconfig.
 vim.keymap.set("n", "<leader>lw", function()
 	vim.lsp.enable("tailwindcss")
 end, { desc = "Start Tailwind CSS LSP" })
-vim.keymap.set("n", "<leader>lt", function()
-	vim.lsp.enable("tsc")
-end, { desc = "Start TypeScript LSP" })
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
 
@@ -95,19 +92,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-local function toggle_boolean()
-	local word = vim.fn.expand("<cword>")
-	if word == "true" then
-		vim.api.nvim_feedkeys([["_diw]], "n", false)
-		vim.schedule(function()
-			vim.api.nvim_put({ "false" }, "c", false, true)
-		end)
-	elseif word == "false" then
-		vim.api.nvim_feedkeys([["_diw]], "n", false)
-		vim.schedule(function()
-			vim.api.nvim_put({ "true" }, "c", false, true)
-		end)
-	end
-end
+-- local function toggle_boolean()
+-- 	local word = vim.fn.expand("<cword>")
+-- 	if word == "true" then
+-- 		vim.api.nvim_feedkeys([["_diw]], "n", false)
+-- 		vim.schedule(function()
+-- 			vim.api.nvim_put({ "false" }, "c", false, true)
+-- 		end)
+-- 	elseif word == "false" then
+-- 		vim.api.nvim_feedkeys([["_diw]], "n", false)
+-- 		vim.schedule(function()
+-- 			vim.api.nvim_put({ "true" }, "c", false, true)
+-- 		end)
+-- 	end
+-- end
 
 -- Create a keymap for normal mode

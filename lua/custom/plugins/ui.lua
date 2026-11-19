@@ -199,8 +199,8 @@ return {
 	{
 		"navarasu/onedark.nvim",
 		init = function()
-			-- vim.cmd.colorscheme("onedark")
-			vim.cmd.colorscheme("tokyonight-storm")
+			vim.cmd.colorscheme("onedark")
+			-- vim.cmd.colorscheme("tokyonight-storm")
 
 			vim.cmd.hi("Comment gui=none")
 		end,
@@ -293,9 +293,9 @@ return {
 					lualine_z = {},
 				},
 				tabline = {
-					lualine_a = { "" },
+					lualine_a = { "buffers" },
 					lualine_b = { "" },
-					lualine_c = { "buffers" },
+					lualine_c = { "" },
 					lualine_x = { "tabs" },
 					lualine_y = {},
 					lualine_z = { "mode" },

@@ -1,23 +1,24 @@
 return {
-	{
-		"supermaven-inc/supermaven-nvim",
-		event = "InsertEnter",
-		config = function()
-			require("supermaven-nvim").setup({
-				keymaps = {
-					accept_suggestion = "<c-j>",
-					clear_suggestion = "<C-x>",
-					accept_word = "<C-f>",
-				},
-				ignore_filetypes = { cpp = false, copilotchat = true, markdown = true },
-				color = {
-					suggestion_color = "#ffffff",
-				},
-				disable_inline_completion = false, -- disables inline completion for use with cmp
-				disable_keymaps = false, -- disables built in keymaps for more manual control
-			})
-		end,
-	},
+	-- Supermaven was sunset in Nov 2025; its edge server no longer returns
+	-- completions. Kept for reference and disabled so it stops spawning a
+	-- failing agent on every InsertEnter.
+	-- {
+	-- 	"supermaven-inc/supermaven-nvim",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("supermaven-nvim").setup({
+	-- 			keymaps = {
+	-- 				accept_suggestion = "<c-j>",
+	-- 				clear_suggestion = "<C-x>",
+	-- 				accept_word = "<C-f>",
+	-- 			},
+	-- 			ignore_filetypes = { cpp = false, copilotchat = true, markdown = true },
+	-- 			color = { suggestion_color = "#ffffff" },
+	-- 			disable_inline_completion = false,
+	-- 			disable_keymaps = false,
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- {
 	--     "monkoose/neocodeium",
