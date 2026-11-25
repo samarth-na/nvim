@@ -38,6 +38,21 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
+			-- TypeScript 7.0 exits with status 1 and logs "context canceled"
+			-- after a clean `tsc --lsp` shutdown (microsoft/TypeScript#64276).
+			-- Hide only that exact Neovim warning; other exit codes stay visible.
+			local notify = vim.notify
+			vim.notify = function(msg, level, opts)
+				if
+					level == vim.log.levels.WARN
+					and type(msg) == "string"
+					and msg:match("^Client tsc quit with exit code 1 and signal 0%. Check log")
+				then
+					return
+				end
+				return notify(msg, level, opts)
+			end
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)

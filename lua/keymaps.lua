@@ -3,8 +3,21 @@ vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
 vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+local function jump_diagnostic(count)
+	vim.diagnostic.jump({
+		count = count,
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+		end,
+	})
+end
+
+vim.keymap.set("n", "[d", function()
+	jump_diagnostic(-1)
+end, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", function()
+	jump_diagnostic(1)
+end, { desc = "Go to next [D]iagnostic message" })
 
 vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Go to next [D]iagnostic message" })
@@ -37,17 +50,16 @@ vim.api.nvim_set_keymap("n", "<leader><Tab>", ":tabnext<CR>", { noremap = true, 
 vim.api.nvim_set_keymap("n", "<leader>ll", ":Lazy<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lm", ":Mason<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-
 -- toggle stuff
-vim.api.nvim_set_keymap("n", "<leader>ts", ":SweepToggle <CR>", { noremap = true, silent = true })
 -- Neovim 0.12 provides `:lsp enable` and `:LspStart` is gone from nvim-lspconfig.
 vim.keymap.set("n", "<leader>lw", function()
 	vim.lsp.enable("tailwindcss")
 end, { desc = "Start Tailwind CSS LSP" })
 
-vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ti", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+end, { desc = "Toggle inlay hints" })
 
 vim.api.nvim_set_keymap("n", "<leader>tS", ":set spell <CR>", { noremap = true, silent = true })
 
@@ -88,7 +100,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })
 

@@ -1,37 +1,10 @@
 return {
-	-- Supermaven was sunset in Nov 2025; its edge server no longer returns
-	-- completions. Kept for reference and disabled so it stops spawning a
-	-- failing agent on every InsertEnter.
-	-- {
-	-- 	"supermaven-inc/supermaven-nvim",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("supermaven-nvim").setup({
-	-- 			keymaps = {
-	-- 				accept_suggestion = "<c-j>",
-	-- 				clear_suggestion = "<C-x>",
-	-- 				accept_word = "<C-f>",
-	-- 			},
-	-- 			ignore_filetypes = { cpp = false, copilotchat = true, markdown = true },
-	-- 			color = { suggestion_color = "#ffffff" },
-	-- 			disable_inline_completion = false,
-	-- 			disable_keymaps = false,
-	-- 		})
-	-- 	end,
-	-- },
-
-	-- {
-	--     "monkoose/neocodeium",
-	--     event = "VeryLazy",
-	--     config = function()
-	--         local neocodeium = require("neocodeium")
-	--         neocodeium.setup()
-	--         vim.keymap.set("i", "<C-f>", neocodeium.accept)
-	--         vim.keymap.set("i", "<C-d>", neocodeium.cycle)
-	--         vim.keymap.set("i", "<C-j>", neocodeium.accept_word)
-	--     end,
-	-- },
-	-- { "github/copilot.vim" },
+	{
+		"zbirenbaum/copilot.lua",
+		requires = {
+			"copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+		},
+	},
 }
 
 -- vim: ts=4 sts=4 sw=4 et

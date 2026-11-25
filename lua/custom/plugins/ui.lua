@@ -2,17 +2,6 @@ return {
 
 	---@type LazySpec
 
-	{
-		"MysticalDevil/inlay-hints.nvim",
-		event = "LspAttach",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("inlay-hints").setup({
-				only_current_line = true,
-				enable = false,
-			})
-		end,
-	},
 	-- {
 	--     'stevearc/oil.nvim',
 	--     ---@module 'oil'
@@ -25,25 +14,26 @@ return {
 	{
 		"petertriho/nvim-scrollbar",
 		event = "BufReadPost",
-
-		dependencies = { "kevinhwang91/nvim-hlslens" },
 		config = function()
-			require("scrollbar.handlers.gitsigns").setup()
 			require("scrollbar").setup({
-				show = true,
-				show_in_active_only = true,
 				set_highlights = true,
-				folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-				max_lines = false, -- disables if no. of lines in buffer exceeds this
-				hide_if_all_visible = false, -- Hides everything if all lines are visible
-				throttle_ms = 100,
-				handle = {
-					text = " ",
-					blend = 80, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
-					color = "#ffffff",
-					color_nr = nil, -- cterm
-					highlight = "CursorColumn",
-					hide_if_all_visible = true, -- Hides handle if all lines are visible
+				exclude = {
+					buftypes = { "terminal" },
+					filetypes = {
+						"cmp_docs",
+						"cmp_menu",
+						"noice",
+						"prompt",
+						"TelescopePrompt",
+					},
+				},
+				providers = {
+					cursor = true,
+					diagnostic = true,
+					gitsigns = true, -- Requires gitsigns
+					search = true, -- Native search; no nvim-hlslens needed
+					ale = false, -- Requires ALE
+					marks = false, -- v1 had no native-mark provider
 				},
 				marks = {
 					Cursor = {
@@ -97,18 +87,14 @@ return {
 						highlight = "GitSignsDelete",
 					},
 				},
-				excluded_buftypes = {
-					"terminal",
-				},
-				excluded_filetypes = {
-					"cmp_docs",
-					"cmp_menu",
-					"noice",
-					"prompt",
-					"TelescopePrompt",
-				},
-				autocmd = {
-					render = {
+				scrollbar = {
+					show = true,
+					visibility = "active", -- was show_in_active_only
+					max_lines = false, -- disables if no. of lines in buffer exceeds this
+					hide_if_all_visible = false, -- Hides everything if all lines are visible
+					throttle_ms = 100,
+					unit = "screenline", -- was folds = 1000; v2 always counts folds and wraps
+					events = {
 						"BufWinEnter",
 						"TabEnter",
 						"TermEnter",
@@ -118,20 +104,12 @@ return {
 						"VimResized",
 						"WinScrolled",
 					},
-					clear = {
-						"BufWinLeave",
-						"TabLeave",
-						"TermLeave",
-						"WinLeave",
+					thumb = {
+						text = " ",
+						blend = 80, -- 0 for fully opaque and 100 to full transparent
+						highlight = { bg = "#ffffff" }, -- was handle.color
+						hide_if_all_visible = true, -- Hides thumb if all lines are visible
 					},
-				},
-				handlers = {
-					cursor = true,
-					diagnostic = true,
-					gitsigns = true, -- Requires gitsigns
-					handle = true,
-					search = true, -- Requires hlslens
-					ale = false, -- Requires ALE
 				},
 			})
 		end,
@@ -206,14 +184,14 @@ return {
 		end,
 		opts = {
 			-- Main options --
-			style = "cool", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			transparent = false, -- Show/hide background
 			term_colors = false, -- Change terminal color as per the selected theme style
 			ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
 			cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
 			toggle_style_key = "<leader>to", -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-			toggle_style_list = { "cool", "light" }, -- List of styles to toggle between
+			toggle_style_list = { "cool", "dark", "darker", "light" }, -- List of styles to toggle between
 			-- Change code style ---
 			-- Options are italic, bold, underline, none
 			-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
@@ -243,7 +221,11 @@ return {
 		dependencies = {
 			"SmiteshP/nvim-navic",
 		},
-		opts = {},
+		opts = {
+			-- Keep LSP breadcrumbs out of the file tree. Otherwise navic can
+			-- send documentSymbol requests for the NvimTree_1 pseudo-file.
+			exclude_filetypes = { "netrw", "toggleterm", "NvimTree" },
+		},
 	},
 	{
 		{
